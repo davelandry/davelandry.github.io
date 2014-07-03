@@ -1,0 +1,81 @@
+body {
+  background-color: #fff;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+div#background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  opacity: 0.15;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
+  -webkit-transition: background-image 1s;
+          transition: background-image 1s;
+}
+
+section {
+  color: #444;
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  height: 380px;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -190px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+  top: 50%;
+  width: 600px;
+}
+
+div#avatar {
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+  -webkit-border-radius: 125px;
+          border-radius: 125px;
+  background-color: rgba(0,0,0,0.5);
+  background-image: url("images/avatar-512-rounded.png");
+  background-position: center center;
+  background-size: 256px;
+  float: left;
+  height: 250px;
+  margin: 23px 23px 0px 0px;
+  width: 250px;
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: 100;
+  margin: 0px;
+  opacity: 0.75;
+  text-align: left;
+}
+
+p {
+  font-size: 23px;
+  font-weight: 200;
+  margin: 23px 0px;
+  opacity: 0.75;
+  text-align: left;
+}
+
+i {
+  margin: 0px 23px;
+}
+
+a {
+  color: #cc2222;
+  text-decoration: none;
+  -webkit-transition: color .1s;
+          transition: color .1s;
+}
+
+a:hover {
+  color: #dd3333;
+}

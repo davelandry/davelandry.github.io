@@ -1,0 +1,67 @@
+<html>
+
+<head>
+
+  <title>Dave Landry</title>
+
+  <link rel="icon" type="image/ico" href="images/favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="font-awesome-4.1.0/css/font-awesome.min.css">
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+
+  <div id="background"></div>
+
+  <section>
+    <div id="avatar"></div>
+    <h1>Hello</h1>
+    <p>There's not much to see here. The majority of my time is shared between <a href="http://www.datawheel.us/">Datawheel</a> and <a href="http://www.d3plus.org/">D3plus</a>.</p>
+    <p>Get social with me by using the links below.</p>
+    <br>
+    <a href="https://github.com/davelandry"><i class="fa fa-github fa-3x"></i></a>
+    <a href="https://www.linkedin.com/profile/view?id=48751482"><i class="fa fa-linkedin fa-3x"></i></a>
+    <a href="https://twitter.com/davelandry"><i class="fa fa-twitter fa-3x"></i></a>
+    <a href="http://instagram.com/davelandry"><i class="fa fa-instagram fa-3x"></i></a>
+    <a href="https://www.facebook.com/davelandry"><i class="fa fa-facebook fa-3x"></i></a>
+    <a href="mailto:landry.dave@gmail.com"><i class="fa fa-envelope fa-3x"></i></a>
+  </section>
+
+  <script>
+
+    var fs = d3.select("#background")
+    // var hour = new Date().getHours()
+    // if (hour >= 5 && hour <= 20) {
+    //   var filename = "day"
+    // }
+    // else {
+    //   var filename = "night"
+    // }
+    var filename = "unh"
+    fs.style("background-image","url('images/"+filename+".jpg')")
+
+    var resizebg = function() {
+      var w = window.innerWidth,
+          h = window.innerHeight,
+          aspect = w/h
+
+      if (aspect > 1.7777) {
+        fs.style("background-size",w+"px "+(w/1.7777)+"px")
+      }
+      else {
+        fs.style("background-size",(h*1.7777)+"px "+h+"px")
+      }
+    }
+
+    resizebg()
+
+    window.onresize = resizebg
+
+  </script>
+
+</body>
+
+</html>

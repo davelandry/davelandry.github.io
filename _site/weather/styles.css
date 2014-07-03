@@ -1,0 +1,50 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+
+section {
+  height: 400px;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  position: absolute;
+  top: 50%;
+  width: 400px;
+}
+
+div#sun, div#moon {
+  -webkit-border-radius: 100px;
+          border-radius: 100px;
+  height: 100px;
+  left: 50%;
+  position: absolute;
+  top: 120%;
+  width: 100px;
+}
+
+div#sun {
+  background-color: yellow;
+  margin: -50px 0px 0px -50px;
+  -webkit-transition: top 2s, left 2s;
+          transition: top 2s, left 2s;
+}
+
+div#moon {
+  box-shadow: 100px 100px;
+  color: #ededed;
+  margin: -150px 0px 0px -150px;
+  -webkit-transition: top 2s, left 2s, width 2s, height 2s;
+          transition: top 2s, left 2s, width 2s, height 2s;
+}
+
+div#sky {
+  background-color: #262931;
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  -webkit-transition: background-color 2s;
+          transition: background-color 2s;
+}

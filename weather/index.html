@@ -1,0 +1,115 @@
+<html>
+
+<head>
+
+  <title>Dave Landry</title>
+
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="suncalc.js" charset="utf-8"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+
+  <div id="sky"></div>
+  <div id="sun"></div>
+  <div id="moon"></div>
+
+  <script>
+
+    var latitude  = 42.3626
+      , longitude = -71.0843
+      , timing    = 2000
+      , heavens   = {}
+      , timeStamp = null
+
+    heavens.top = d3.scale.linear()
+      .domain([0,Math.PI/2])
+      .range([75,0])
+
+    heavens.left = d3.scale.linear()
+      .domain([Math.PI,0])
+      .range([25,75])
+
+    heavens.size = d3.scale.linear()
+      .domain([363000,406000])
+      .rangeRound([90,95])
+
+    heavens.fill = d3.scale.linear()
+      .domain([0,1])
+
+    var sky = d3.scale.linear()
+      .range(["#262931","#262931","#5773b8","#dee8fe","#dee8fe","#5773b8","#262931","#262931"])
+      .interpolate(d3.interpolateRgb)
+
+    d3.json("http://jsonip.appspot.com/",function(error,data){
+      if (!error && "ip" in data) {
+        d3.json("http://freegeoip.net/json/"+data.ip,function(error,data){
+          latitude = data.latitude
+          longitude = data.longitude
+          updateSky()
+        })
+      }
+      else {
+        updateSky()
+      }
+    })
+
+    function updateSky() {
+
+      timeStamp = new Date()
+
+      updateHeavens("sun")
+      updateHeavens("moon")
+
+      var times = SunCalc.getTimes(timeStamp,latitude,longitude)
+
+      for (var t in times) {
+        times[t] = parseFloat((times[t].getHours()+times[t].getMinutes()/60).toFixed(2))
+      }
+
+      sky.domain([0,times.dawn,times.sunrise,times.goldenHourEnd,times.goldenHour,times.sunset,times.dusk,24])
+
+      d3.select("#sky")
+        .style("background-color",sky(timeStamp.getHours() + timeStamp.getMinutes()/60))
+
+    }
+
+    function updateHeavens(type) {
+
+      var mod = type === "moon" ? "Moon" : ""
+        , entity = SunCalc["get"+mod+"Position"](timeStamp,latitude,longitude)
+
+      d3.select("#"+type)
+        .style("top",heavens.top(entity.altitude)+"%")
+        .style("left",heavens.left(Math.abs(entity.azimuth))+"%")
+
+      if (type === "moon") {
+
+        var moon = SunCalc.getMoonIllumination(timeStamp)
+          , size = heavens.size(entity.distance)
+
+        heavens.fill.rangeRound([0,size])
+
+        var offset = heavens.fill(moon.fraction)
+
+        if (entity.angle >= 0) {
+          offset = -offset
+        }
+
+        d3.select("#"+type)
+          .style("width",size+"px")
+          .style("height",size+"px")
+          .style("box-shadow",offset+"px "+offset+"px")
+          .style("margin","-"+(size/2+offset)+"px 0px 0px -"+(size/2+offset)+"px")
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>

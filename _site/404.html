@@ -61,60 +61,9 @@
 
 
   <section>
-
-  <div id="avatar"></div>
-
-  <h1>Hello</h1>
-  <p>There's not much to see here.</p>
-  <p>The majority of my time is currently shared between <a href="http://www.datawheel.us/">Datawheel</a> and <a href="http://www.d3plus.org/">D3plus</a>.</p>
-
-  <br>
-
-  <a class="icon" href="resume.pdf">
-    <i class="fa fa-file-text fa-3x"></i>
-    Resume
-  </a>
-  <a class="icon" href="https://github.com/davelandry">
-    <i class="fa fa-github fa-3x"></i>
-    GitHub
-  </a>
-  <a class="icon" href="https://www.linkedin.com/profile/view?id=48751482">
-    <i class="fa fa-linkedin fa-3x"></i>
-    LinkedIn
-  </a>
-  <a class="icon" href="https://twitter.com/davelandry">
-    <i class="fa fa-twitter fa-3x"></i>
-    Twitter
-  </a>
-  <a class="icon" href="mailto:landry.dave@gmail.com">
-    <i class="fa fa-envelope fa-3x"></i>
-    E-Mail
-  </a>
-
+  <h1>Oops!</h1>
+  <p>Move along, nothing to see here.</p>
 </section>
-
-<script>
-
-  var hour = new Date().getHours()
-    , dawn = hour >= 4 && hour <= 7
-    , dusk = hour >= 18 && hour <= 24
-    , night = hour > 0 && hour < 4
-
-  if ( night ) {
-    var greetings = ["It's late","Go to bed"]
-  }
-  else if ( dawn ) {
-    var greetings = ["Good morning","Rise and shine"]
-  }
-  else {
-    var greetings = ["Hello","What's up?","Welcome","Howdy"]
-  }
-
-  var text = greetings[Math.floor(Math.random()*greetings.length)]
-
-  d3.select("h1").text(text)
-
-</script>
 
 
 </body>

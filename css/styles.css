@@ -45,7 +45,7 @@ div#avatar {
   -webkit-border-radius: 125px;
           border-radius: 125px;
   background-color: rgba(0,0,0,0.5);
-  background-image: url("images/avatar-512.jpg");
+  background-image: url("/images/avatar-512.jpg");
   background-position: center center;
   background-size: 256px;
   float: left;

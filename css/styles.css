@@ -99,3 +99,7 @@ a > i {
   -webkit-transition: color .2s;
           transition: color .2s;
 }
+
+ul > li {
+  text-align: left;
+}

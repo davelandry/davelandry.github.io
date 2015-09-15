@@ -1,0 +1,10 @@
+collections:
+  classes:
+    output: true
+    permalink: /classes/:path/
+
+defaults:
+  - scope:
+      type: classes
+    values:
+      layout: reveal

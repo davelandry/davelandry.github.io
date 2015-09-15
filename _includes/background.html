@@ -1,9 +1,7 @@
-<div id="background"></div>
-
 <script>
 
-  var fs = d3.select("#background")
-  if ( !fs.empty() ) {
+  var fs = d3.select("#background");
+  if (!fs.empty()) {
 
     var hour = new Date().getHours()
       , dawn = hour >= 5 && hour <= 7
@@ -19,7 +17,7 @@
       var images = ["hike","stoughton","trail","unh"]
     }
     var filename = images[Math.floor(Math.random()*images.length)]
-    fs.style("background-image","url('images/bg/"+filename+".jpg')")
+    fs.style("background-image","url('/images/bg/"+filename+".jpg')")
 
     var resizebg = function() {
       var w = window.innerWidth,

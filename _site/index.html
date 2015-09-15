@@ -9,7 +9,7 @@
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
-  <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.1.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -19,50 +19,7 @@
 
   <div id="background"></div>
 
-<script>
-
-  var fs = d3.select("#background")
-  if ( !fs.empty() ) {
-
-    var hour = new Date().getHours()
-      , dawn = hour >= 5 && hour <= 7
-      , dusk = hour >= 18 && hour <= 21
-      , night = hour > 21 && hour < 5
-    if ( dawn || dusk ) {
-      var images = ["charles","powerlines"]
-    }
-    else if ( night ){
-      var images = ["chateau","street"]
-    }
-    else {
-      var images = ["hike","stoughton","trail","unh"]
-    }
-    var filename = images[Math.floor(Math.random()*images.length)]
-    fs.style("background-image","url('images/bg/"+filename+".jpg')")
-
-    var resizebg = function() {
-      var w = window.innerWidth,
-          h = window.innerHeight,
-          aspect = w/h
-
-      if (aspect > 1.7777) {
-        fs.style("background-size",w+"px "+(w/1.7777)+"px")
-      }
-      else {
-        fs.style("background-size",(h*1.7777)+"px "+h+"px")
-      }
-    }
-
-    resizebg()
-
-    window.onresize = resizebg
-
-  }
-
-</script>
-
-
-  <section>
+<section>
 
   <div id="avatar"></div>
 
@@ -97,24 +54,66 @@
 
 <script>
 
-  var hour = new Date().getHours()
-    , dawn = hour >= 4 && hour <= 7
-    , dusk = hour >= 18 && hour <= 24
-    , night = hour > 0 && hour < 4
+  var hour = new Date().getHours(),
+      dawn = hour >= 4 && hour <= 7,
+      dusk = hour >= 18 && hour <= 24,
+      night = hour > 0 && hour < 4;
 
-  if ( night ) {
-    var greetings = ["It's late","Go to bed"]
+  if (night) {
+    var greetings = ["It's late", "Go to bed"];
   }
-  else if ( dawn ) {
-    var greetings = ["Good morning","Rise and shine"]
+  else if (dawn) {
+    var greetings = ["Good morning", "Rise and shine"];
   }
   else {
-    var greetings = ["Hello","What's up?","Welcome","Howdy"]
+    var greetings = ["Hello", "What's up?", "Welcome", "Howdy"];
   }
 
-  var text = greetings[Math.floor(Math.random()*greetings.length)]
+  var text = greetings[Math.floor(Math.random()*greetings.length)];
+  d3.select("h1").text(text);
 
-  d3.select("h1").text(text)
+</script>
+
+
+  <script>
+
+  var fs = d3.select("#background");
+  if (!fs.empty()) {
+
+    var hour = new Date().getHours()
+      , dawn = hour >= 5 && hour <= 7
+      , dusk = hour >= 18 && hour <= 21
+      , night = hour > 21 && hour < 5
+    if ( dawn || dusk ) {
+      var images = ["charles","powerlines"]
+    }
+    else if ( night ){
+      var images = ["chateau","street"]
+    }
+    else {
+      var images = ["hike","stoughton","trail","unh"]
+    }
+    var filename = images[Math.floor(Math.random()*images.length)]
+    fs.style("background-image","url('/images/bg/"+filename+".jpg')")
+
+    var resizebg = function() {
+      var w = window.innerWidth,
+          h = window.innerHeight,
+          aspect = w/h
+
+      if (aspect > 1.7777) {
+        fs.style("background-size",w+"px "+(w/1.7777)+"px")
+      }
+      else {
+        fs.style("background-size",(h*1.7777)+"px "+h+"px")
+      }
+    }
+
+    resizebg()
+
+    window.onresize = resizebg
+
+  }
 
 </script>
 

@@ -9,7 +9,7 @@
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
-  <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.1.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -17,12 +17,16 @@
 
 <body>
 
-  <div id="background"></div>
+  <section>
+  <h1>Oops!</h1>
+  <p>Move along, nothing to see here.</p>
+</section>
 
-<script>
 
-  var fs = d3.select("#background")
-  if ( !fs.empty() ) {
+  <script>
+
+  var fs = d3.select("#background");
+  if (!fs.empty()) {
 
     var hour = new Date().getHours()
       , dawn = hour >= 5 && hour <= 7
@@ -38,7 +42,7 @@
       var images = ["hike","stoughton","trail","unh"]
     }
     var filename = images[Math.floor(Math.random()*images.length)]
-    fs.style("background-image","url('images/bg/"+filename+".jpg')")
+    fs.style("background-image","url('/images/bg/"+filename+".jpg')")
 
     var resizebg = function() {
       var w = window.innerWidth,
@@ -60,12 +64,6 @@
   }
 
 </script>
-
-
-  <section>
-  <h1>Oops!</h1>
-  <p>Move along, nothing to see here.</p>
-</section>
 
 
 </body>

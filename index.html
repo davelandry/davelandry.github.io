@@ -2,6 +2,8 @@
 layout: default
 ---
 
+<div id="background"></div>
+
 <section>
 
   <div id="avatar"></div>
@@ -37,23 +39,22 @@ layout: default
 
 <script>
 
-  var hour = new Date().getHours()
-    , dawn = hour >= 4 && hour <= 7
-    , dusk = hour >= 18 && hour <= 24
-    , night = hour > 0 && hour < 4
+  var hour = new Date().getHours(),
+      dawn = hour >= 4 && hour <= 7,
+      dusk = hour >= 18 && hour <= 24,
+      night = hour > 0 && hour < 4;
 
-  if ( night ) {
-    var greetings = ["It's late","Go to bed"]
+  if (night) {
+    var greetings = ["It's late", "Go to bed"];
   }
-  else if ( dawn ) {
-    var greetings = ["Good morning","Rise and shine"]
+  else if (dawn) {
+    var greetings = ["Good morning", "Rise and shine"];
   }
   else {
-    var greetings = ["Hello","What's up?","Welcome","Howdy"]
+    var greetings = ["Hello", "What's up?", "Welcome", "Howdy"];
   }
 
-  var text = greetings[Math.floor(Math.random()*greetings.length)]
-
-  d3.select("h1").text(text)
+  var text = greetings[Math.floor(Math.random()*greetings.length)];
+  d3.select("h1").text(text);
 
 </script>

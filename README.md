@@ -1,3 +1,3 @@
 # davelandry.github.io
 
-My personal webpage.
+My personal webpage. It's really cool.

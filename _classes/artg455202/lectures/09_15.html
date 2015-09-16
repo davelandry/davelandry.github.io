@@ -119,6 +119,10 @@ title: Intro to the Web Stack and Github
     <p class="fragment">Programming textbooks quickly become dated, and the best solutions are found through collaboration and open dialogue.</p>
   </section>
   <section>
+    <h2>Laptops</h2>
+    <p>This class requires an Apple laptop, and for you to bring it with you each week.</p>
+  </section>
+  <section>
     <h2>Web Browser</h2>
     <img class="stretch noborder" src="/images/classes/browsers.png">
     <p class="fragment">I don't care which one you use.</p>
@@ -130,12 +134,13 @@ title: Intro to the Web Stack and Github
     <ul class="inline">Suggestions:
       <li><a target="_blank" href="https://atom.io/">Atom</a></li>
       <li><a target="_blank" href="http://www.sublimetext.com/">Sublime Text</a></li>
-      <li><a target="_blank" href="https://macromates.com/">TextEdit</a></li>
+      <li><a target="_blank" href="https://macromates.com/">TextMate</a></li>
     </ul>
   </section>
   <section>
     <h2>Terminal</h2>
     <img class="stretch noborder" src="/images/classes/terminal.png">
+    <p>Already installed on your Mac!<p>
   </section>
   <section>
     <h2>Take a minute to download any programs you need.</h2>
@@ -193,7 +198,7 @@ title: Intro to the Web Stack and Github
   <section>
     <h2>Create your first repository</h2>
     <img class="stretch noborder" src="/images/classes/github-home.png">
-    <p>Your repository list is on the bottom right.</p>
+    <p>Your repository list is on the bottom right. You can think of a repository as a shared project folder.</p>
     <p>Click the big green button.</p>
   </section>
   <section>
@@ -242,8 +247,68 @@ title: Intro to the Web Stack and Github
   </section>
   <section>
     <h3>Git Workflow</h3>
+    <h2>Using Terminal</h2>
+    <p>
+      The Terminal is just a different way of interacting with you computer. Just like the Finder, you can make folders, move files, and even launch applications.
+    </p>
+    <p>
+      Commands are issued to the terminal by writing the command and pressing the 'return' key. Only 1 command can be issued at a time.
+    </p>
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
+    <h2>Folders in Terminal</h2>
+    <p>
+      When looking at your computer through Terminal, you are always issuing commands from a specific folder on your computer.
+    </p>
+    <p>
+      Whenever you open a new Terminal window, you start out in your Home directory (or "~/"). This is the folder on your hard drive named after your username (available in the "Go" menu of Finder).
+    </p>
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
+    <h2>Installing Prerequisites</h2>
+    <p>
+      In order for you to get started programming, you must first install some software through Terminal. These prerequisites only ever need to be installed this one time.
+    </p>
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
+    <h2>Xcode Command Line Tools</h2>
+    <p>
+      Type the following command into Terminal and press return:
+    </p>
+    <pre><code class="bash">xcode-select --install</code></pre>
+    <p>
+      A popup should appear, click ok/agree to everything it says and a progress bar wlll start. This installs some basic programming packages that Apple does not include on computers by default.
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
+    <h2>Close/Reopen Terminal</h2>
+    <p>
+      This step is important, and is simliar to how you restart your computer when installing big udpates.
+    </p>
+    <p>
+      If you run into a problem during any of these steps, try closing and reopening Terminal.
+    </p>
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
+    <h2>Homebrew</h2>
+    <p>Instead of installing Git directly, we will be using a package manager called Homebrew to install it. So first, let's install Homebrew:</p>
+    <pre><code class="bash">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></pre>
+    <p>Trust me, doing this will make things a lot easier down the road.</p>
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
+    <h2>Installing Git</h2>
+    <p>Once Homebrew finishes installing, we can install Git by simply typing:</p>
+    <pre><code class="bash">brew install git</code></pre>
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
     <h2>Make a repository folder</h2>
-    <p>If you don't have one already, create a folder on your computer where you keep all of your repositories (even though we only have 1 now).</p>
+    <p>With Git installed, we can finally start interacting with the repository we created through the website. If you don't have one already, create a folder on your computer where you will keep all of your repositories (even though we only have 1 now).</p>
     <pre><code class="bash">mkdir ~/Sites</code></pre>
     <br>
     <p>Now move into that directory:</p>
@@ -255,10 +320,29 @@ title: Intro to the Web Stack and Github
     <p>
       Finally, download the entire contents of your repository using Git's "clone" command:
     </p>
-    <pre><code class="bash">git clone git@github.com:username/username.github.io.git</code></pre>
+    <pre><code class="bash">git clone https://github.com/username/username.github.io.git</code></pre>
+    <p>
+      <small>Note: Always replace "username" with your Github.com account username!</small>
+    <p>
   </section>
   <section>
-    <h2>Change something in your index.html!</h2>
+    <h3>Git Workflow</h3>
+    <h2>Downloading your repository</h2>
+    <p>
+      The contents of your repository should now be downloaded into a folder named after the repository. You can see it in Finder, and also move into it in Terminal:
+    </p>
+    <pre><code class="bash">cd username.github.io</code></pre>
+  </section>
+  <section>
+    <h3>Git Workflow</h3>
+    <h2>Changing Files Locally</h2>
+    <p>
+      With your repository on your machine now, open the folder in your text editor. In there, you should see a list of the files in a panel on the left.
+    </p>
+    <br>
+    <p>
+      Click on index.html to open it, change the text inside of it, and save it. Now let's try to upload that file back to Github.com.
+    </p>
   </section>
   <section>
     <h3>Git Workflow</h3>
@@ -292,7 +376,7 @@ title: Intro to the Web Stack and Github
     <h3>Git Workflow</h3>
     <h2>Adding/Staging Files</h2>
     <p>
-      Files can be added to a commit one-by-one:
+      While inside a folder for a Git repository, files can be added to a commit one-by-one:
     </p>
     <pre><code class="bash">git add index.html</code></pre>
     <br>
@@ -342,14 +426,48 @@ title: Intro to the Web Stack and Github
     </p>
   </section>
   <section>
+    <h2>Package Manager for Github Pages</h2>
+    <p>
+      Similar to Homebrew, you also need to install a package manager for all of the dependencies needed to run Github Pages on your computer.
+    </p>
+    <p>
+      Run this command in Terminal:
+    </p>
+    <pre><code class="bash">gem install bundler</code></pre>
+  </section>
+  <section>
+    <h2>Permissions</h2>
+    <p>
+      If any of these Terminal commands gives you an error mentioning invalid Permissions, you can bypass that by prefixing the command with "sudo". For example, if the previous command failed because of permissions, you can say:
+    </p>
+    <pre><code class="bash">sudo gem install bundler</code></pre>
+    <p>
+      This will ask you for your computer password, and then force it's way through the install.
+    </p>
+  </section>
+  <section>
     <h2>Installing the Gem</h2>
     <p>
-      Github Pages are served using Ruby. A Gemfile contains all of the Ruby dependencies needed in order to run the site. This only needs to be done once to initialize a site.
+      A Gemfile contains links to all of the package dependencies needed in order to run Github Pages locally.
     </p>
-    <pre><code class="bash">gem install github-pages</code></pre>
+    <p>
+      In your text editor, create a new file in your project directory called "Gemfile" (capitalized, and no file extension!). Inside that file, add these 2 lines and save it:
+    </p>
+    <pre><code class="bash">source 'https://rubygems.org'
+gem 'github-pages'</code></pre>
+  </section>
+  <section>
+    <h2>Running the Gem</h2>
+    <p>
+      And finally, issue this command to install the final dependencies from the Gemfile:
+    </p>
+    <pre><code class="bash">bundle install</code></pre>
   </section>
   <section>
     <h2>Actually Running the Site</h2>
+    <p>
+      Good, you've made it this far. I promise you'll never have to do all that stuff again!
+    </p>
     <p>
       Now, all you need to do any time you want to serve the site is type:
     </p>
@@ -360,7 +478,13 @@ title: Intro to the Web Stack and Github
     <p>
       You should be able to see your site at the following URL:
     </p>
-    <pre><code class="bash">http://localhost:4000/</code></pre>
+    <pre><code class="bash">http://0.0.0.0:4000/</code></pre>
+  </section>
+  <section>
+    <h2>Stopping the server</h2>
+    <p>
+      Anytime you would like to stop the server from running (say, to commit some files to Git), you can <u>c</u>ancel the proess by pressing control+c on your keyboard while in Terminal.
+    </p>
   </section>
 </section>
 
@@ -368,9 +492,9 @@ title: Intro to the Web Stack and Github
   <section>
     <h1>Homework</h1>
     <ol>
-      <li class="fragment">Create a personalized landing page on your Github Pages site that will hold all of your class assignments.</li>
+      <li class="fragment">Personalized your index.html file to the best of your ability (your name, etc). We will be working on this site together throughout the semester, and you will be using it to store all of your classwork.</li>
       <li class="fragment">E-mail the link to your page to <a href="mailto:landry.dave@gmail.com">landry.dave@gmail.com</a>.</li>
-      <li class="fragment">Post a link on your page to an interactive visualization that you find interesting.</li>
+      <li class="fragment">Put a link on your page to an interactive visualization that you find interesting.</li>
     </ol>
   </section>
 </section>

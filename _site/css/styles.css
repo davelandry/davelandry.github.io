@@ -3,12 +3,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
-}
+  width: 100%; }
 
 br {
-  clear: both;
-}
+  clear: both; }
 
 div#background {
   background-repeat: no-repeat;
@@ -22,37 +20,34 @@ div#background {
   bottom: 0px;
   z-index: -1;
   -webkit-transition: background-image 1s;
-          transition: background-image 1s;
-}
+  transition: background-image 1s; }
 
 section {
   color: #333;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  height: 320px;
   left: 50%;
+  margin-bottom: 100px;
   margin-left: -300px;
   margin-top: -170px;
   overflow: visible;
   position: absolute;
   text-align: center;
-  text-shadow: 0px 1px 5px rgba(255,255,255,0.25);
+  text-shadow: 0px 1px 5px rgba(255, 255, 255, 0.25);
   top: 50%;
-  width: 600px;
-}
+  width: 600px; }
 
 div#avatar {
-  box-shadow: 1px 1px 5px rgba(255,255,255,0.25);
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.25);
   -webkit-border-radius: 125px;
-          border-radius: 125px;
-  background-color: rgba(0,0,0,0.5);
+  border-radius: 125px;
+  background-color: rgba(0, 0, 0, 0.5);
   background-image: url("/images/avatar-512.jpg");
   background-position: center center;
   background-size: 256px;
   float: left;
   height: 250px;
   margin: 0px 23px 23px 0px;
-  width: 250px;
-}
+  width: 250px; }
 
 h1 {
   color: #bb0000;
@@ -60,46 +55,38 @@ h1 {
   font-weight: 100;
   margin: 0px;
   opacity: 0.75;
-  text-align: left;
-}
+  text-align: left; }
 
 p {
   font-size: 23px;
   font-weight: 200;
   margin: 23px 0px;
   opacity: 0.75;
-  text-align: left;
-}
+  text-align: left; }
 
 a {
   color: #000;
   display: inline-block;
   text-decoration: none;
   -webkit-transition: color .1s;
-          transition: color .1s;
-}
+  transition: color .1s; }
+  a:hover {
+    color: #bb0000; }
 
-a:hover {
-  color: #bb0000;
-}
+a.missing {
+  font-weight: bold; }
 
 a.icon {
   color: #bb0000;
   font-weight: 200;
-  width: 95px;
-}
-
-a.icon:hover {
-  color: #cc0000;
-}
-
-a > i {
-  display: block !important;
-  margin: 8px 23px;
-  -webkit-transition: color .2s;
-          transition: color .2s;
-}
+  width: 95px; }
+  a.icon:hover {
+    color: #cc0000; }
+  a.icon i {
+    display: block !important;
+    margin: 8px 23px;
+    -webkit-transition: color .2s;
+    transition: color .2s; }
 
 ul > li {
-  text-align: left;
-}
+  text-align: left; }

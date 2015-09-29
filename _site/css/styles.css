@@ -24,7 +24,7 @@ div#background {
 
 section {
   color: #333;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   left: 50%;
   margin-bottom: 100px;
   margin-left: -300px;
@@ -72,9 +72,6 @@ a {
   transition: color .1s; }
   a:hover {
     color: #bb0000; }
-
-a.missing {
-  font-weight: bold; }
 
 a.icon {
   color: #bb0000;

@@ -1,0 +1,133 @@
+---
+title: Data Collection and Usage
+---
+
+<section>
+  <section>
+    <h2>October 13, 2015</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Data Stored in Files</li>
+      <li class="fragment">APIs</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Presentation Time</h1>
+  <a target="_blank" href="/classes/artg455202/random/">http://www.dave-landry.com/classes/artg455202/random/</a>
+</section>
+
+<section>
+  <h1>Update</h1>
+  <p class="fragment">
+    Everyone take a second and update their gem packages.
+  </p>
+  <pre class="fragment"><code class="bash">sudo gem update</code></pre>
+</section>
+
+<section>
+  <section>
+    <h1>Data Stored in Files</h1>
+  </section>
+  <section>
+    <h2>External Files</h2>
+    <p>
+      Just like CSS and JS, data can be stored in external files and loaded into the page dynamically!
+    </p>
+  </section>
+  <section>
+    <h2>Filetypes</h2>
+    <p>
+      D3 comes with functions that can read in external data files automagically. Filetypes include:
+    </p>
+    <ul>
+      <li class="fragment">.txt</li>
+      <li class="fragment">.csv</li>
+      <li class="fragment">.tsv</li>
+      <li class="fragment">.json</li>
+    </ul>
+  </section>
+  <section>
+    <h2>.txt</h2>
+    <p>
+      Reads text in as a string. 'Nuff said.
+    </p>
+    <pre><code class="js">d3.txt(file, function(data, error) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h2>.csv</h2>
+    <p>
+      Comma-separated values. Each line of the file is a data object, with it's values separated by commas.
+    </p>
+    <p>
+      The first row in the file is expected to be the key names for each data point.
+    </p>
+    <pre><code class="js">d3.csv(file, function(data, error) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h2>.tsv</h2>
+    <p>
+      The same as .csv, except with tabs instead of commas!
+    </p>
+    <pre><code class="js">d3.tsv(file, function(data, error) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h2>.json</h2>
+    <p>
+      JavaScript Object Notation. Data is stored with the same syntax as it would be in Javascript, with keys and values.
+    </p>
+    <pre><code class="js">d3.json(file, function(data, error) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h1>Questions?</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>API</h1>
+    <sub class="fragment">"application programming interface"</sub>
+  </section>
+  <section>
+    <h2>What is an API?</h2>
+    <p>
+      In the context of data, developers who store data in databases need to enable an easy way for themselves and others to extract data based on specific query parameters.
+    </p>
+  </section>
+  <section>
+    <h2>Example</h2>
+    <h1>DataViva</h1>
+    <p>
+      <a href="http://www.dataviva.info/" target="_blank">DataViva</a> hosts data on the employment, trade, and education of Brazilian citizens.
+    </p>
+    <p>
+      While visualized on the site itself, they also open a public API to their database. Documentation is <a href="https://github.com/DataViva/dataviva-site/wiki" target="_blank">here</a>.
+    </p>
+  </section>
+  <section>
+    <h1>Questions?</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Whether storing in a file on your computer or using an API, set up a test page that loads all of the data you need into Javascript using D3.
+    </p>
+  </section>
+</section>

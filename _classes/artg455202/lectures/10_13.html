@@ -58,7 +58,7 @@ title: Data Collection and Usage
     <p>
       Reads text in as a string. 'Nuff said.
     </p>
-    <pre><code class="js">d3.txt(file, function(data, error) {
+    <pre><code class="js">d3.text(file, function(error, data) {
 
 });</code></pre>
   </section>
@@ -70,7 +70,7 @@ title: Data Collection and Usage
     <p>
       The first row in the file is expected to be the key names for each data point.
     </p>
-    <pre><code class="js">d3.csv(file, function(data, error) {
+    <pre><code class="js">d3.csv(file, function(error, data) {
 
 });</code></pre>
   </section>
@@ -79,7 +79,7 @@ title: Data Collection and Usage
     <p>
       The same as .csv, except with tabs instead of commas!
     </p>
-    <pre><code class="js">d3.tsv(file, function(data, error) {
+    <pre><code class="js">d3.tsv(file, function(error, data) {
 
 });</code></pre>
   </section>
@@ -88,7 +88,7 @@ title: Data Collection and Usage
     <p>
       JavaScript Object Notation. Data is stored with the same syntax as it would be in Javascript, with keys and values.
     </p>
-    <pre><code class="js">d3.json(file, function(data, error) {
+    <pre><code class="js">d3.json(file, function(error, data) {
 
 });</code></pre>
   </section>
@@ -127,7 +127,10 @@ title: Data Collection and Usage
   <section>
     <h1>Homework</h1>
     <p>
-      Whether storing in a file on your computer or using an API, set up a test page that loads all of the data you need into Javascript using D3.
+      Whether storing in a file on your computer or using an API, set up a test page that loads some of the data you need for your final project into Javascript using D3. Post your code to your GitHub page, and console.log the data you're able to load.
+    </p>
+    <p>
+      Don't worry about drawing anything based on the data, this exercise is solely for exploring data.
     </p>
   </section>
 </section>

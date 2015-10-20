@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<svg width="720" height="540">
+</svg>
+
+<script>
+
+  d3.csv("http://celluccim.github.io/data/1993.csv", function(error, data){
+    data.forEach(function(d){
+      d.total = parseFloat(d.total);
+    });
+    data = data.sort(function(a, b){
+      return b.total - a.total;
+    }).slice(0, 10);
+    draw(data);
+  });
+
+  function draw(data) {
+
+    var scale = d3.scale.linear()
+      .domain(d3.extent(data, function(d){ return d.total; }))
+      .range([5, 20]);
+
+    var circle = d3.select("svg").selectAll("circle")
+      .data(data, function(d){
+        return d.name;
+      });
+
+    circle.enter().append("circle")
+      .attr("cy", 60)
+      .attr("cx", function(d, i){
+        return 50 * (i+1);
+      })
+      .attr("r", 0)
+      .style("fill", function(d){
+        return d.gender == "M" ? "blue" : "pink";
+      })
+      .on("click", function(d){
+        console.log(d.name);
+      });
+
+    circle.transition().duration(1000)
+      .attr("r", function(d){
+        return scale(d.total);
+      });
+
+    circle.exit().transition().duration(1000)
+      .attr("r", 0).remove();
+
+  }
+
+</script>

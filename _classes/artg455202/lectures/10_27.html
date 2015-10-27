@@ -1,0 +1,156 @@
+---
+title: Narrative and Geography
+---
+
+<section>
+  <section>
+    <h2>October 27, 2015</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Telling a story with data</li>
+      <li class="fragment">Coding a world map</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Visualization Mockups/Ideas</h1>
+  <a target="_blank" href="/classes/artg455202/random/">http://www.dave-landry.com/classes/artg455202/random/</a>
+</section>
+
+<section>
+  <section>
+    <h1>Visualization Narrative</h1>
+    <h2 class="fragment">Guided vs Exploratory</h2>
+  </section>
+  <section>
+    <h2>Guided Narrative</h2>
+    <p>
+      Visualizations used to tell a directed story or to make a point.
+    </p>
+    <p class="fragment">
+      Think one page scrollers or visualizations embedded in articles.
+    </p>
+  </section>
+  <section>
+    <h2>Defining Characteristic</h2>
+    <p>
+      Tend to generally have a stronger focus on design and mood, as there is no cumbersome utilitarian interface to get in the way.
+    </p>
+  </section>
+  <section>
+    <h2>Exploratory Narrative</h2>
+    <p>
+      Visualizations that foster a free user-experience, letting them draw their own hypotheses and conclusions.
+    </p>
+    <p class="fragment">
+      Usually some sort of sandbox or interface with a lot of user defined control.
+    </p>
+  </section>
+  <section>
+    <h2>Defining Characteristic</h2>
+    <p>
+      Stronger attention needs to be paid to the organization of user interface elements, to make them both visually unobstrusive and easy to learn.
+    </p>
+  </section>
+  <section>
+    <h1>Which one is your project?</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Coding a world map</h1>
+  </section>
+  <section>
+    <h2>Topojson</h2>
+    <p>
+      To draw coordinate shapes (like country borders) using D3, we need to create a Topojson file of the borders.
+    </p>
+    <p class="fragment">
+      Topojson files are simply .json files containing data about topology. They are a list of all of the arcs needed to draw the various borders.
+    </p>
+  </section>
+  <section>
+    <h2>Shapefiles</h2>
+    <p>
+      Unfortunately, the worldwide standard filetype for geographical borders is a .shp file.
+    </p>
+    <p class="fragment">
+      We can't use these files with D3, but luckily we can convert them to topojson using Terminal :-)
+    </p>
+  </section>
+  <section>
+    <h2>World Shapefile</h2>
+    <p>
+      Shapefiles are fairly easy to find on the internet. Here's one I found for all of the countries in the world: <a href="/classes/artg455202/world.zip">world.zip</a>
+    </p>
+  </section>
+  <section>
+    <h2>Node Package Manager (NPM)</h2>
+    <p>
+      Open Terminal and use homebrew to install the Node Package Manager. This is like a store that keeps a list of a ton of open source projects/tools (and it has the topojson converter!).
+    </p>
+    <pre><code class="bash">brew install node</code></pre>
+  </section>
+  <section>
+    <h2>Topojson</h2>
+    <p>
+      Install the topojson converter!
+    </p>
+    <pre><code class="bash">npm install -g topojson</code></pre>
+  </section>
+  <section>
+    <h2>Topojson</h2>
+    <p>
+      Change into the directory of the .shp file and try out a basic conversion:
+    </p>
+    <pre><code class="bash">topojson -o output-file.json input-file.shp</code></pre>
+    <p class="fragment">
+      Take a look at your .json file in your text editor!
+    </p>
+  </section>
+  <section>
+    <h2>Topojson</h2>
+    <p>
+      Let's add a better name for the list of countries.
+    </p>
+    <pre><code class="bash">topojson -o output.json countries=input.shp</code></pre>
+  </section>
+  <section>
+    <h2>Topojson</h2>
+    <p>
+      Bring over all properties from the shapefile.
+    </p>
+    <pre><code class="bash">topojson -o output.json countries=input.shp -p</code></pre>
+  </section>
+  <section>
+    <h2>Topojson</h2>
+    <p>
+      And pick one to use for the unique ID.
+    </p>
+    <pre><code class="bash">topojson -o output.json --id-property=ISO_A2 countries=input.shp</code></pre>
+  </section>
+  <section>
+    <h1>Code Time</h1>
+    <p>
+      Move your newly created .json file into your web directory and boot up your local server. Let's make a map.
+    </p>
+    <pre class="fragment"><code class="bash">bundle exec jekyll serve --watch</code></pre>
+  </section>
+  <section>
+    <h1>Questions?</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>
+    Refine your project pitches and get ready to start coding next week.
+  </p>
+</section>

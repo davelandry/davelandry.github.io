@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<script src="/classes/artg455202/topojson.js"></script>
+<script>
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", 900)
+      .attr("height", 500);
+
+  d3.json("/classes/artg455202/world.json", function(error, data){
+
+    var featureCollection = topojson.feature(data, data.objects.countries),
+        proj = d3.geo.mercator(),
+        path = d3.geo.path().projection(proj);
+
+    var paths = svg.selectAll("path")
+      .data(featureCollection.features, function(d){
+        return d.id;
+      });
+
+    paths.enter().append("path")
+      .attr("d", path);
+
+    paths.attr("fill", function(d){
+      return d.id === "BR" ? "red" : "#ccc";
+    });
+
+    var points = [
+      {"name": "Boston", "coords": [-71.0589, 42.3601]}
+    ];
+
+    var points = svg.selectAll("circle")
+      .data(points, function(d){
+        return d.name;
+      });
+
+    points.enter().append("circle")
+      .attr("transform", function(d){
+        return "translate(" + proj(d.coords) + ")";
+      })
+      .attr("fill", "red")
+      .attr("r", 10);
+
+  });
+
+</script>

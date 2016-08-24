@@ -1,6 +1,14 @@
+@font-face {
+  font-family: DaveLandry;
+  src: url("./DaveLandry.otf") format("opentype"); }
+html {
+  min-height: 100vh; }
+
 body {
   background-color: #dbdad7;
-  height: 100%;
+  font-family: "DaveLandry", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
   margin: 0;
   padding: 0;
   width: 100%; }
@@ -24,48 +32,37 @@ br {
   z-index: -1; }
 
 section {
-  color: #333;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin-left: 50px;
-  margin-top: 40px;
-  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.25);
-  width: 500px; }
+  color: #222;
+  margin: 40px 50px;
+  max-width: 325px; }
 
 h1 {
-  color: #bb0000;
-  font-size: 64px;
-  font-weight: 100;
-  margin: 0;
-  opacity: 0.75;
-  text-align: left; }
+  font-size: 50px;
+  font-weight: 500;
+  margin: 0; }
 
 p {
-  font-size: 23px;
-  font-weight: 200;
-  margin: 23px 0;
-  opacity: 0.75;
-  text-align: left; }
+  margin: 20px 0; }
 
 a {
-  color: #000;
-  display: inline-block;
+  color: #222;
   text-decoration: none;
   -webkit-transition: color .1s;
   transition: color .1s; }
   a:hover {
-    color: #bb0000; }
+    color: #b00; }
 
-a.icon {
-  color: #bb0000;
-  font-weight: 200;
-  text-align: center; }
-  a.icon:hover {
-    color: #cc0000; }
-  a.icon i {
-    display: block !important;
-    margin: 8px 23px;
-    -webkit-transition: color .2s;
-    transition: color .2s; }
+#links {
+  bottom: 50px;
+  left: 50px;
+  position: absolute;
+  width: 30%; }
+  #links a {
+    color: #222;
+    display: inline-block;
+    margin: 10px 10px 0 0; }
+    #links a:hover {
+      color: #b00; }
 
 ul > li {
   text-align: left; }

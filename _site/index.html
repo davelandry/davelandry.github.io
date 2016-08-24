@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Dave Landry</title>
 
@@ -23,47 +24,27 @@
 
   <h1>Hello</h1>
   <p>There's not much to see here.</p>
-  <p>The majority of my time is currently shared between <a href="http://www.datawheel.us/">Datawheel</a> and <a href="http://www.d3plus.org/">D3plus</a>.</p>
-
-  <!-- <a class="icon" href="resume.pdf">
-    <i class="fa fa-file-text fa-2x"></i>
-    Resume
-  </a> -->
-  <a class="icon" href="https://github.com/davelandry">
-    <i class="fa fa-github fa-2x"></i>
-    GitHub
-  </a>
-  <a class="icon" href="https://www.linkedin.com/profile/view?id=48751482">
-    <i class="fa fa-linkedin fa-2x"></i>
-    LinkedIn
-  </a>
-  <a class="icon" href="https://twitter.com/davelandry">
-    <i class="fa fa-twitter fa-2x"></i>
-    Twitter
-  </a>
-  <!-- <a class="icon" href="mailto:landry.dave@gmail.com">
-    <i class="fa fa-envelope fa-2x"></i>
-    E-Mail
-  </a> -->
+  <p>The majority of my time is currently shared between <a href="http://datawheel.us/">Datawheel</a> and <a href="https://d3plus.org/">D3plus</a>.</p>
 
 </section>
+
+<div id="links">
+  <a href="https://github.com/davelandry">GitHub</a>
+  <a href="https://www.linkedin.com/profile/view?id=48751482">LinkedIn</a>
+  <a href="https://twitter.com/davelandry">Twitter</a>
+</div>
 
 <script>
 
   var hour = new Date().getHours(),
       dawn = hour >= 4 && hour <= 7,
-      dusk = hour >= 18 && hour <= 24,
-      night = hour > 0 && hour < 4;
+      dusk = hour >= 18 && hour <= 20,
+      night = hour > 20 || hour < 4;
 
-  if (night) {
-    var greetings = ["It's late", "Go to bed"];
-  }
-  else if (dawn) {
-    var greetings = ["Good morning", "Rise and shine"];
-  }
-  else {
-    var greetings = ["Hello", "What's up?", "Welcome", "Howdy"];
-  }
+  if (night) var greetings = ["Go to bed"];
+  else if (dusk) var greetings = ["Good evening"]
+  else if (dawn) var greetings = ["Good morning", "Rise and shine"];
+  else var greetings = ["Hello", "Sup", "Oh, hi there"];
 
   var text = greetings[Math.floor(Math.random()*greetings.length)];
   d3.select("h1").text(text);

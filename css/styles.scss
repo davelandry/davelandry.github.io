@@ -49,6 +49,13 @@ section {
   color: $black;
   margin: 40px 50px;
   max-width: 325px;
+
+  &.class {
+    max-width: 600px;
+    i {
+      // font-size: 12px;
+    }
+  }
 }
 
 h1 {

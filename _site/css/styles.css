@@ -35,6 +35,8 @@ section {
   color: #222;
   margin: 40px 50px;
   max-width: 325px; }
+  section.class {
+    max-width: 600px; }
 
 h1 {
   font-size: 50px;

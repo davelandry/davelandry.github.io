@@ -1,0 +1,165 @@
+---
+title: D3 Wrap-up and Big Data
+---
+
+<section>
+  <section>
+    <h2>October 4, 2016</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Finish D3 Lesson</li>
+      <li class="fragment">Homework</li>
+      <li class="fragment">Data Stored in Files</li>
+      <li class="fragment">APIs</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Presentation Time</h1>
+  <a target="_blank" href="/classes/artg4552-2016/random/">http://www.dave-landry.com/classes/artg4552-2016/random/</a>
+</section>
+
+<section>
+  <h1>D3 Continued</h1>
+  <p>
+    Let's finish our Enter/Update/Exit lesson from last week, which again is based on this great tutorial: <a href="https://bost.ocks.org/mike/circles/" target="_blank">https://bost.ocks.org/mike/circles/</a>.
+  </p>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Create a presentation pitching your final project.
+    </p>
+    <ul>
+      <li>Find an open dataset that interests you and has at least 500 data points (ie. rows).</li>
+      <li>Outline the different variables available in the dataset.</li>
+      <li>Sketch/describe some ideas on how you could visualize that data.</li>
+      <li>Post your pitch on your GitHub website and be prepared to discuss it next week.</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Data Stored in Files</h1>
+  </section>
+  <section>
+    <h2>External Files</h2>
+    <p>
+      Just like CSS and JS, data can be stored in external files and loaded into the page dynamically!
+    </p>
+  </section>
+  <section>
+    <h2>Filetypes</h2>
+    <p>
+      D3 comes with functions that can read in external data files automagically. Filetypes include:
+    </p>
+    <ul>
+      <li class="fragment">.txt</li>
+      <li class="fragment">.csv</li>
+      <li class="fragment">.tsv</li>
+      <li class="fragment">.json</li>
+    </ul>
+  </section>
+  <section>
+    <h2>.txt</h2>
+    <p>
+      Reads text in as a string. 'Nuff said.
+    </p>
+    <pre><code class="js">d3.text(file, function(error, data) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h2>.csv</h2>
+    <p>
+      Comma-separated values. Each line of the file is a data object, with it's values separated by commas.
+    </p>
+    <p>
+      The first row in the file is expected to be the key names for each data point.
+    </p>
+    <pre><code class="js">d3.csv(file, function(error, data) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h2>.tsv</h2>
+    <p>
+      The same as .csv, except with tabs instead of commas!
+    </p>
+    <pre><code class="js">d3.tsv(file, function(error, data) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h2>.json</h2>
+    <p>
+      JavaScript Object Notation. Data is stored with the same syntax as it would be in Javascript, with keys and values.
+    </p>
+    <pre><code class="js">d3.json(file, function(error, data) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h1>Questions?</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>API</h1>
+    <sub class="fragment">"application programming interface"</sub>
+  </section>
+  <section>
+    <h2>What is an API?</h2>
+    <p>
+      In the context of data, developers who store data in databases need to enable an easy way for themselves and others to extract data based on specific query parameters.
+    </p>
+  </section>
+  <section>
+    <h2>Shameless Example</h2>
+    <h1>Data USA</h1>
+    <p>
+      <a href="https://datausa.io/" target="_blank">Data USA</a> hosts data from 7 different public US datasets.
+    </p>
+    <p>
+      Additionally, they've published an open API for all of the data. Documentation is <a href="https://github.com/datausa/datausa-api/wiki" target="_blank">here</a>.
+    </p>
+  </section>
+  <section>
+    <h2>Loading from an API</h2>
+    <p>
+      Data from an API is commonly delivered as JSON, so instead of giving d3.json a filename, we can give it a URL:
+    </p>
+    <pre><code class="js">var url = "https://api.datausa.io/api/?required=income&show=geo&sumlevel=state";
+
+d3.json(url, function(error, data) {
+
+});</code></pre>
+  </section>
+  <section>
+    <h1>Questions?</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Create a presentation pitching your final project.
+    </p>
+    <ul>
+      <li>Find an open dataset that interests you and has at least 500 data points (ie. rows).</li>
+      <li>Outline the different variables available in the dataset.</li>
+      <li>Sketch/describe some ideas on how you could visualize that data.</li>
+      <li>Post your pitch on your GitHub website and be prepared to discuss it next week.</li>
+    </ul>
+  </section>
+</section>

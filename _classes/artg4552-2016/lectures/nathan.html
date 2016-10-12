@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+<svg width=600 height=600></svg>
+
+<script>
+
+  var draw = function(data) {
+
+    var svg = d3.select("svg");
+
+    var circles = svg.selectAll("circle").data(data);
+
+    var dataExtent = d3.extent(data, function(d, i) {
+      return d.values.length;
+    });
+
+    console.log(dataExtent);
+
+    var fart = d3.scaleLinear()
+      .domain(dataExtent)
+      .range([25, 50]);
+
+    // console.log(fart(517));
+
+    circles.enter().append("circle")
+      .attr("cy", 60)
+      .attr("cx", function(d, i) {
+        return 60 + (120 * (i % 5));
+      })
+      .attr("r", function(d, i) {
+        return fart(d.values.length);
+      });
+
+  };
+
+  d3.csv("/classes/artg4552-2016/lectures/nathan.csv", function(error, data) {
+
+    data = data.filter(function(d, i) {
+      return i != 0;
+    });
+
+    var nestedData = d3.nest()
+      .key(function(d, i) {
+        return d.Gender;
+      })
+      .entries(data);
+
+    // nestedData = nestedData.filter(function(d, i) {
+    //   return d.key != "";
+    // });
+
+    console.log(nestedData);
+
+    draw(nestedData);
+
+  });
+
+</script>

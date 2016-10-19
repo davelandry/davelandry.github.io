@@ -1,0 +1,142 @@
+---
+layout: default
+---
+
+<label for="slider">Year</label>
+<input type="range" id="slider" />
+<input type="text" id="textBox" />
+<br />
+<svg width="100%" height=600></svg>
+
+<script>
+
+  // global variable!
+  // both the d3.csv function and the draw function can access and modify this
+  // variable, because it is created outside of both functions.
+  var years = [];
+
+  // today's draw function will draw an SVG circle for 1 data point, given the
+  // full data array and a specific year to draw.
+  var draw = function(data, year) {
+
+    // let's grab the first data point, which we know is Afghanistan
+    var afg = data[0];
+
+    // we can use string concatination to get the specific year variable we need
+    console.log(year, afg[ year + " [YR" + year + "]" ]);
+
+    // in order to create a radius scale that uses the min and max values
+    // of each year's data, we can use the Array map function to create a new
+    // array with each year's value from the "afg" object
+    var values = years.map(function(y) {
+      return afg[ y + " [YR" + y + "]" ];
+    });
+
+    // now, we can create a linear scale to be used for the circle's radius.
+    // the final radius output (range) will be a variable between 10 and a quarter
+    // the width of the screen (minus 10 pixels for padding).
+    var radius = d3.scaleLinear()
+      .domain(d3.extent(values))
+      .range([10, window.innerWidth / 4 - 10]);
+
+    var svg = d3.select("svg");
+    var circle = svg.selectAll("circle")
+      .data([afg]);
+
+    var enter = circle.enter().append("circle");
+
+    circle.merge(enter)
+      .attr("cx", window.innerWidth / 4)
+      .attr("cy", window.innerWidth / 4)
+      .transition().duration(500)
+      .attr("fill", function(d) {
+
+        var num = afg[ year + " [YR" + year + "]" ];
+        console.log(num);
+        // because sometimes the "num" that is found is either undefined or
+        // the string "..", we can test if the variable is NaN ("Not a Number")
+        // when being parsed into a floating point number
+        if (isNaN(parseFloat(num))) {
+          return "#cccccc";
+        }
+        // otherwise, make the circle green!
+        return "green";
+      })
+      .attr("r", function(d) {
+        // very similar logic to the "fill" function
+        var num = afg[ year + " [YR" + year + "]" ];
+        if (isNaN(parseFloat(num))) {
+          return 30;
+        }
+        return radius(num);
+      });
+
+  };
+
+  d3.csv("/classes/artg4552-2016/lectures/greenhouse.csv", function(error, data) {
+
+    data.forEach(function(d, i) {
+
+      // this will loop through each key in an object
+      for (var key in d) {
+
+        // because all of the data points came in as Strings, we need to convert
+        // all of the number values into actual javascript numbers.
+        // the parseFloat function will turn anything it can into a floating
+        // point number (which is what Javascript calls regular old numbers).
+        var num = parseFloat(d[key]);
+
+        // if "num" is NOT (!) NaN ("Not a Number"), meaning it IS a number,
+        // we overwrite the current value in the object.
+        if (!isNaN(num)) {
+          d[key] = num;
+        }
+
+      }
+    });
+
+    // let's find all of the available years in the first data point.
+    for (var key in data[0]) {
+      // because we know that the format of the year keys is "XXXX [YRXXXX]",
+      // we can split each key at the first " " value, grab the first index of
+      // the returned array, and try to parse that into a number.
+      // if it is a number, it's a year! we'll save it for later by pushing it
+      // into the "years" variable.
+      var num = parseFloat(key.split(" ")[0]);
+      if (!isNaN(num)) {
+        years.push(num);
+      }
+    }
+
+    // we'll use this to set the default value of the year slider
+    var defaultValue = d3.min(years);
+
+    // now, let's select the slider by ID and set it's min, max, current value,
+    // and create an on "input" event that gets triggered every time the user
+    // changes the slider
+    d3.select("#slider")
+      .attr("min", d3.min(years))
+      .attr("max", d3.max(years))
+      .attr("value", defaultValue)
+      .on("input", function() {
+
+        // grabs the current value of the year slider.
+        // the "this" here is the HTML input object itself.
+        var year = this.value;
+
+        // this part's a little nuanced, but it sets the value of the textBox
+        // to the currently selected year value
+        d3.select("#textBox").node().value = year;
+
+        // call the draw function with the new year value!
+        draw(data, year);
+
+      });
+
+    // we need to call the draw function manually so that it draws when the
+    // data loads.
+    draw(data, defaultValue);
+
+  });
+
+</script>

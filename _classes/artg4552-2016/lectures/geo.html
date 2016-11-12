@@ -18,19 +18,22 @@ layout: default
     // converts Topojson to GeoJSON
     console.log(data);
     // make sure to use the right key in data.objects!
+    // var featureCollection = data; // Jana use this one!
     var featureCollection = topojson.feature(data, data.objects.countries);
 
     console.log(featureCollection);
 
     // filter out countries using id!
+    // Rayyan and Jana delete these 3 lines!
     featureCollection.features = featureCollection.features.filter(function(d) {
       return d.id != "010";
     });
 
     // initializes a map projection
     // projection types: https://github.com/d3/d3-geo#azimuthal-projections
+    // var proj = d3.geoAlbersUsa() // Rayyan use this one!
     var proj = d3.geoMercator()
-        .fitSize([width, height], featureCollection);
+      .fitSize([width, height], featureCollection);
 
     // creates a path generator
     var path = d3.geoPath()
@@ -53,7 +56,7 @@ layout: default
       {"name": "Boston", "coords": [-71.0589, 42.3601]},
       {"name": "London", "coords": [-0.1278, 51.5074]}
     ];
-
+    
     var points = svg.selectAll("circle")
       .data(points);
 

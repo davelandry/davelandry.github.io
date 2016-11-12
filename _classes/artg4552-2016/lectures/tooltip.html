@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<style>
+  #label {
+    background-color: white;
+    border: 1px solid black;
+    display: none;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    width: 100px;
+  }
+</style>
+
+<svg width=600 height=600></svg>
+<div id="label"></div>
+
+<script>
+
+  var data = [
+    {name: "Dave", size: 25},
+    {name: "Hilary", size: 16}
+  ];
+
+  var svg = d3.select("svg");
+
+  var circles = svg.selectAll("circle")
+    .data(data);
+
+  var enterCircles = circles.enter().append("circle")
+    .attr("fill", "blue")
+    .attr("cx", function(d, i) { return 60 + (120 * i); })
+    .attr("cy", 60)
+    .attr("r", 0);
+
+  circles
+    .merge(enterCircles)
+    .on("mousemove", function(d) {
+      var position = d3.mouse(d3.select("body").node());
+      d3.select("#label")
+        .style("display", "block")
+        .style("left", position[0] - 50 + "px")
+        .style("top", position[1] - 20 + "px")
+        .text(d.name);
+    })
+    .on("mouseleave", function() {
+      d3.select("#label").style("display", "none");
+    })
+    .transition().duration(500)
+      .attr("fill", "blue")
+    .transition().duration(500)
+      .attr("r", function(d) {
+        return d.size;
+      });
+
+</script>

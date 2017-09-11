@@ -1,0 +1,52 @@
+---
+layout: default
+title: Random
+---
+
+<section>
+  <h1>
+    <center>
+      <a id="name" target="_blank"></a>
+    </center>
+  </h1>
+  <button id="button">Next</button>
+</section>
+
+<script>
+
+  var roster = [
+    ["Dylan", "https://dboudro.github.io"],
+    ["Nathan", "https://nhulz.github.io"],
+    ["Min", "https://longhamster.github.io"],
+    ["Bayley", "https://meichnerb.github.io"],
+    ["Rayyan", "https://rayyanmikati.github.io"],
+    ["Ari", "https://rossar19.github.io"],
+    ["Jana", "https://janawalker.github.io/"],
+  ];
+
+  var link = document.getElementById("name"),
+      button = document.getElementById("button");
+
+  button.addEventListener("click", function() {
+
+    var person;
+
+    if (roster.length) {
+      var int = Math.floor(Math.random() * roster.length);
+      person = roster.splice(int, 1)[0];
+
+    }
+    else {
+      person = ["Done!", "#"];
+    }
+
+    console.log(person);
+
+    link.innerHTML = person[0];
+    link.href = person[1];
+
+    console.log(roster.length + " people left");
+
+  }, false);
+
+</script>

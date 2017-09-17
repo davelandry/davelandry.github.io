@@ -42,7 +42,11 @@ section {
   margin: 40px 50px;
   max-width: 325px; }
   section.class {
-    max-width: 600px; }
+    max-width: 700px; }
+    section.class h2.sub {
+      margin: 0 0 50px; }
+    section.class h3 {
+      margin: 50px 0 25px; }
 
 h1 {
   font-size: 50px;

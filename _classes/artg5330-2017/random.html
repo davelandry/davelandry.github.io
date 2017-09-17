@@ -3,13 +3,13 @@ layout: default
 title: Random
 ---
 
-<section>
+<section class="class">
+  <button id="button">Start</button>
   <h1>
     <center>
       <a id="name" target="_blank"></a>
     </center>
   </h1>
-  <button id="button">Next</button>
 </section>
 
 <script>
@@ -24,10 +24,29 @@ title: Random
     ["Jana", "https://janawalker.github.io/"],
   ];
 
+  var roster = [
+    ["Dustin Bell", false],
+    ["Shen Chen", false],
+    ["Shilin Chen", "https://shilinchen1101.github.io"],
+    ["Madeline Chmielinski", false],
+    ["Sarina Dass", "https://sarinadass.github.io"],
+    ["Shuyao He", "https://shuyaohe.github.io/index.html"],
+    ["Vasyl Kochura", false],
+    ["Wen Lei", "https://wenlei2525.github.io/index.html"],
+    ["Zhejun \"Emerald\" Li", "https://emeraldlzj.github.io"],
+    ["Megan J. McKee", false],
+    ["Daniel \"Dan\" Spector", "https://inspectordanno.github.io"],
+    ["Shiyuan Sun", "https://sierrasun.github.io"],
+    ["Zhaoqi Wu", "https://w112358.github.io"],
+    ["Chenrui \"Cherry\" Ye", "https://chenrui666.github.io"]
+  ];
+
   var link = document.getElementById("name"),
       button = document.getElementById("button");
 
   button.addEventListener("click", function() {
+
+    button.innerHTML = "Next";
 
     var person;
 
@@ -38,12 +57,13 @@ title: Random
     }
     else {
       person = ["Done!", "#"];
+      button.style.visibility = "hidden";
     }
 
     console.log(person);
 
     link.innerHTML = person[0];
-    link.href = person[1];
+    link.href = person[1] || "#";
 
     console.log(roster.length + " people left");
 

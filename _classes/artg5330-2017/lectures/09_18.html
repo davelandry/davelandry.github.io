@@ -1,0 +1,614 @@
+---
+title: Coding a website with HTML, CSS and SCSS
+---
+
+<section>
+  <section>
+    <h2>September 18, 2017</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Make sure everyone's local environment is working</li>
+      <li class="fragment">HTML Basics</li>
+      <li class="fragment">Sprinkle in CSS</li>
+      <li class="fragment">Layouts and SCSS</li>
+      <li class="fragment">SVG Basics</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Let's take a look at everyone's homework</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-2017/random">http://www.dave-landry.com/classes/artg5330-2017/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Local Environment</h1>
+    <h2 class="fragment">in 3 easy steps</h2>
+  </section>
+  <section>
+    <h3>Local Environment</h3>
+    <ul>
+      <li>Open your project folder in a text editor</li>
+      <li>Open Powershell/Terminal and "cd" into that folder</li>
+      <li>Execute the server command</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Open your Text Editor</h2>
+    <p>For most, this is Atom.</p>
+    <p>Once the program is open, navigate to "file" and "open" the folder on your hard drive containing your github repository.</p>
+  </section>
+  <section>
+    <h2>Changing Directories in the Shell</h2>
+    <p>To move into a folder, use the <u>c</u>hange <u>d</u>irectory command:</p>
+    <pre><code class="bash">cd /path/to/my/github/repo/folder/</code></pre>
+    <p class="fragment">Tip: you can right-click on the folder in the left panel of Atom to "copy full path" and paste that into the shell.</p>
+  </section>
+  <section>
+    <h1>Running the server</h1>
+    <pre><code class="bash">bundle exec jekyll serve --watch</code></pre>
+    <p class="fragment">
+      After you press enter, it should display a URL that you can copy/paste into your web browser!
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>HTML</h1>
+    <i class="fa fa-code"></i>
+  </section>
+  <section>
+    <h2>From Wikipedia:</h2>
+    <blockquote>
+      "HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages."
+    </blockquote>
+  </section>
+  <section>
+    <h2>A brief history</h2>
+    <img src="/images/classes/tbl.jpg" />
+    <p>Created by Tim Berners-Lee in 1995 as a way to distribute research papers.
+  </section>
+  <section>
+    <h2>More From Wikipedia:</h2>
+    <blockquote>
+      "The language is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
+      <br /><br />
+      Browsers do not display the HTML tags and scripts, but use them to interpret the content of the page."
+    </blockquote>
+  </section>
+  <section>
+    <h2>So let's start writing some code</h2>
+    <p class="fragment">
+      In the root directory of your project, create a new HTML file.
+    </p>
+  </section>
+  <section>
+    <h2>DOCTYPE Declaration</h2>
+    <p>
+      The Document Type Declaration is for HTML5 and "should" be the included as the first line of every HTML file.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;</code></pre>
+    <p>
+      If a declaration is not included, some browsers will revert to their legacy "quirks mode" for rendering.
+    </p>
+  </section>
+  <section>
+    <h2>HTML Wrapper</h2>
+    <p>
+      The contents of every HTML file (except for the DOCTYPE) should be wrapped in &lt;html&gt; tags:
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">Capitalization does not matter.</li>
+      <li class="fragment">Remember to close any tags that you open.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>The Head and Body</h2>
+    <p>
+      All webpages have a head and a body. The head contains information about the page (the brains) and the body contains information that will be visible to the user (the brawn).
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">The head MUST come before the body.</li>
+      <li class="fragment">Identation does not matter, but will help keep your sanity.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Character Encoding</h2>
+    <p>
+      Like the DOCTYPE before it, there is one more "required" tag that must be present in the head of every document.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">This explicitly sets the character set used, if not passed by the server.</li>
+      <li class="fragment">Dave, did you mention how we're setting an attribute of a tag?</li>
+      <li class="fragment">Did you also mention self-closing tags?</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Stop and test</h2>
+    <p>
+      Put something in the body of the page and make sure it's rendering to your browser.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Get rid of that ugly page title</h2>
+    <p>
+      One of the many tags that the head supports is &lt;title&gt;.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;My cool test page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="fragment">Great for browsers, bookmarks, screen readers, and SEO</p>
+  </section>
+  <section>
+    <h2>Wikipedia, what's "SEO"?</h2>
+    <blockquote class="fragment">
+      "Search engine optimization (SEO) is the process of affecting the visibility of a website or a web page in a search engine's unpaid results - often referred to as "natural," "organic," or "earned" results. In general, the earlier (or higher ranked on the search results page), and more frequently a site appears in the search results list, the more visitors it will receive from the search engine's users."
+    </blockquote>
+  </section>
+  <section>
+    <h2>Dave, what the hell does that mean?</h2>
+    <p class="fragment">
+      Search engines, in their spare time, go to every webpage they can find over the internet and either add or update their listings with the information it can read from the page.
+    </p>
+    <small class="fragment">That's known as "crawling".</small>
+    <p class="fragment">
+      The more clear, organized, and descriptive the content is on a webpage, the more accurate the search engine's listing will become.
+    </p>
+  </section>
+  <section>
+    <h2>Back to the body</h2>
+    <p>
+      The basic structure of HTML was created based on what you would find in a research paper or Word document.
+    </p>
+    <ul>
+      <li class="fragment">&lt;p&gt; for paragraphs</li>
+      <li class="fragment">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc for headings</li>
+      <li class="fragment">&lt;ul&gt; and &lt;ol&gt; for unordered and ordered lists</li>
+      <li class="fragment">&lt;a&gt; for anchor links</li>
+      <li class="fragment">&lt;div&gt; for divisions</li>
+      <li class="fragment">&lt;span&gt; for spans of words</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Inline vs Block</h2>
+    <p class="fragment">
+      Most elements in HTML take up the full width of the screen (block), forcing the next element to be positioned below it on a new line.
+    </p>
+    <p class="fragment">
+      Some elements, like &lt;span&gt;, are inline, which means that it will appear on the same line as the content before and after itself, never causing a line break.
+    </p>
+  </section>
+  <section>
+    <h2>Semantic Tags</h2>
+    <p>
+      HTML5 (the newest standard) introduced a new set of tags that are more literal than the dated and obscure tags like "div" and "span". These new tags include:
+    </p>
+    <ul>
+      <li class="fragment">&lt;header&gt;</li>
+      <li class="fragment">&lt;footer&gt;</li>
+      <li class="fragment">&lt;nav&gt;</li>
+      <li class="fragment">&lt;article&gt;</li>
+      <li class="fragment">&lt;section&gt;</li>
+      <li class="fragment">&lt;aside&gt;</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Styling Content</h1>
+    <i class="fa fa-paint-brush"></i>
+  </section>
+  <section>
+    <h2>Inline styles</h2>
+    <pre><code class="html"><p style="color: red;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px; background-color: blue; margin: 25px;">Some text</p></code></pre>
+  </section>
+  <section>
+    <h1>Separate form and content as much as possible</h1>
+  </section>
+  <section>
+    <h1>CSS to the rescue</h1>
+    <small class="fragment">"Cascading Style Sheets"</small>
+  </section>
+  <section>
+    <h2>Styles in the Head</h2>
+    <p>
+      CSS can be defined in the &lt;head&gt; of a document, and they will effect every element on the page.
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;style&gt;
+    p {
+      color: red;
+      font-size: 32px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+  <section>
+    <h2>But Dave, what if I want to style two paragraphs separately?</h2>
+    <p class="fragment">
+      The ID attribute can be set on an element so that you can specifically select it in CSS:
+    </p>
+    <pre class="fragment"><code class="html"><p id="redParagraph">Some text</p></code></pre>
+    <pre class="fragment"><code class="html">&lt;style&gt;
+  p#redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the pound sign is optional.</small>
+  </section>
+  <section>
+    <h1>HOWEVER</h1>
+    <p class="fragment">
+      Element IDs should only be used on single elements. If you have multiple elements that need the same style applied to them, use the "class" attribute:
+    </p>
+    <pre class="fragment"><code class="html"><p class="redParagraph">Some text</p>
+<p class="redParagraph">Some text</p></code></pre>
+    <pre class="fragment"><code class="html">&lt;style&gt;
+  p.redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the decimal sign is also optional.</small>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p class="fragment">
+      Create a file called "style.css" in your root directory and cut/paste all of the code in between the &lt;style&gt; tags into there.
+    </p>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p>
+      In the place of your &lt;style&gt; tags, create a link to that file:
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+  <section class="stretch" data-background="http://media1.giphy.com/media/nu6XLY6QHeUk8/giphy.gif">
+    <h2 class="top" style="width: 100%; text-align: center;">Duplicate Code is Gross</h2>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Layouts</h1>
+    <i class="fa fa-table"></i>
+  </section>
+  <section>
+    <h2>Jekyll Compiling</h2>
+    <p>
+      Jekyll does not compile/render any files that are in folders that have names that begin with an underscore.
+    </p>
+    <p class="fragment">
+      Create a folder called "_layouts".
+    </p>
+  </section>
+  <section>
+    <h2>Jekyll Layouts</h2>
+    <p>
+      Layouts are like CSS, in that they can be used for multiple files.
+    </p>
+    <p class="fragment">
+      Copy all of the content of one of your HTML files into a new layout file, named whatever you want.
+    </p>
+  </section>
+  <section>
+    <h2>Sample Layout</h2>
+    <pre><code class="html">_layouts/default.html</code></pre>
+    <pre><code class="liquid">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;My cool test page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &#123;&#123; content &#125;&#125;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Template Variables</h2>
+    <p>
+      Pre-defined variables can be added to the page using double curly brackets.
+    </p>
+    <pre><code class="liquid">&#123;&#123; content &#125;&#125;</code></pre>
+    <p>
+      Logic is executed by using a single curly bracket and a percent sign.
+    </p>
+    <pre><code class="liquid">&#123;&#37; if content &#37;&#125;
+  &#123;&#123; content &#125;&#125;
+&#123;&#37; endif &#37;&#125;</code></pre>
+  </section>
+  <section>
+    <h2>Front Matter</h2>
+    <p>
+      In order to have a file use a template, it must be defined in the page's front matter.
+    </p>
+    <p>
+      Page variables are set at the beginning of the file, in between two sets of triple hyphens.
+    </p>
+    <pre><code class="html">---
+layout: default
+---
+
+<p>Body Text</p></code></pre>
+  </section>
+  <section>
+    <h2>What else can I do with variables?</h2>
+    <p>
+      Any variable set in the front matter is accessible in the template.
+    </p>
+    <pre><code class="html">---
+layout: default
+title: My Cool Page
+---
+
+<p>Body Text</p></code></pre>
+  </section>
+  <section>
+    <h2>Layout using Title</h2>
+    <pre><code class="html">_layouts/default.html</code></pre>
+    <pre><code class="liquid">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;
+      &#123;&#37; if page.title &#37;&#125;
+        &#123;&#123; page.title &#125;&#125;
+      &#123;&#37; else &#37;&#125;
+        My cool test page
+      &#123;&#37; endif &#37;&#125;
+    &lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &#123;&#123; content &#125;&#125;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>SCSS</h1>
+    <small class="fragment" style="display: block; margin-bottom: 25px;">"Sassy CSS"</small>
+    <i class="fa fa-paint-brush"></i>
+  </section>
+  <section>
+    <h2>What is SCSS?</h2>
+    <p>
+      SCSS adds features to CSS that are sorely needed. SCSS files must be compiled to CSS before being rendered to the page. Features include:
+    </p>
+    <ul>
+      <li class="fragment">Variables</li>
+      <li class="fragment">Math</li>
+      <li class="fragment">Nesting</li>
+      <li class="fragment">Functions</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Jekyll and SCSS</h1>
+    <p>
+      In order for .scss files to be compiled by Jekyll, you must include front matter.
+    </p>
+    <pre><code class="html">style.scss</code></pre>
+    <pre><code class="css">---
+---
+
+p.redParagraph {
+  color: red;
+  font-size: 32px;
+}</code></pre>
+    <p class="fragment">Valid CSS is valid SCSS</p>
+  </section>
+  <section>
+    <h1>Variables</h1>
+    <p>
+      All variables in SCSS must start with the dollar sign, and are set using the colon:
+    </p>
+    <pre><code class="scss">---
+---
+
+$mainColor: red;
+
+p.redParagraph {
+  color: $mainColor;
+  font-size: 32px;
+}</code></pre>
+  </section>
+  <section>
+    <h1>Math</h1>
+    <p>
+      SCSS can perform calculations on pixel numbers, and return the appropriate value.
+    </p>
+    <pre><code class="scss">---
+---
+
+$baseSize: 20px;
+
+p.redParagraph {
+  color: red;
+  font-size: $baseSize + 12;
+}</code></pre>
+  </section>
+  <section>
+    <h1>Nesting</h1>
+    <p>
+      Properties can be nesting directly within eachother, and get expanded on compile.
+    </p>
+    <pre><code class="scss">---
+---
+
+p.redParagraph {
+  color: red;
+  font-size: 32px;
+
+  a {
+    text-decoration: underline;
+  }
+
+}</code></pre>
+  </section>
+  <section>
+    <h1>Functions (mixins)</h1>
+    <p>
+      SCSS calls functions "mixins". These functions can be applied to any style and are mixed directly into their own properties on compile.
+    </p>
+    <pre><code class="scss">---
+---
+
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+p.redParagraph {
+  @include border-radius(10px);
+  color: red;
+  font-size: 32px;
+}</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>SVG</h1>
+    <small class="fragment" style="display: block; margin-bottom: 25px;">"Scalable Vector Graphics"</small>
+    <i class="fa fa-pie-chart"></i>
+  </section>
+  <section>
+    <h1>Raster vs Vector</h1>
+    <img class="stretch" src="/images/classes/raster-vector.png" />
+  </section>
+  <section>
+    <h1>Container Element</h1>
+    <p>
+      All SVG graphics need to be contained inside of an SVG element:
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;&lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Draw shapes!</h1>
+    <p>
+      Shape properties are set as attributes of the element.
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;
+    &lt;rect x="50px" y="100px" width="150px" height="100px" fill="red" /&gt;
+  &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>You can use CSS</h1>
+    <pre><code class="css">.box {
+  fill: red;
+}</code></pre>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;
+    &lt;rect class="box" x="50px" y="100px" width="150px" height="100px" /&gt;
+  &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Built-in Shapes</h1>
+    <ul>
+      <li class="fragment">rect</li>
+      <li class="fragment">circle</li>
+      <li class="fragment">ellipse</li>
+      <li class="fragment">line</li>
+      <li class="fragment">polyline</li>
+      <li class="fragment">polygon</li>
+      <li class="fragment">path</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <img class="fragment" src="/images/classes/kandinsky.jpg" />
+  </section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Recreate the Kandinsky Google Doodle, in SVG, at 2x scale. You are allowed to ignore gradients, textures, and curved lines. A link to your completed artwork should be made available on your class website.
+    </p>
+    <p class="fragment">
+      Consult your "textbook" when learning a new SVG shape.
+    </p>
+  </section>
+</section>

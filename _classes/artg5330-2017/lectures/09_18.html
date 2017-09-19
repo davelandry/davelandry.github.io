@@ -14,7 +14,7 @@ title: Coding a website with HTML, CSS and SCSS
       <li class="fragment">Make sure everyone's local environment is working</li>
       <li class="fragment">HTML Basics</li>
       <li class="fragment">Sprinkle in CSS</li>
-      <li class="fragment">Layouts and SCSS</li>
+      <li class="fragment">Jekyll Layouts</li>
       <li class="fragment">SVG Basics</li>
       <li class="fragment">Homework</li>
     </ul>
@@ -429,113 +429,6 @@ title: My Cool Page
     &#123;&#123; content &#125;&#125;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-  </section>
-  <section>
-    <h1>Discussion Break</h1>
-  </section>
-</section>
-
-<section>
-  <section>
-    <h1>SCSS</h1>
-    <small class="fragment" style="display: block; margin-bottom: 25px;">"Sassy CSS"</small>
-    <i class="fa fa-paint-brush"></i>
-  </section>
-  <section>
-    <h2>What is SCSS?</h2>
-    <p>
-      SCSS adds features to CSS that are sorely needed. SCSS files must be compiled to CSS before being rendered to the page. Features include:
-    </p>
-    <ul>
-      <li class="fragment">Variables</li>
-      <li class="fragment">Math</li>
-      <li class="fragment">Nesting</li>
-      <li class="fragment">Functions</li>
-    </ul>
-  </section>
-  <section>
-    <h1>Jekyll and SCSS</h1>
-    <p>
-      In order for .scss files to be compiled by Jekyll, you must include front matter.
-    </p>
-    <pre><code class="html">style.scss</code></pre>
-    <pre><code class="css">---
----
-
-p.redParagraph {
-  color: red;
-  font-size: 32px;
-}</code></pre>
-    <p class="fragment">Valid CSS is valid SCSS</p>
-  </section>
-  <section>
-    <h1>Variables</h1>
-    <p>
-      All variables in SCSS must start with the dollar sign, and are set using the colon:
-    </p>
-    <pre><code class="scss">---
----
-
-$mainColor: red;
-
-p.redParagraph {
-  color: $mainColor;
-  font-size: 32px;
-}</code></pre>
-  </section>
-  <section>
-    <h1>Math</h1>
-    <p>
-      SCSS can perform calculations on pixel numbers, and return the appropriate value.
-    </p>
-    <pre><code class="scss">---
----
-
-$baseSize: 20px;
-
-p.redParagraph {
-  color: red;
-  font-size: $baseSize + 12;
-}</code></pre>
-  </section>
-  <section>
-    <h1>Nesting</h1>
-    <p>
-      Properties can be nesting directly within eachother, and get expanded on compile.
-    </p>
-    <pre><code class="scss">---
----
-
-p.redParagraph {
-  color: red;
-  font-size: 32px;
-
-  a {
-    text-decoration: underline;
-  }
-
-}</code></pre>
-  </section>
-  <section>
-    <h1>Functions (mixins)</h1>
-    <p>
-      SCSS calls functions "mixins". These functions can be applied to any style and are mixed directly into their own properties on compile.
-    </p>
-    <pre><code class="scss">---
----
-
-@mixin border-radius($radius: 5px) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
-}
-
-p.redParagraph {
-  @include border-radius(10px);
-  color: red;
-  font-size: 32px;
-}</code></pre>
   </section>
   <section>
     <h1>Discussion Break</h1>

@@ -1,0 +1,396 @@
+---
+title: SCSS and Javascript
+---
+
+<section>
+  <section>
+    <h2>September 25, 2017</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Start Local Environments</li>
+      <li class="fragment">SCSS</li>
+      <li class="fragment">Javascript</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Let's take a look at everyone's homework</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-2017/random">http://www.dave-landry.com/classes/artg5330-2017/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Local Environment</h1>
+    <h2>in 3 easy steps</h2>
+  </section>
+  <section>
+    <h3>Local Environment</h3>
+    <ul>
+      <li>Open your project folder in a text editor</li>
+      <li>Open Powershell/Terminal and "cd" into that folder</li>
+      <li>Execute the server command</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Open your Text Editor</h2>
+    <p>For most, this is Atom.</p>
+    <p>Once the program is open, navigate to "file" and "open" the folder on your hard drive containing your github repository.</p>
+  </section>
+  <section>
+    <h2>Changing Directories in the Shell</h2>
+    <p>To move into a folder, use the <u>c</u>hange <u>d</u>irectory command:</p>
+    <pre><code class="bash">cd /path/to/my/github/repo/folder/</code></pre>
+    <p>Tip: you can right-click on the folder in the left panel of Atom to "copy full path" and paste that into the shell.</p>
+  </section>
+  <section>
+    <h1>Running the server</h1>
+    <pre><code class="bash">bundle exec jekyll serve --watch</code></pre>
+    <p>
+      After you press enter, it should display a URL that you can copy/paste into your web browser!
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>SCSS</h1>
+    <small class="fragment" style="display: block; margin-bottom: 25px;">"Sassy CSS"</small>
+    <i class="fa fa-paint-brush"></i>
+  </section>
+  <section>
+    <h2>What is SCSS?</h2>
+    <p>
+      SCSS adds features to CSS that are sorely needed. SCSS files must be compiled to CSS before being rendered to the page. Features include:
+    </p>
+    <ul>
+      <li class="fragment">Variables</li>
+      <li class="fragment">Math</li>
+      <li class="fragment">Nesting</li>
+      <li class="fragment">Functions</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Jekyll and SCSS</h1>
+    <p>
+      In order for .scss files to be compiled by Jekyll, you must include front matter.
+    </p>
+    <pre><code class="html">style.scss</code></pre>
+    <pre><code class="css">---
+---
+
+p.redParagraph {
+  color: red;
+  font-size: 32px;
+}</code></pre>
+    <p class="fragment">Valid CSS is valid SCSS</p>
+  </section>
+  <section>
+    <h1>Variables</h1>
+    <p>
+      All variables in SCSS must start with the dollar sign, and are set using the colon:
+    </p>
+    <pre><code class="scss">---
+---
+
+$mainColor: red;
+
+p.redParagraph {
+  color: $mainColor;
+  font-size: 32px;
+}</code></pre>
+  </section>
+  <section>
+    <h1>Math</h1>
+    <p>
+      SCSS can perform calculations on pixel numbers, and return the appropriate value.
+    </p>
+    <pre><code class="scss">---
+---
+
+$baseSize: 20px;
+
+p.redParagraph {
+  color: red;
+  font-size: $baseSize + 12;
+}</code></pre>
+  </section>
+  <section>
+    <h1>Nesting</h1>
+    <p>
+      Properties can be nesting directly within eachother, and get expanded on compile.
+    </p>
+    <pre><code class="scss">---
+---
+
+p.redParagraph {
+  color: red;
+  font-size: 32px;
+
+  a {
+    text-decoration: underline;
+  }
+
+}</code></pre>
+  </section>
+  <section>
+    <h1>Functions (mixins)</h1>
+    <p>
+      SCSS calls functions "mixins". These functions can be applied to any style and are mixed directly into their own properties on compile.
+    </p>
+    <pre><code class="scss">---
+---
+
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+p.redParagraph {
+  @include border-radius(10px);
+  color: red;
+  font-size: 32px;
+}</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Javascript Basics</h1>
+  </section>
+  <section>
+    <h2>What is Javascript?</h2>
+    <p>
+      While HTML is a programming language used for page layout, Javascript is a programming language used for page manipulation.
+    </p>
+    <p>
+      Javascript code is written for the page to interpret, not render.
+    </p>
+  </section>
+  <section>
+    <h2>Script Tags</h2>
+    <p>
+      All Javascript code must be wrapped in between two &lt;script&gt; tags. These tags can be anywhere on an HTML page, in the header or the body.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Code Syntax</h2>
+    <p>
+      Javascript code is executed line-by-line, from top to bottom. While spacing and indentation do not matter, each line must end with a semi-colon.
+    </p>
+  </section>
+  <section>
+    <h2>Variables</h2>
+    <p>
+      A variable is a common name for a value that might change. By storing things as variables, we can access them later. Here we can store a number and print it out to the browser console.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Number Variables</h2>
+    <p>
+      Numbers can be manipulated with math!
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  myNumber = myNumber + 10;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>String Variables</h2>
+    <p>
+      Text is stored by surrounding the characters with quotation marks, and text strings can be concatenated to eachother.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myString = "Javascript is Cool!";
+
+  console.log("D3 and " + myString);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Boolean Variables</h2>
+    <p>
+      Booleans are values that are either true or false.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 20;
+
+  var bigNumber = myNumber > 100;
+
+  console.log(bigNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Array Variables</h2>
+    <p>
+      A list of variables can be stored as an Array, and you select which entry you need by using a 0-index based numbering system.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myArray = ["one", "two", "three", "four"];
+
+  // Any line starting with double slashes is a comment
+  // that will not be interpreted by the browser.
+
+  // This should print out "two"
+  console.log(myArray[1]);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Object Variables</h2>
+    <p>
+      Instead of using a flat list as in Arrays, you can store data with keys and values to easily access later.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myObject = {
+    "name": "Dave",
+    "color": "red"
+  };
+
+  console.log(myObject.name);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Functions</h2>
+    <p>
+      When logic may need to be repeated multiple times, it is best practice to store that logic in one place. Functions are triggered by saying the variable name followed by a set of parenthesis.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayHello = function() {
+    console.log("Hello!");
+  }
+
+  sayHello();
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Variables</h2>
+    <p>
+      Functions may accept variables to use internally.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayText = function(txt) {
+    console.log(txt);
+  }
+
+  sayText("Goodbye");
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Returns</h2>
+    <p>
+      Additionally, functions can return a value.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var plusTen = function(num) {
+    return num + 10;
+  }
+
+  var thirty = plusTen(20);
+
+  console.log(thirty);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Conditional Statements</h2>
+    <p>
+      Javascript contains syntax for evaluating logic and performing actions when a defined parameter is met.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 12;
+
+  if (myNumber > 10) {
+    console.log("greater than 10!");
+  }
+  else {
+    console.log("less than 10!");
+  }
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Combining Everything</h2>
+    <p>
+      Javascript starts to shine once you start combining these concepts.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  function greaterThanTen(num) {
+
+    if (num > 10) {
+      console.log("greater than 10!");
+    }
+    else {
+      console.log("less than 10!");
+    }
+
+    return num > 10;
+
+  }
+
+  // this should return true
+  console.log(greaterThanTen(20));
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Interacting with HTML</h2>
+    <p>
+      The "document" is a pre-defined object with information and functions relating to the page itself. Here, we can select an element and change it's content:
+    </p>
+    <pre><code class="html">&lt;h1 id="name"&gt;&lt;/h1&gt;
+&lt;script&gt;
+
+  document.getElementById("name").innerHTML = "Dave";
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p class="fragment">
+    Create a simple webpage with a javascript function that, when run from the browser console, modifies an element in the body of the page.
+  </p>
+</section>

@@ -1,0 +1,187 @@
+---
+title: Encoding Data in Visualization
+---
+
+<section>
+  <section>
+    <h2>October 23, 2016</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Design Principles</li>
+      <li class="fragment">Visual Narrative</li>
+      <li class="fragment">Scales, Interaction, and Axes</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Presentation Time</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-2017/random">http://www.dave-landry.com/classes/artg5330-2017/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Design Principles</h1>
+  </section>
+  <section>
+    <h2>Design Principles</h2>
+    <p>There are 4 primary attributes to encode data visually:</p>
+    <ul>
+      <li class="fragment">Size</li>
+      <li class="fragment">Color</li>
+      <li class="fragment">Shape</li>
+      <li class="fragment">Position</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Size</h2>
+    <ul>
+      <li class="fragment">Circle radius</li>
+      <li class="fragment">Rectangle width/height</li>
+      <li class="fragment">Arc radius</li>
+      <li class="fragment">Line/stroke width</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Color</h2>
+    <ul>
+      <li class="fragment">Hue</li>
+      <li class="fragment">Saturation</li>
+      <li class="fragment">Lightness</li>
+      <li class="fragment">Opacity</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Shape</h2>
+    <ul>
+      <li class="fragment">Geometry</li>
+      <li class="fragment">Iconography</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Position</h2>
+    <ul>
+      <li class="fragment">X/Y</li>
+      <li class="fragment">Rotation</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Visual Narrative</h1>
+    <h2 class="fragment">Guided vs Exploratory</h2>
+  </section>
+  <section>
+    <h2>Guided Narrative</h2>
+    <p>
+      Visualizations are used to tell<br />a directed story or to make a point.
+    </p>
+    <p class="fragment">
+      Think one page scrollers or visualizations<br />embedded in news articles.
+    </p>
+  </section>
+  <section>
+    <h2>Defining Characteristic</h2>
+    <p>
+      Tend to generally have a stronger focus on design and mood, as there is no cumbersome utilitarian interface to get in the way.
+    </p>
+  </section>
+  <section>
+    <h2>Exploratory Narrative</h2>
+    <p>
+      Visualizations that foster a free user-experience, letting them draw their own hypotheses and conclusions.
+    </p>
+    <p class="fragment">
+      Usually some sort of sandbox or interface<br />with a lot of user defined control.
+    </p>
+  </section>
+  <section>
+    <h2>Defining Characteristic</h2>
+    <p>
+      Stronger attention needs to be paid to the organization of user interface elements, to make them both visually unobstrusive and easy to learn.
+    </p>
+  </section>
+  <section>
+    <h1>Which one is<br />your project?</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Code Time</h1>
+    <ol>
+      <li>Open your project folder in a text editor</li>
+      <li>Open Powershell/Terminal and "cd" into that folder<pre><code class="bash">cd /path/to/my/github/repo/folder/</code></pre></li>
+      <li>Run the server:<pre><code class="bash">bundle exec jekyll serve --watch</code></pre></li>
+      <li>Confirm in browser:<pre><code class="bash">http://localhost:4000</code></pre></li>
+    </ol>
+  </section>
+  <section>
+    <h2>Scales</h2>
+    <blockquote>
+      &ldquo;Scales are a convenient abstraction for a fundamental task in visualization: mapping a dimension of abstract data to a visual representation. Although most often used for position-encoding quantitative data, such as mapping a measurement in meters to a position in pixels for dots in a scatterplot, scales can represent virtually any visual encoding, such as diverging colors, stroke widths, or symbol size.&rdquo;
+    </blockquote>
+  </section>
+  <section>
+    <h3>Linear Scales</h3>
+    <p>
+      As an example, let's say you have<br />a dataset containing travel distances:
+    </p>
+    <pre><code class="js">// distances are in miles
+var data = [0.2, 2.4, 4.7, 3.1];
+
+var xScale = d3.scaleLinear()
+  .domain([0, 5])
+  .range([0, window.innerWidth]);
+
+var firstX = xScale(data[0]);</code></pre>
+  </section>
+  <section>
+    <h3>User Interaction</h3>
+    <p>
+      D3 allows us to attach event listeners to any selection to trigger functions on mouse events:
+    </p>
+    <pre><code class="js">d3.selectAll("circle").on("click", function(d) {
+  console.log(d.name);
+});</code></pre>
+  </section>
+  <section>
+    <h3>Axes</h3>
+    <blockquote>
+      &ldquo;The axis component renders human-readable reference marks for scales. This alleviates one of the more tedious tasks in visualizing data.&rdquo;
+    </blockquote>
+    <pre><code class="js">var axis = d3.axisBottom(xScale);
+
+d3.select("g").call(axis);</code></pre>
+  </section>
+  <!--<section>
+    <h2>Class Code</h2>
+    <p>
+      Here's a page with the final code I wrote during the in-class tutorial: <a href="/classes/artg5330-2017/lectures/10_23_d3/">D3 tutorial code</a>.
+    </p>
+  </section>-->
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Whether storing in a file on your computer or using an API, set up an HTML page that loads some of the data you need for your final project into Javascript using D3 (the code from last week). Use console.log to display your data and we will look at it next class all together.
+    </p>
+    <p class="fragment">
+      Don't worry about drawing anything based on the data, this exercise is solely for exploring data.
+    </p>
+  </section>
+</section>

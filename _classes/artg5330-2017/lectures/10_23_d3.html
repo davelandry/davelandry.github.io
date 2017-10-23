@@ -1,0 +1,92 @@
+---
+layout: bare
+title: D3 Intro
+---
+
+<svg id="mysvg"></svg>
+<div id="popup"></div>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+  var svg = d3.select("#mysvg")
+    .attr("width", window.innerWidth)
+    .attr("height", window.innerHeight);
+
+  var dataArray = [
+    {location: "home", distance: 0},
+    {location: "school", distance: 2.4},
+    {location: "work", distance: 4.3},
+    {location: "grocery", distance: 0.8}
+  ];
+
+  var xScale = d3.scaleLinear()
+    .domain([0, 5])
+    .range([50, window.innerWidth - 50]);
+
+  var yScale = d3.scaleLinear()
+    .domain([0, dataArray.length - 1])
+    .range([50, window.innerHeight - 150]);
+
+  var paths = svg.selectAll("line")
+    .data(dataArray);
+
+  var enterPaths = paths.enter().append("line")
+    .attr("r", 0)
+    .attr("x1", xScale(0))
+    .attr("x2", xScale(0))
+    .attr("y1", function(d, index) {
+      return yScale(index);
+    })
+    .attr("y2", function(d, index) {
+      return yScale(index);
+    })
+    .attr("stroke", "gray")
+    .attr("stroke-width", 10)
+    .attr("stroke-dasharray", "10");
+
+  paths.merge(enterPaths)
+    .transition().duration(1000)
+    .attr("x2", function(d) {
+      return xScale(d.distance);
+    })
+    .attr("r", "10");
+
+  var locations = svg.selectAll("circle")
+    .data(dataArray);
+
+  var enterLocations = locations.enter().append("circle")
+    .attr("r", 0)
+    .attr("cx", xScale(0))
+    .attr("cy", function(d, index) {
+      return yScale(index);
+    })
+    .attr("fill", "red");
+
+  locations.merge(enterLocations)
+    .on("mouseenter", function(d, index) {
+      d3.select("#popup")
+        .style("display", "block")
+        .style("position", "absolute")
+        .style("left", xScale(d.distance) + "px")
+        .style("top", yScale(index) + 20 + "px")
+        .style("padding", "5px")
+        .style("border", "1px solid black")
+        .text(d.location);
+    })
+    .on("mouseleave", function(d) {
+      d3.select("#popup")
+        .style("display", "none");
+    })
+    .transition().duration(1000)
+    .attr("cx", function(d) {
+      return xScale(d.distance);
+    })
+    .attr("r", "10");
+
+  var axis = d3.axisBottom(xScale);
+  svg.append("g")
+    .attr("transform", "translate(0, " + (window.innerHeight - 100) + ")")
+    .call(axis);
+
+</script>

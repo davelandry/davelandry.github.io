@@ -1,45 +1,44 @@
 ---
 layout: bare
-title: Array Manipulation
+title: Data Playground
 ---
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-  d3.csv("/classes/artg5330-2017/lectures/greenhouse.csv", function(error, data) {
+  d3.queue()
+    .defer(d3.csv, "/classes/artg5330-2017/lectures/greenhouse.csv")
+    .defer(d3.csv, "/classes/artg5330-2017/lectures/data.csv")
+    .awaitAll(function(error, data) {
 
-    data.forEach(function(d, i) {
+      var greenhouseData = data[0];
 
-      // this will loop through each key in an object
-      for (var key in d) {
+      for (var i = 0; i < greenhouseData.length; i++) {
+        console.log(greenhouseData[i]);
+      }
 
-        // because all of the data points came in as Strings, we need to convert
-        // all of the number values into actual javascript numbers.
-        // the parseFloat function will turn anything it can into a floating
-        // point number (which is what Javascript calls regular old numbers).
-        var num = parseFloat(d[key]);
+      greenhouseData.forEach(function(d, i) {
 
-        // if "num" is NOT (!) NaN ("Not a Number"), meaning it IS a number,
-        // we overwrite the current value in the object.
-        if (!isNaN(num)) {
-          d[key] = num;
+        for (var poop in d) {
+          var num = +d[poop];
+          var indexOfYR = poop.indexOf("[YR");
+          if (isNaN(num) == false) {
+            d[poop] = num;
+          }
+          else if (indexOfYR == 5) {
+            d[poop] = 0;
+          }
+
         }
 
-      }
+      });
+
+      console.log(greenhouseData);
+      var countryData = greenhouseData.filter(function(d, i) {
+        return d["2016 [YR2016]"] != 0;
+      });
+      console.log(countryData);
+
     });
-
-    // let's find all of the available years in the first data point.
-    for (var key in data[0]) {
-      // because we know that the format of the year keys is "XXXX [YRXXXX]",
-      // we can split each key at the first " " value, grab the first index of
-      // the returned array, and try to parse that into a number.
-      // if it is a number, it's a year! we'll save it for later by pushing it
-      // into the "years" variable.
-      var num = parseFloat(key.split(" ")[0]);
-    }
-
-    console.log(data);
-
-  });
 
 </script>

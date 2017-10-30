@@ -1,0 +1,45 @@
+---
+layout: bare
+title: Array Manipulation
+---
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+  d3.csv("/classes/artg5330-2017/lectures/greenhouse.csv", function(error, data) {
+
+    data.forEach(function(d, i) {
+
+      // this will loop through each key in an object
+      for (var key in d) {
+
+        // because all of the data points came in as Strings, we need to convert
+        // all of the number values into actual javascript numbers.
+        // the parseFloat function will turn anything it can into a floating
+        // point number (which is what Javascript calls regular old numbers).
+        var num = parseFloat(d[key]);
+
+        // if "num" is NOT (!) NaN ("Not a Number"), meaning it IS a number,
+        // we overwrite the current value in the object.
+        if (!isNaN(num)) {
+          d[key] = num;
+        }
+
+      }
+    });
+
+    // let's find all of the available years in the first data point.
+    for (var key in data[0]) {
+      // because we know that the format of the year keys is "XXXX [YRXXXX]",
+      // we can split each key at the first " " value, grab the first index of
+      // the returned array, and try to parse that into a number.
+      // if it is a number, it's a year! we'll save it for later by pushing it
+      // into the "years" variable.
+      var num = parseFloat(key.split(" ")[0]);
+    }
+
+    console.log(data);
+
+  });
+
+</script>

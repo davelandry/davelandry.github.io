@@ -1,0 +1,125 @@
+---
+title: Making a Map
+---
+
+<section>
+  <section>
+    <h2>November 6, 2017</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Making a Map</li>
+      <li class="fragment">Work in Class</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Let's look at some layouts!</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-2017/random">http://www.dave-landry.com/classes/artg5330-2017/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Making a Map</h1>
+    <i class="fa fa-map-o"></i>
+    <!-- <p>
+      <a href="/classes/artg5330-2017/lectures/11_06_d3/">In-Class Demo</a>.
+    </p> -->
+  </section>
+  <section>
+    <h1>Code Time</h1>
+    <ol>
+      <li>Open your project folder in a text editor</li>
+      <li>Open Powershell/Terminal and "cd" into that folder<pre><code class="bash">cd /path/to/my/github/repo/folder/</code></pre></li>
+      <li>Run the server:<pre><code class="bash">bundle exec jekyll serve --watch</code></pre></li>
+      <li>Confirm in browser:<pre><code class="bash">http://localhost:4000</code></pre></li>
+    </ol>
+  </section>
+  <section>
+    <h2>GeoJSON</h2>
+    <p>
+      GeoJSON is an open standard format designed for representing simple geographical features. It is based on JSON, the JavaScript Object Notation.
+    </p>
+    <p>
+      Let's take a look at the examples in Wikipedia:<br />
+      <a href="https://en.wikipedia.org/wiki/GeoJSON" target="_blank">https://en.wikipedia.org/wiki/GeoJSON</a>
+    </p>
+  </section>
+  <section>
+    <h2>TopoJSON</h2>
+    <p>TopoJSON files are loaded the same way as any other JSON data file:</p>
+    <pre><code class="js">d3.json("world.json", function(error, data) {
+  console.log(data);
+});</code></pre>
+    <p class="fragment">There are 2 sample TopoJSON files hosted for this class:<br />
+    <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-2017/">http://www.dave-landry.com/classes/artg5330-2017/</a></p>
+  </section>
+  <section>
+    <h2>TopoJSON to GeoJSON</h2>
+    <p>The loaded TopoJSON must be converted to GeoJSON before being drawn.</p>
+    <pre><code class="html">&lt;script src="https://unpkg.com/topojson@3"&gt;&lt;/script&gt;</code></pre>
+    <pre><code class="js">var geoJSON = topojson.feature(data, data.objects.countries);</code></pre>
+  </section>
+  <section>
+    <h2>Set up a Projection</h2>
+    <p>Similar to setting up a linearScale for mapping data values to pixel positions, we need to set up a projection from coordinates to pixels.</p>
+    <p class="fragment"><a href="https://thetruesize.com/" target="_blank">This</a> is why projections matter.</p>
+  </section>
+  <section>
+    <h2>Set up a Projection</h2>
+    <p>Choose one of the projections included with D3 from <a href="https://github.com/d3/d3-geo#azimuthal-projections" target="_blank">here</a>.</p>
+    <pre><code class="js">var proj = d3.geoMercator()
+  .fitSize([width, height], geoJSON);
+
+var path = d3.geoPath()
+  .projection(proj);</code></pre>
+  </section>
+  <section>
+    <h2>Draw the Geographies</h2>
+    <p>The "path" variable can be passed a GeoJSON feature, and it will return an SVG path.</p>
+    <pre><code class="js">var countries = svg.selectAll("path")
+  .data(geoJSON.features);
+
+countries.enter().append("path")
+  .attr("d", function(d) {
+    return path(d);
+  })</code></pre>
+  </section>
+  <section>
+    <h2>Coordinate Points?</h2>
+    <p>The "path" variable can also be passed a coordinate point, and it will return it's pixel position.</p>
+    <pre><code class="js">var points = [
+  {"name": "Boston", "coords": [-71.0589, 42.3601]},
+  {"name": "London", "coords": [-0.1278, 51.5074]}
+];
+
+var points = svg.selectAll("circle")
+  .data(points);
+
+points.enter().append("circle")
+  .attr("transform", function(d){
+    return "translate(" + proj(d.coords) + ")";
+  })</code></pre>
+    <p>Be careful, it expects lat/long in the opposite order!</p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Work in Class</h1>
+  <i class="fa fa-laptop"></i>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>
+    Have at least 1 SVG shape in your<br />final project encoded with REAL data.
+  </p>
+</section>

@@ -1,0 +1,652 @@
+---
+title: Github, Servers, and HTML
+---
+
+<section>
+  <section>
+    <h2>Welcome to</h2>
+    <h1>Visualization Technologies</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Introductions</li>
+      <li class="fragment">Course Overview</li>
+      <li class="fragment">Final Project</li>
+      <li class="fragment">Class Materials</li>
+      <li class="fragment">Github</li>
+      <li class="fragment">The Internet</li>
+      <li class="fragment">HTML</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Instructor</h2>
+    <h1>Dave Landry</h1>
+  </section>
+  <section>
+    <h2>I'm a husky</h2>
+    <img src="/images/classes/dave-husky.jpg">
+    <h4>Ryder Hall circa 2008</h4>
+  </section>
+  <section>
+    <h3>For my capstone, I developed an interactive map visualization in Java that showed co-authorship of SIGGRAPH papers.</h3>
+    <video class="stretch" data-autoplay>
+      <source data-src="/images/classes/paper_trail.mp4" type="video/mp4" />
+    </video>
+  </section>
+  <section>
+    <h3>Now I have a company that creates large-scale visualization platforms for big data.</h3>
+    <img class="inline noborder" src="/images/classes/datawheel.jpg" height="250px">
+    <img class="inline noborder" src="/images/classes/datausa.png" height="250px">
+  </section>
+  <section>
+    <h2>Questions for you</h2>
+    <ol>
+      <li class="fragment">What's your name?</li>
+      <li class="fragment">What's your concentration?</li>
+      <li class="fragment">What do you do in your free time?</li>
+      <li class="fragment">How comfortable are you with coding?</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Any questions for me?</h2>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Course Overview</h2>
+    <p>
+      Building upon previously learned design fundamentals and information design concepts, this course aims to translate these skills into the interactive digital world through the use of the latest web technologies, focused around D3.
+    </p>
+  </section>
+  <section>
+    <h1>You're going to make a website that visualizes data.</h1>
+  </section>
+  <section>
+    <h2>Topics Covered</h2>
+    <ul>
+      <li class="fragment">Broad overview of the web stack</li>
+      <li class="fragment">Basic HTML and CSS usage</li>
+      <li class="fragment">Javascript and D3</li>
+      <li class="fragment">Data Collection and Manipulation</li>
+      <li class="fragment">Visualization Principles</li>
+      <li class="fragment">User Interaction</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Online Resources</h2>
+    <p>
+      All of these lectures, along with all other class materials, are available at the following URL:
+      <br>
+      <a href="http://www.dave-landry.com/classes/artg5330-spring2018/">http://www.dave-landry.com/classes/artg5330-spring2018/</a>
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Final Project</h1>
+  </section>
+  <section>
+    <h2>Overview</h2>
+    <p>
+      Utilizing the skills learned in the first half of the semester, you will each be creating a visualization platform using a dataset of your choosing.
+    </p>
+  </section>
+  <section>
+    <h2>Requirements</h2>
+    <ul>
+      <li class="fragment">Dataset must contain at least 10 data points to compare.</li>
+      <li class="fragment">Information must be encoded in 2 distinct ways.</li>
+      <li class="fragment">It shouldn't look like shit.</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Class Materials</h1>
+    <i class="fa fa-book"></i>
+  </section>
+  <section>
+    <h2>Course Textbook</h2>
+    <img class="stretch noborder" src="/images/classes/google.png">
+    <p class="fragment">Programming textbooks quickly become dated, and the best solutions are often found through collaboration and open dialogue.</p>
+  </section>
+  <section>
+    <h2>Web Browser</h2>
+    <img class="stretch noborder" src="/images/classes/browsers.png">
+    <p class="fragment">I don't care which one you use.</p>
+    <p class="fragment">...but I use Chrome because I think it's the best, and I'll make fun of you if you use Internet Explorer.</p>
+  </section>
+  <section>
+    <h2>Text Editor</h2>
+    <img class="inline noborder" src="/images/classes/atom.png" height="500px">
+    <ul class="inline">Suggestions:
+      <li><a target="_blank" href="https://atom.io/">Atom (Recommended)</a></li>
+      <li><a target="_blank" href="http://www.sublimetext.com/">Sublime Text</a></li>
+      <li><a target="_blank" href="https://macromates.com/">TextMate</a></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Command-line Shell</h2>
+    <div class="left">
+      <p>Terminal (Mac)</p>
+      <img class="inline noborder" src="/images/classes/terminal.png">
+    </div>
+    <div class="right">
+      <p>PowerShell (Windows)</p>
+      <img class="inline noborder" src="/images/classes/powershell.png">
+    </div>
+  </section>
+  <section>
+    <h2>Python</h2>
+    <img class="inline noborder" src="/images/classes/python.png">
+    https://www.python.org/
+  </section>
+  <section>
+    <h2>Testing Python</h2>
+    <p>
+      macOS Terminal:
+    </p>
+    <pre><code class="bash">python --version</code></pre>
+    <p>
+      Windows PowerShell:
+    </p>
+    <pre><code class="bash">Get-Command python | fl *</code></pre>
+  </section>
+  <section>
+    <h2>Github Desktop</h2>
+    <img class="stretch noborder" src="/images/classes/github-desktop.png">
+    https://desktop.github.com/
+  </section>
+  <section>
+    <h2>Take a minute to download<br />any programs you need.</h2>
+    <ul>
+      <li>Web Browser</li>
+      <li>Text Editor</li>
+      <li>Command-line Shell</li>
+      <li>Python</li>
+      <li>Github Desktop</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Github</h1>
+    <i class="fa fa-github"></i>
+  </section>
+  <section>
+    <h1>What is Github?</h1>
+    <blockquote class="fragment">
+      &ldquo;Git (/ɡɪt/) is a distributed revision control system with an emphasis on speed, data integrity, and support for distributed, non-linear workflows.&rdquo;
+    </blockquote>
+    <ul>
+      <li class="fragment">Saves all file revisions for easy rollbacks</li>
+      <li class="fragment">A central place for code collaboration</li>
+      <li class="fragment">Open Source</li>
+      <li class="fragment">A great way to host a simple website (Github Pages)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Sign up for an account</h2>
+    <p><em>(if you haven't already)</em></p>
+    <img class="stretch noborder" src="/images/classes/github-signup.png">
+    <p>www.github.com</p>
+  </section>
+  <section>
+    <h2>Create your first repository</h2>
+    <img class="stretch noborder" src="/images/classes/github-home.png">
+    <p>Your repository list is on the bottom right. You can think of a repository as a shared project folder.</p>
+    <p>Click the big green button.</p>
+  </section>
+  <section>
+    <h2>Repository Settings</h2>
+    <img class="noborder inline" src="/images/classes/github-create.png" width="50%">
+    <ul class="inline">
+      <li>&lt;username&gt;.github.io</li>
+      <li>Make it Public</li>
+      <li>Initialize this repository with a README</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Congratulations</h2>
+    <img class="stretch noborder" src="/images/classes/github-repo.png">
+    <p>You've created your first repository.</p>
+    <p>In a few minutes, it will <em>automagically</em> be published to http://&lt;username&gt;.github.io/</p>
+  </section>
+  <section>
+    <h2>Let's edit a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-readme.png">
+    <p><b>YOUR TASK:</b> Change the contents of the README.md file</p>
+  </section>
+  <section>
+    <h2>Let's add a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-add.png">
+    <p><b>YOUR TASK:</b> Create an index.html file and view it in a browser</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Syncing with<br />your Computer</h1>
+    <i class="fa fa-laptop"></i>
+  </section>
+  <section>
+    <h2>Why local? Github.com was easy!</h2>
+    <ul>
+      <li class="fragment">Trust me, the text editor you downloaded is better.</li>
+      <li class="fragment">Allows you to preview the changes in a browser before it goes live.</li>
+      <li class="fragment">You can update/upload multiple files in the same commit.</li>
+      <li class="fragment">...and so much more!</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Open Github Desktop</h2>
+    <small>Log into the application with your github.com account and finish the installation.</small>
+    <img class="stretch noborder" src="/images/classes/github-desktop.png">
+    https://desktop.github.com/
+  </section>
+  <section>
+    <h2>Clone your Repository</h2>
+    <small>After finishing the Github Desktop setup, go back to your web browser and click "Open in Desktop" from the "Clone or Download" window.</small>
+    <img class="stretch noborder" src="/images/classes/github-clone.png">
+  </section>
+  <section>
+    <h2>Changing Files Locally</h2>
+    <p>
+      Your repository has now been downloaded as a folder. Open the new folder in your text editor, where you should see a list of the files in a panel on the left.
+    </p>
+    <br>
+    <p>
+      Click on index.html to open it, change the text inside of it, and save it. Now let's try to upload that file back to Github.com.
+    </p>
+  </section>
+  <section>
+    <h2>Uploading to your repository</h2>
+    <p>
+      Uploading files to your repository is called "pushing", and a push can contain several groups of changes called "commits".
+    </p>
+    <p>
+      Commits have comments attached to them that tells the world what was changed in those files.
+    </p>
+  </section>
+  <section>
+    <h2>Push example</h2>
+    <pre><code class="js">Commit: "created a new logo"
+index.html
+logo.png</code></pre>
+    <pre><code class="js">Commit: "changed background color and title"
+styles.css
+index.html</code></pre>
+  </section>
+  <section>
+    <h2>Syncing with Github.com</h2>
+    <p>
+      The program only lists files with changes. Check off the files you'd like to commit, and write a commit message.
+    </p>
+    <img class="stretch noborder" src="/images/classes/github-commit.png">
+    <p>
+      Click "Commit to Master", and then "Push to Origin"
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>The Internet</h1>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section>
+    <h1>What is it?</h1>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The internet is just a bunch of connected computers.</h2>
+  </section>
+  <section>
+    <h2>But what about "the cloud"?</h2>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The cloud is just a bunch of connected computers that you're allowed to store your data on.</h2>
+  </section>
+  <section>
+    <h2>Clients and Servers</h2>
+    <p>
+      When a user types an address into a browser, that computer makes a request (client) to another computer that is running software that can send back files (server).
+    </p>
+  </section>
+  <section>
+    <h2>Developing a Website</h2>
+    <p>
+      In order to proficiently write and test web code, our individual computer can act as both a server and a client.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Running a<br />Local Server</h1>
+    <i class="fa fa-server"></i>
+  </section>
+  <section>
+    <h2>Running the Site Locally</h2>
+    <p>
+      So you've got updating files under your belt. But what if you want to view the changes in a browser BEFORE you push to the live site? These next few steps will get your computer set up as a local server to view these files.
+    </p>
+  </section>
+  <section>
+    <h2>Using the Shell</h2>
+    <p>
+      PowerShell and Terminal are programs that interact with your computer through text commands. You can make folders, move files, and even launch applications.
+    </p>
+    <p>
+      Commands are issued by writing the command and pressing the return key. Only 1 command can be issued at a time.
+    </p>
+  </section>
+  <section>
+    <h2>Directories in the Shell</h2>
+    <p>
+      When interacting with your computer through a shell, you are always issuing commands from a specific folder on your computer.
+    </p>
+    <p>To move into a folder, use the <u>c</u>hange <u>d</u>irectory command:</p>
+    <pre><code class="bash">cd /path/to/my/folder/</code></pre>
+    <p class="fragment">Use cd to go into your repository folder.</p>
+  </section>
+  <section>
+    <h2>Starting a Server w/ Python</h2>
+    <p>
+      Python v2:
+    </p>
+    <pre><code class="bash">python -m SimpleHTTPServer</code></pre>
+    <p>
+      Python v3:
+    </p>
+    <pre><code class="bash">python -m http.server 8000</code></pre>
+  </section>
+  <section>
+    <h2>Look in your browser!</h2>
+    <p>
+      You should be able to see your site at the following URL:
+    </p>
+    <pre><code class="bash">http://localhost:8000/</code></pre>
+  </section>
+  <section>
+    <h2>Stopping the server</h2>
+    <p>
+      Anytime you would like to stop the server from running (say, to commit some files to Git), you can <u><strong>cancel</strong></u> the process by pressing <u><strong>control + c</strong></u> on your keyboard while in the shell.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>HTML</h1>
+    <i class="fa fa-code"></i>
+  </section>
+  <section>
+    <h2>From Wikipedia:</h2>
+    <blockquote>
+      "HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages."
+    </blockquote>
+  </section>
+  <section>
+    <h2>A brief history</h2>
+    <img src="/images/classes/tbl.jpg" />
+    <p>Created by Tim Berners-Lee in 1995 as a way to distribute research papers.
+  </section>
+  <section>
+    <h2>More From Wikipedia:</h2>
+    <blockquote>
+      "The language is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
+      <br /><br />
+      Browsers do not display the HTML tags and scripts, but use them to interpret the content of the page."
+    </blockquote>
+  </section>
+  <section>
+    <h2>So let's start writing some code</h2>
+    <p class="fragment">
+      In the root directory of your project, create a new HTML file.
+    </p>
+  </section>
+  <section>
+    <h2>DOCTYPE Declaration</h2>
+    <p>
+      The Document Type Declaration is for HTML5 and "should" be the included as the first line of every HTML file.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;</code></pre>
+    <p>
+      If a declaration is not included, some browsers will revert to their legacy "quirks mode" for rendering.
+    </p>
+  </section>
+  <section>
+    <h2>HTML Wrapper</h2>
+    <p>
+      The contents of every HTML file (except for the DOCTYPE) should be wrapped in &lt;html&gt; tags:
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">Capitalization does not matter.</li>
+      <li class="fragment">Remember to close any tags that you open.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>The Head and Body</h2>
+    <p>
+      All webpages have a head and a body. The head contains information about the page (the brains) and the body contains information that will be visible to the user (the brawn).
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">The head MUST come before the body.</li>
+      <li class="fragment">Identation does not matter, but will help keep your sanity.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Character Encoding</h2>
+    <p>
+      Like the DOCTYPE before it, there is one more "required" tag that must be present in the head of every document.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">This explicitly sets the character set used, if not passed by the server.</li>
+      <li class="fragment">Dave, did you mention how we're setting an attribute of a tag?</li>
+      <li class="fragment">Did you also mention self-closing tags?</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Stop and test</h2>
+    <p>
+      Put something in the body of the page and make sure it's rendering to your browser.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Get rid of that ugly page title</h2>
+    <p>
+      One of the many tags that the head supports is &lt;title&gt;.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;My cool test page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="fragment">Great for browsers, bookmarks, screen readers, and SEO</p>
+  </section>
+  <section>
+    <h2>Wikipedia, what's "SEO"?</h2>
+    <blockquote class="fragment">
+      "Search engine optimization (SEO) is the process of affecting the visibility of a website or a web page in a search engine's unpaid results - often referred to as "natural," "organic," or "earned" results. In general, the earlier (or higher ranked on the search results page), and more frequently a site appears in the search results list, the more visitors it will receive from the search engine's users."
+    </blockquote>
+  </section>
+  <section>
+    <h2>Dave, what the hell does that mean?</h2>
+    <p class="fragment">
+      Search engines, in their spare time, go to every webpage they can find over the internet and either add or update their listings with the information it can read from the page.
+    </p>
+    <small class="fragment">That's known as "crawling".</small>
+    <p class="fragment">
+      The more clear, organized, and descriptive the content is on a webpage, the more accurate the search engine's listing will become.
+    </p>
+  </section>
+  <section>
+    <h2>Back to the body</h2>
+    <p>
+      The basic structure of HTML was created based on what you would find in a research paper or Word document.
+    </p>
+    <ul>
+      <li class="fragment">&lt;p&gt; for paragraphs</li>
+      <li class="fragment">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc for headings</li>
+      <li class="fragment">&lt;ul&gt; and &lt;ol&gt; for unordered and ordered lists</li>
+      <li class="fragment">&lt;a&gt; for anchor links</li>
+      <li class="fragment">&lt;div&gt; for divisions</li>
+      <li class="fragment">&lt;span&gt; for spans of words</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Inline vs Block</h2>
+    <p class="fragment">
+      Most elements in HTML take up the full width of the screen (block), forcing the next element to be positioned below it on a new line.
+    </p>
+    <p class="fragment">
+      Some elements, like &lt;span&gt;, are inline, which means that it will appear on the same line as the content before and after itself, never causing a line break.
+    </p>
+  </section>
+  <section>
+    <h2>Semantic Tags</h2>
+    <p>
+      HTML5 (the newest standard) introduced a new set of tags that are more literal than the dated and obscure tags like "div" and "span". These new tags include:
+    </p>
+    <ul>
+      <li class="fragment">&lt;header&gt;</li>
+      <li class="fragment">&lt;footer&gt;</li>
+      <li class="fragment">&lt;nav&gt;</li>
+      <li class="fragment">&lt;article&gt;</li>
+      <li class="fragment">&lt;section&gt;</li>
+      <li class="fragment">&lt;aside&gt;</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>SVG</h1>
+    <small class="fragment" style="display: block; margin-bottom: 25px;">"Scalable Vector Graphics"</small>
+    <i class="fa fa-pie-chart"></i>
+  </section>
+  <section>
+    <h1>Raster vs Vector</h1>
+    <img class="stretch" src="/images/classes/raster-vector.png" />
+  </section>
+  <section>
+    <h1>Container Element</h1>
+    <p>
+      All SVG graphics need to be contained inside of an SVG element:
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;&lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Draw shapes!</h1>
+    <p>
+      Shape properties are set as attributes of the element.
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;
+    &lt;rect x="50px" y="100px" width="150px" height="100px" fill="red" /&gt;
+  &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Built-in Shapes</h1>
+    <ul>
+      <li class="fragment">rect</li>
+      <li class="fragment">circle</li>
+      <li class="fragment">ellipse</li>
+      <li class="fragment">line</li>
+      <li class="fragment">polyline</li>
+      <li class="fragment">polygon</li>
+      <li class="fragment">path</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Next class will be January 29th.
+    </p>
+  </section>
+  <section>
+    <h2>Homework</h2>
+    <img src="/images/classes/kandinsky.jpg" />
+  </section>
+  <section>
+    <h2>Homework</h2>
+    <ul>
+      <li>
+        Using SVG shapes, recreate the Google Doodle.
+      </li>
+      <li>
+        Ignore all gradients, textures, and curved lines.
+      </li>
+      <li>
+        Please e-mail me if you are having trouble.
+      </li>
+      <li>
+        Push your final code to Github for my review.
+      </li>
+      <li>
+        E-mail me the link to your site no later than Sunday 1/28.
+      </li>
+      <li>
+         <a href="mailto:landry.dave@gmail.com">landry.dave@gmail.com</a>
+      </li>
+    </ul>
+  </section>
+</section>

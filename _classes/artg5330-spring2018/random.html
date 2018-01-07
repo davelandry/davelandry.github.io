@@ -1,0 +1,60 @@
+---
+layout: default
+title: Random
+---
+
+<section class="class">
+  <button id="button">Start</button>
+  <h1>
+    <center>
+      <a id="name" target="_blank"></a>
+    </center>
+  </h1>
+</section>
+
+<script>
+
+  var roster = [
+    ["Dustin Bell", "https://dustinjaybell.github.io"],
+    ["Shen Chen", "https://chenshen0406.github.io/homepage/index.html"],
+    ["Shilin Chen", "https://shilinchen1101.github.io"],
+    ["Sarina Dass", "https://sarinadass.github.io"],
+    ["Shuyao He", "https://shuyaohe.github.io/index.html"],
+    ["Vasyl Kochura", "https://ohross.github.io"],
+    ["Zhejun \"Emerald\" Li", "https://emeraldlzj.github.io"],
+    ["Megan J. McKee", "https://megmckee.github.io/"],
+    ["Daniel \"Dan\" Spector", "https://inspectordanno.github.io"],
+    ["Siyuan \"Sierra\" Sun", "https://sierrasun.github.io"],
+    ["Zhaoqi Wu", "https://w112358.github.io"],
+    ["Chenrui \"Cherry\" Ye", "https://chenrui666.github.io"]
+  ];
+
+  var link = document.getElementById("name"),
+      button = document.getElementById("button");
+
+  button.addEventListener("click", function() {
+
+    button.innerHTML = "Next";
+
+    var person;
+
+    if (roster.length) {
+      var int = Math.floor(Math.random() * roster.length);
+      person = roster.splice(int, 1)[0];
+
+    }
+    else {
+      person = ["Done!", "#"];
+      button.style.visibility = "hidden";
+    }
+
+    console.log(person);
+
+    link.innerHTML = person[0];
+    link.href = person[1] || "#";
+
+    console.log(roster.length + " people left");
+
+  }, false);
+
+</script>

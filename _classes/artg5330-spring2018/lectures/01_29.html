@@ -1,0 +1,348 @@
+---
+title: CSS and Javascript
+---
+
+<section>
+  <section>
+    <h2>January 29, 2018</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Styling Elements w/ CSS</li>
+      <li class="fragment">Javascript Basics</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Let's take a look at everyone's homework</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-spring2018/random">http://www.dave-landry.com/classes/artg5330-spring2018/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Styling Elements</h1>
+    <i class="fa fa-paint-brush"></i>
+  </section>
+  <section>
+    <h2>Inline styles</h2>
+    <pre><code class="html"><p style="color: red;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px; background-color: blue; margin: 25px;">Some text</p></code></pre>
+  </section>
+  <section>
+    <h1>Separate form and content as much as possible</h1>
+  </section>
+  <section>
+    <h1>CSS to the rescue</h1>
+    <small class="fragment">"Cascading Style Sheets"</small>
+  </section>
+  <section>
+    <h2>Styles in the Head</h2>
+    <p>
+      CSS can be defined in the &lt;head&gt; of a document, and they will effect every element on the page.
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;style&gt;
+    p {
+      color: red;
+      font-size: 32px;
+    }
+  &lt;/style&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+  <section>
+    <h2>But Dave, what if I want to style two paragraphs separately?</h2>
+    <p class="fragment">
+      The ID attribute can be set on an element so that you can specifically select it in CSS:
+    </p>
+    <pre class="fragment"><code class="html"><p id="redParagraph">Some text</p></code></pre>
+    <pre class="fragment"><code class="html">&lt;style&gt;
+  p#redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the pound sign is optional.</small>
+  </section>
+  <section>
+    <h1>HOWEVER</h1>
+    <p class="fragment">
+      Element IDs should only be used on single elements. If you have multiple elements that need the same style applied to them, use the "class" attribute:
+    </p>
+    <pre class="fragment"><code class="html"><p class="redParagraph">Some text</p>
+<p class="redParagraph">Some text</p></code></pre>
+    <pre class="fragment"><code class="html">&lt;style&gt;
+  p.redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the decimal sign is also optional.</small>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p class="fragment">
+      Create a file called "style.css" in your root directory and cut/paste all of the code in between the &lt;style&gt; tags into there.
+    </p>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p>
+      In the place of your &lt;style&gt; tags, create a link to that file:
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+  <section class="stretch" data-background="http://media1.giphy.com/media/nu6XLY6QHeUk8/giphy.gif">
+    <h2 class="top" style="width: 100%; text-align: center;">Duplicate Code is Gross</h2>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Javascript Basics</h1>
+  </section>
+  <section>
+    <h2>What is Javascript?</h2>
+    <p>
+      While HTML is a programming language used for page layout, Javascript is a programming language used for page manipulation.
+    </p>
+    <p>
+      Javascript code is written for the page to interpret, not render.
+    </p>
+  </section>
+  <section>
+    <h2>Script Tags</h2>
+    <p>
+      All Javascript code must be wrapped in between two &lt;script&gt; tags. These tags can be anywhere on an HTML page, in the header or the body.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Code Syntax</h2>
+    <p>
+      Javascript code is executed line-by-line, from top to bottom. While spacing and indentation do not matter, each line must end with a semi-colon.
+    </p>
+  </section>
+  <section>
+    <h2>Variables</h2>
+    <p>
+      A variable is a common name for a value that might change. By storing things as variables, we can access them later. Here we can store a number and print it out to the browser console.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Number Variables</h2>
+    <p>
+      Numbers can be manipulated with math!
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  myNumber = myNumber + 10;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>String Variables</h2>
+    <p>
+      Text is stored by surrounding the characters with quotation marks, and text strings can be concatenated to eachother.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myString = "Javascript is Cool!";
+
+  console.log("D3 and " + myString);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Boolean Variables</h2>
+    <p>
+      Booleans are values that are either true or false.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 20;
+
+  var bigNumber = myNumber > 100;
+
+  console.log(bigNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Array Variables</h2>
+    <p>
+      A list of variables can be stored as an Array, and you select which entry you need by using a 0-index based numbering system.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myArray = ["one", "two", "three", "four"];
+
+  // Any line starting with double slashes is a comment
+  // that will not be interpreted by the browser.
+
+  // This should print out "two"
+  console.log(myArray[1]);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Object Variables</h2>
+    <p>
+      Instead of using a flat list as in Arrays, you can store data with keys and values to easily access later.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myObject = {
+    "name": "Dave",
+    "color": "red"
+  };
+
+  console.log(myObject.name);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Functions</h2>
+    <p>
+      When logic may need to be repeated multiple times, it is best practice to store that logic in one place. Functions are triggered by saying the variable name followed by a set of parenthesis.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayHello = function() {
+    console.log("Hello!");
+  }
+
+  sayHello();
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Variables</h2>
+    <p>
+      Functions may accept variables to use internally.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayText = function(txt) {
+    console.log(txt);
+  }
+
+  sayText("Goodbye");
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Returns</h2>
+    <p>
+      Additionally, functions can return a value.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var plusTen = function(num) {
+    return num + 10;
+  }
+
+  var thirty = plusTen(20);
+
+  console.log(thirty);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Conditional Statements</h2>
+    <p>
+      Javascript contains syntax for evaluating logic and performing actions when a defined parameter is met.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 12;
+
+  if (myNumber > 10) {
+    console.log("greater than 10!");
+  }
+  else {
+    console.log("less than 10!");
+  }
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Combining Everything</h2>
+    <p>
+      Javascript starts to shine once you start combining these concepts.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  function greaterThanTen(num) {
+
+    if (num > 10) {
+      console.log("greater than 10!");
+    }
+    else {
+      console.log("less than 10!");
+    }
+
+    return num > 10;
+
+  }
+
+  // this should return true
+  console.log(greaterThanTen(20));
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Interacting with HTML</h2>
+    <p>
+      The "document" is a pre-defined object with information and functions relating to the page itself. Here, we can select an element and change it's content:
+    </p>
+    <pre><code class="html">&lt;h1 id="name"&gt;&lt;/h1&gt;
+&lt;script&gt;
+
+  document.getElementById("name").innerHTML = "Dave";
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p class="fragment">
+    Create a simple webpage with a javascript function that, when run from the browser console, modifies an element in the body of the page.
+  </p>
+</section>

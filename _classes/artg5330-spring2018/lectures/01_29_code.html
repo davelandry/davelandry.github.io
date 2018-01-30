@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      My Cool Website
+    </title>
+    <link href="../01_29_css.css" rel="stylesheet">
+  </head>
+
+  <body bgcolor="lightgrey">
+    <a href="https://www.google.com">Here is a link to google!</a>
+    <!-- This is comic sans -->
+    <p class="comicsans">
+      Welcome to my page. Here we will talk about styles.
+    </p>
+    <h2 class="comicsans" id="redParagraph">
+      Here's another paragraph.
+    </h2>
+    <script>
+
+      var myNumber = 42;
+
+      console.log(myNumber);
+
+      myNumber = myNumber + 10;
+
+      console.log(myNumber);
+
+      var myString = "Javascript is cool!";
+
+      console.log("D3 and " + myString);
+
+      var bigNumber = myNumber < 20;
+
+      console.log(bigNumber);
+
+      var myArray = ["one", bigNumber, myNumber, "dave"];
+
+      console.log(myArray);
+
+      var myUser = {
+        "name": "Dave Landry",
+        "color": "red",
+        "last-login": "1/29/2018"
+      };
+
+      var myKey = "name";
+
+      console.log(myUser[myKey]);
+
+      var sayHello = function(name) {
+        var newNumber = myNumber + 500;
+        console.log(newNumber);
+        console.log("Hi " + name + "!");
+      }
+
+      sayHello("Dave");
+      sayHello("Melissa");
+      // console.log(newNumber);
+
+      var plusTen = function(num) {
+        var x = num + 10;
+        return x;
+      }
+
+      var thirty = plusTen(20);
+      console.log(thirty);
+
+      var biggerThanTen = function(x) {
+        if (x > 10) {
+          console.log("greater than 10!");
+        }
+        else {
+          console.log("booo less than 10");
+        }
+      }
+
+      biggerThanTen(20);
+      biggerThanTen(5);
+
+      document.getElementById("redParagraph").innerHTML = "Hello " + myUser.name;
+
+
+    </script>
+  </body>
+
+</html>

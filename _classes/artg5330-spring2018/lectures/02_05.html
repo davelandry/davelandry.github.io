@@ -1,0 +1,136 @@
+---
+title: Javascript Libraries and D3 Basics
+---
+
+<section>
+  <section>
+    <h2>February 5th, 2018</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">Start Local Environments</li>
+      <li class="fragment">Javascript Libraries</li>
+      <li class="fragment">D3 Basics</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-spring2018/random">http://www.dave-landry.com/classes/artg5330-spring2018/random</a>
+</section>
+
+<section>
+  <h2>Starting your Server</h2>
+  <pre><code class="bash">cd your-code-folder</code></pre>
+  <p>
+    Python v2:
+  </p>
+  <pre><code class="bash">python -m SimpleHTTPServer</code></pre>
+  <p>
+    Python v3:
+  </p>
+  <pre><code class="bash">python -m http.server 8000</code></pre>
+</section>
+
+<section>
+  <section>
+    <h1>Javascript Libraries</h1>
+  </section>
+  <section>
+    <h2>Javascript Libraries</h2>
+    <p>
+      A javascript library is a collection of pre-written functions and variables that provide shortcuts for more complex behavior.
+    </p>
+  </section>
+  <section>
+    <h2>Let's Make Our Own</h2>
+    <p>
+      Create a file called "numbers.js" in your root directory and write a helpful javascript function inside the file.
+    </p>
+  </section>
+  <section>
+    <h2>Link to the File</h2>
+    <p>
+      From whichever HTML page you are currently testing with, link to the file from within the &lt;body&gt; tag:
+      <pre><code class="html">&lt;script src="numbers.js"&gt;&lt;/script&gt;</code></pre>
+    </p>
+  </section>
+  <section>
+    <h2>Test it out!</h2>
+    <p>
+      Try referencing the variables and functions in your library from within a &lt;script&gt; tag:
+      <pre><code class="html">&lt;script&gt;
+  console.log(numbers.square(4));
+&lt;/script&gt;</code></pre>
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>D3 Basics</h1>
+  </section>
+  <section>
+    <h2>What is D3?</h2>
+    <p>
+      D3 is an external javascript library that allows for manipulating HTML page elements in Javascript using complex data arrays. It also provides a lot of nice javascript shortcuts.
+    </p>
+    <p>
+      First, let's include D3 on our page:
+    </p>
+    <pre><code class="html">&lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Selections</h2>
+    <p>
+      Similar to vanilla Javascript and JQuery, D3 has it's own element selector:
+    </p>
+    <pre><code class="js">document.getElementById("name");</code></pre>
+    <pre><code class="js">$("#name");</code></pre>
+    <pre><code class="js">d3.select("#name");</code></pre>
+  </section>
+  <section>
+    <h2>Attributes and Styles</h2>
+    <p>
+      Element attributes and styles can be changed by using the supplied D3 functions:
+    </p>
+    <pre><code class="js">d3.select("#name")
+  .attr("class", "big")
+  .style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h2>Multi-Selection</h2>
+    <p>
+      You can also select multiple elements on a page and change all of the properties at the same time.
+    </p>
+    <pre><code class="js">d3.selectAll(".big")
+  .style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h2>Applying Data to Elements</h2>
+    <p>
+      Now let's get into why D3 is so great. Instead of re-inventing the wheel, let's do the tutorial that the creator of D3 put together: <a href="https://bost.ocks.org/mike/circles/" target="_blank">https://bost.ocks.org/mike/circles/</a>.
+    </p>
+    <p>
+      Here's a page with the final code I wrote during the in-class tutorial: <a href="/classes/artg5330-2017/lectures/10_02_d3/">D3 tutorial code</a>.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>
+    Create a webpage with a set of SVG shapes and a button that, when clicked, changes the data array given to a d3 selection and modifies the shapes using the enter/update/exit methodology.
+  </p>
+</section>

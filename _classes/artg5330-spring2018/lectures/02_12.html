@@ -1,0 +1,149 @@
+---
+title: Data Formats
+---
+
+<section>
+  <section>
+    <h2>February 12th, 2018</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Data File Formats</li>
+      <li class="fragment">APIs</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-spring2018/random">http://www.dave-landry.com/classes/artg5330-spring2018/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Data File Formats</h1>
+    <i class="fa fa-table"></i>
+  </section>
+  <section>
+    <h2>External Files</h2>
+    <p>
+      Just like CSS and JS, data is often stored in external files and loaded into the page dynamically.
+    </p>
+  </section>
+  <section>
+    <h2>Filetypes</h2>
+    <p>
+      D3 comes with functions that can read in external data files automagically. Filetypes include:
+    </p>
+    <ul>
+      <li class="fragment">txt</li>
+      <li class="fragment">csv</li>
+      <li class="fragment">json</li>
+    </ul>
+  </section>
+  <section>
+    <h2>file.txt</h2>
+    <p>
+      Reads text in as a string. 'Nuff said.
+    </p>
+    <pre><code class="js">Some sample text</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.text("file.txt", function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h2>file.csv</h2>
+    <p>
+      Comma-separated values. Each line of the file is a data object, with it's values separated by commas. The first row in the file is expected to be the key names for each data point.
+    </p>
+    <pre><code class="js">country,value
+usa,4
+mexico,10
+canada,6</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.csv("file.csv", function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h2>file.json</h2>
+    <p>
+      JavaScript Object Notation. Data is stored with the same syntax as it would be in Javascript, with keys and values.
+    </p>
+    <pre><code class="js">[
+  {
+    country: "usa",
+    value: 4
+  }
+]</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.json("file.json", function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>API</h1>
+    <sub class="fragment">"application programming interface"</sub>
+  </section>
+  <section>
+    <h2>What is an API?</h2>
+    <p>
+      In the context of data, developers who store data in databases need to enable an easy way for themselves and others to extract data based on specific query parameters.
+    </p>
+  </section>
+  <section>
+    <h2>Shameless Example</h2>
+    <h1>Data USA</h1>
+    <p>
+      <a href="https://datausa.io/" target="_blank">Data USA</a> hosts data from 8 different public US datasets.
+    </p>
+    <p>
+      Additionally, they developers have published an open API for all of the data. Documentation is <a href="https://github.com/datausa/datausa-api/wiki" target="_blank">here</a>.
+    </p>
+  </section>
+  <section>
+    <h2>Loading from an API</h2>
+    <p>
+      Data from an API is commonly delivered as JSON, so instead of giving d3.json a filename, we can give it a URL:
+    </p>
+    <pre><code class="js">var url = "https://api.datausa.io/api/?required=income&show=geo&sumlevel=state";
+
+d3.json(url, function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Create a presentation, in any format,<br />pitching your final project.
+    </p>
+    <ul>
+      <li>Find a dataset has at least 10 data points.</li>
+      <li>Describe the different variables available in the dataset.</li>
+      <li>Think about how you could visualize that data.</li>
+      <li>Be prepared to discuss it next week.</li>
+    </ul>
+  </section>
+  <section>
+    <h3>A Starting Point</h3>
+    <h2><a href="https://github.com/caesar0301/awesome-public-datasets" target="_blank">Awesome Public Datasets</a></h2>
+    <p>A collection of interesting public datasets grouped by category.</p>
+  </section>
+</section>

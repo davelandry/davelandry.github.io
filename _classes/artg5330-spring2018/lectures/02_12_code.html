@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Loading Data!</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+
+  <body id="myBody">
+    <svg id="viz"></svg>
+  </body>
+  <script>
+
+    d3.json("./dataObject.json", function(error, data) {
+      if (error) {
+        console.log("Error!");
+      }
+      else {
+        console.log("JSON Array");
+        console.log(data);
+      }
+    });
+
+    d3.text("./textData.txt", function(error, data) {
+      if (error) {
+        console.log("Error!");
+      }
+      else {
+        console.log("Text String");
+        console.log(data);
+      }
+    });
+
+    d3.csv("./dataTable.csv", function(error, data) {
+      if (error) {
+        console.log("Error!");
+      }
+      else {
+        console.log("CSV Array");
+        console.log(data);
+        data.forEach(function(d) {
+          d.value = parseFloat(d.value);
+        })
+      }
+    });
+
+    var url = "https://api.datausa.io/api/?required=income&show=geo&sumlevel=state";
+    d3.json(url, function(error, data) {
+      console.log("API Object");
+      console.log(data);
+    });
+
+  </script>
+
+</html>

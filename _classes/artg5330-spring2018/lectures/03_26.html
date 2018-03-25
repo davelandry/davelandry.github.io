@@ -1,0 +1,118 @@
+---
+title: Manipulating Data
+---
+
+<section>
+  <section>
+    <h2>March 26th, 2018</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">Manipulating Data</li>
+      <li class="fragment">Work in Class</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Let's see some shapes!</h1>
+  <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-spring2018/random">http://www.dave-landry.com/classes/artg5330-spring2018/random</a>
+</section>
+
+<section>
+  <h2>Code Time</h2>
+  <pre><code class="bash">cd your-code-folder</code></pre>
+  <p>
+    Python v2:
+  </p>
+  <pre><code class="bash">python -m SimpleHTTPServer</code></pre>
+  <p>
+    Python v3:
+  </p>
+  <pre><code class="bash">python -m http.server 8000</code></pre>
+</section>
+
+<section>
+  <section>
+    <h1>Manipulating Data</h1>
+    <i class="fa fa-filter"></i>
+    <!-- <p>
+      <a href="/classes/artg5330-spring2018/lectures/03_19_code.html">Here is the code we wrote together in class.</a>
+    </p> -->
+  </section>
+  <section>
+    <h2>Creating a Mapping</h2>
+    <p>
+      When using 2 data files, like a geographical map and CSV data, it is sometimes necessary to create a mapping in order to cross-reference from one data file to the other.
+    </p>
+    <pre><code class="js">var countryMapping = {
+  CA: "Canada",
+  US: "United States",
+  ...
+};</code></pre>
+    <p>
+      This is often called "cross-walking".
+    </p>
+  </section>
+  <section>
+    <h2>Using a Mapping</h2>
+    <p>Use the ID you have access to as a reference to the key in the mapping object. For example, if needing data in a world map's fill function:</p>
+    <pre><code class="js">.attr("fill", function(d) {
+  var countryName = countryMapping[d.id];
+  var countryData = csvData.filter(function(x) {
+    return x.country == countryName;
+  });
+  // calculate color based on countryData
+})</code></pre>
+  </section>
+  <section>
+    <h2>Creating a Color Scale</h2>
+    <p>The linear scales learned a few classes ago can also be used to map data to colors!</p>
+    <pre><code class="js">var dataExtent = d3.extent(csvData, function(d) {
+  return d.ranking;
+});
+
+var colorScale = d3.scaleLinear()
+  .domain(dataExtent)
+  .range(["red", "green"]);</code></pre>
+  </section>
+  <section>
+    <h2>Bringing it Together</h2>
+    <p>Simply pass the current data value to the color scale and return it from the function!</p>
+    <pre><code class="js">.attr("fill", function(d) {
+  var countryName = countryMapping[d.id];
+  var countryData = csvData.filter(function(x) {
+    return x.country == countryName;
+  });
+  return colorScale(countryData[0].ranking);
+})</code></pre>
+  </section>
+  <section>
+    <h2>Grouping Data</h2>
+    <p>The d3.nest() function can be used to group data on a common key:</p>
+    <pre><code class="js">var groupedData = d3.nest()
+  .key(function(d) {
+    return d.continent;
+  })
+  .entries(csvData);</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Bring your project to "feature complete".
+    </p>
+    <p>
+      Add all text, visualization, and labels needed for a complete final project. Next class we will work together on any remaining bugs and design tweaks.
+    </p>
+  </section>
+</section>

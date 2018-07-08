@@ -8,7 +8,7 @@ layout: default
 
   <h1>Hello</h1>
   <p>There's not much to see here.</p>
-  <p>The majority of my time is currently shared between <a href="http://datawheel.us/">Datawheel</a> and <a href="https://d3plus.org/">D3plus</a>.</p>
+  <p>The majority of my time is currently shared between <a href="https://datawheel.us/">Datawheel</a> and <a href="https://d3plus.org/">D3plus</a>.</p>
 
 </section>
 
@@ -25,10 +25,10 @@ layout: default
       dusk = hour >= 18 && hour <= 20,
       night = hour > 20 || hour < 4;
 
-  if (night) var greetings = ["Go to bed"];
-  else if (dusk) var greetings = ["Good evening"]
-  else if (dawn) var greetings = ["Good morning", "Rise and shine"];
-  else var greetings = ["Hello", "Sup", "Oh, hi there"];
+  if (night) var greetings = ["go to bed"];
+  else if (dusk) var greetings = ["good evening"]
+  else if (dawn) var greetings = ["good morning", "rise and shine"];
+  else var greetings = ["hello", "sup", "oh, hi there"];
 
   var text = greetings[Math.floor(Math.random()*greetings.length)];
   d3.select("h1").text(text);

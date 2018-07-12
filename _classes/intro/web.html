@@ -1,0 +1,790 @@
+---
+title: Github, Servers, and HTML
+---
+
+<section>
+  <section>
+    <h1>Intro to the Web</h1>
+  </section>
+  <section>
+    <h2>Topics</h2>
+    <ul>
+      <li class="fragment">The Internet</li>
+      <li class="fragment">Software Setup</li>
+      <li class="fragment">Using Github</li>
+      <li class="fragment">Runing a Local Server</li>
+      <li class="fragment">HTML</li>
+      <li class="fragment">CSS</li>
+      <li class="fragment">JavaScript</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>The Internet</h1>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section>
+    <h1>What is it?</h1>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The internet is just a bunch of connected computers.</h2>
+  </section>
+  <section>
+    <h2>But what about "the cloud"?</h2>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The cloud is just a bunch of connected computers that you're allowed to store your data on.</h2>
+  </section>
+  <section>
+    <h2>Clients and Servers</h2>
+    <p>
+      When a user types an address into a browser, that computer makes a request (client) to another computer that is running software that can send back files (server).
+    </p>
+  </section>
+  <section>
+    <h2>Developing a Website</h2>
+    <p>
+      In order to proficiently write and test web code, our individual computer can act as both a server and a client.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Software Setup</h1>
+    <i class="fa fa-book"></i>
+  </section>
+  <section>
+    <h2>Web Browser</h2>
+    <img class="stretch noborder" src="/images/classes/browsers.png">
+    <p>I don't care which one you use.</p>
+    <p>...but I use Chrome because I think it's the best, and I'll make fun of you if you use Internet Explorer.</p>
+  </section>
+  <section>
+    <h2>Text Editor</h2>
+    <img class="inline noborder" src="/images/classes/atom.png" height="500px">
+    <ul class="inline">Suggestions:
+      <li><a target="_blank" href="https://atom.io/">Atom (Recommended)</a></li>
+      <li><a target="_blank" href="http://www.sublimetext.com/">Sublime Text</a></li>
+      <li><a target="_blank" href="https://macromates.com/">TextMate</a></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Command-line Shell</h2>
+    <div class="left">
+      <p>Terminal (Mac)</p>
+      <img class="inline noborder" src="/images/classes/terminal.png">
+    </div>
+    <div class="right">
+      <p>PowerShell (Windows)</p>
+      <img class="inline noborder" src="/images/classes/powershell.png">
+    </div>
+  </section>
+  <section>
+    <h2>Python</h2>
+    <img class="inline noborder" src="/images/classes/python.png">
+    https://www.python.org/
+  </section>
+  <section>
+    <h2>Testing Python</h2>
+    <p>
+      macOS Terminal:
+    </p>
+    <pre><code class="bash">python --version</code></pre>
+    <p>
+      Windows PowerShell:
+    </p>
+    <pre><code class="bash">Get-Command python | fl *</code></pre>
+  </section>
+  <section>
+    <h2>Github Desktop</h2>
+    <img class="stretch noborder" src="/images/classes/github-desktop.png">
+    https://desktop.github.com/
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Github</h1>
+    <i class="fa fa-github"></i>
+  </section>
+  <section>
+    <h1>What is Github?</h1>
+    <blockquote class="fragment">
+      &ldquo;Git (/ɡɪt/) is a distributed revision control system with an emphasis on speed, data integrity, and support for distributed, non-linear workflows.&rdquo;
+    </blockquote>
+    <ul>
+      <li class="fragment">Saves all file revisions for easy rollbacks</li>
+      <li class="fragment">A central place for code collaboration</li>
+      <li class="fragment">Open Source</li>
+      <li class="fragment">A great way to host a simple website (Github Pages)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Sign up for an account</h2>
+    <p><em>(if you haven't already)</em></p>
+    <img class="stretch noborder" src="/images/classes/github-signup.png">
+    <p>www.github.com</p>
+  </section>
+  <section>
+    <h2>Create your first repository</h2>
+    <img class="stretch noborder" src="/images/classes/github-home.png">
+    <p>Your repository list is on the bottom right. You can think of a repository as a shared project folder.</p>
+    <p>Click the big green button.</p>
+  </section>
+  <section>
+    <h2>Repository Settings</h2>
+    <img class="noborder inline" src="/images/classes/github-create.png" width="50%">
+    <ul class="inline">
+      <li>&lt;username&gt;.github.io</li>
+      <li>Make it Public</li>
+      <li>Initialize this repository with a README</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Congratulations</h2>
+    <img class="stretch noborder" src="/images/classes/github-repo.png">
+    <p>You've created your first repository.</p>
+    <p>In a few minutes, it will <em>automagically</em> be published to http://&lt;username&gt;.github.io/</p>
+  </section>
+  <section>
+    <h2>Let's edit a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-readme.png">
+    <p><b>YOUR TASK:</b> Change the contents of the README.md file</p>
+  </section>
+  <section>
+    <h2>Let's add a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-add.png">
+    <p><b>YOUR TASK:</b> Create an index.html file and view it in a browser</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Syncing with<br />your Computer</h1>
+    <i class="fa fa-laptop"></i>
+  </section>
+  <section>
+    <h2>Why local? Github.com was easy!</h2>
+    <ul>
+      <li class="fragment">Trust me, the text editor you downloaded is better.</li>
+      <li class="fragment">Allows you to preview the changes in a browser before it goes live.</li>
+      <li class="fragment">You can update/upload multiple files in the same commit.</li>
+      <li class="fragment">...and so much more!</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Open Github Desktop</h2>
+    <small>Log into the application with your github.com account and finish the installation.</small>
+    <img class="stretch noborder" src="/images/classes/github-desktop.png">
+    https://desktop.github.com/
+  </section>
+  <section>
+    <h2>Clone your Repository</h2>
+    <small>After finishing the Github Desktop setup, go back to your web browser and click "Open in Desktop" from the "Clone or Download" window.</small>
+    <img class="stretch noborder" src="/images/classes/github-clone.png">
+  </section>
+  <section>
+    <h2>Changing Files Locally</h2>
+    <p>
+      Your repository has now been downloaded as a folder. Open the new folder in your text editor, where you should see a list of the files in a panel on the left.
+    </p>
+    <br>
+    <p>
+      Click on index.html to open it, change the text inside of it, and save it. Now let's try to upload that file back to Github.com.
+    </p>
+  </section>
+  <section>
+    <h2>Uploading to your repository</h2>
+    <p>
+      Uploading files to your repository is called "pushing", and a push can contain several groups of changes called "commits".
+    </p>
+    <p>
+      Commits have comments attached to them that tells the world what was changed in those files.
+    </p>
+  </section>
+  <section>
+    <h2>Push example</h2>
+    <pre><code class="js">Commit: "created a new logo"
+index.html
+logo.png</code></pre>
+    <pre><code class="js">Commit: "changed background color and title"
+styles.css
+index.html</code></pre>
+  </section>
+  <section>
+    <h2>Syncing with Github.com</h2>
+    <p>
+      The program only lists files with changes. Check off the files you'd like to commit, and write a commit message.
+    </p>
+    <img class="stretch noborder" src="/images/classes/github-commit.png">
+    <p>
+      Click "Commit to Master", and then "Push to Origin"
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Running a<br />Local Server</h1>
+    <i class="fa fa-server"></i>
+  </section>
+  <section>
+    <h2>Running the Site Locally</h2>
+    <p>
+      So you've got updating files under your belt. But what if you want to view the changes in a browser BEFORE you push to the live site? These next few steps will get your computer set up as a local server to view these files.
+    </p>
+  </section>
+  <section>
+    <h2>Using the Shell</h2>
+    <p>
+      PowerShell and Terminal are programs that interact with your computer through text commands. You can make folders, move files, and even launch applications.
+    </p>
+    <p>
+      Commands are issued by writing the command and pressing the return key. Only 1 command can be issued at a time.
+    </p>
+  </section>
+  <section>
+    <h2>Directories in the Shell</h2>
+    <p>
+      When interacting with your computer through a shell, you are always issuing commands from a specific folder on your computer.
+    </p>
+    <p>To move into a folder, use the <u>c</u>hange <u>d</u>irectory command:</p>
+    <pre><code class="bash">cd /path/to/my/folder/</code></pre>
+    <p class="fragment">Use cd to go into your repository folder.</p>
+  </section>
+  <section>
+    <h2>Starting a Server w/ Python</h2>
+    <p>
+      Python v2:
+    </p>
+    <pre><code class="bash">python -m SimpleHTTPServer</code></pre>
+    <p>
+      Python v3:
+    </p>
+    <pre><code class="bash">python -m http.server 8000</code></pre>
+  </section>
+  <section>
+    <h2>Look in your browser!</h2>
+    <p>
+      You should be able to see your site at the following URL:
+    </p>
+    <pre><code class="bash">http://localhost:8000/</code></pre>
+  </section>
+  <section>
+    <h2>Stopping the server</h2>
+    <p>
+      Anytime you would like to stop the server from running (say, to commit some files to Git), you can <u><strong>cancel</strong></u> the process by pressing <u><strong>control + c</strong></u> on your keyboard while in the shell.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>HTML</h1>
+    <i class="fa fa-code"></i>
+  </section>
+  <section>
+    <h2>From Wikipedia:</h2>
+    <blockquote>
+      "HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages."
+    </blockquote>
+  </section>
+  <section>
+    <h2>A brief history</h2>
+    <img src="/images/classes/tbl.jpg" />
+    <p>Created by Tim Berners-Lee in 1995 as a way to distribute research papers.
+  </section>
+  <section>
+    <h2>More From Wikipedia:</h2>
+    <blockquote>
+      "The language is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
+      <br /><br />
+      Browsers do not display the HTML tags and scripts, but use them to interpret the content of the page."
+    </blockquote>
+  </section>
+  <section>
+    <h2>So let's start writing some code</h2>
+    <p class="fragment">
+      In the root directory of your project, create a new HTML file.
+    </p>
+  </section>
+  <section>
+    <h2>DOCTYPE Declaration</h2>
+    <p>
+      The Document Type Declaration is for HTML5 and "should" be the included as the first line of every HTML file.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;</code></pre>
+    <p>
+      If a declaration is not included, some browsers will revert to their legacy "quirks mode" for rendering.
+    </p>
+  </section>
+  <section>
+    <h2>HTML Wrapper</h2>
+    <p>
+      The contents of every HTML file (except for the DOCTYPE) should be wrapped in &lt;html&gt; tags:
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">Capitalization does not matter.</li>
+      <li class="fragment">Remember to close any tags that you open.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>The Head and Body</h2>
+    <p>
+      All webpages have a head and a body. The head contains information about the page (the brains) and the body contains information that will be visible to the user (the brawn).
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">The head MUST come before the body.</li>
+      <li class="fragment">Identation does not matter, but will help keep your sanity.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Character Encoding</h2>
+    <p>
+      Like the DOCTYPE before it, there is one more "required" tag that must be present in the head of every document.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">This explicitly sets the character set used, if not passed by the server.</li>
+      <li class="fragment">Dave, did you mention how we're setting an attribute of a tag?</li>
+      <li class="fragment">Did you also mention self-closing tags?</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Stop and test</h2>
+    <p>
+      Put something in the body of the page and make sure it's rendering to your browser.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Get rid of that ugly page title</h2>
+    <p>
+      One of the many tags that the head supports is &lt;title&gt;.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;My cool test page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="fragment">Great for browsers, bookmarks, screen readers, and SEO</p>
+  </section>
+  <section>
+    <h2>Wikipedia, what's "SEO"?</h2>
+    <blockquote class="fragment">
+      "Search engine optimization (SEO) is the process of affecting the visibility of a website or a web page in a search engine's unpaid results - often referred to as "natural," "organic," or "earned" results. In general, the earlier (or higher ranked on the search results page), and more frequently a site appears in the search results list, the more visitors it will receive from the search engine's users."
+    </blockquote>
+  </section>
+  <section>
+    <h2>Dave, what the hell does that mean?</h2>
+    <p class="fragment">
+      Search engines, in their spare time, go to every webpage they can find over the internet and either add or update their listings with the information it can read from the page.
+    </p>
+    <small class="fragment">That's known as "crawling".</small>
+    <p class="fragment">
+      The more clear, organized, and descriptive the content is on a webpage, the more accurate the search engine's listing will become.
+    </p>
+  </section>
+  <section>
+    <h2>Back to the body</h2>
+    <p>
+      The basic structure of HTML was created based on what you would find in a research paper or Word document.
+    </p>
+    <ul>
+      <li class="fragment">&lt;p&gt; for paragraphs</li>
+      <li class="fragment">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc for headings</li>
+      <li class="fragment">&lt;ul&gt; and &lt;ol&gt; for unordered and ordered lists</li>
+      <li class="fragment">&lt;a&gt; for anchor links</li>
+      <li class="fragment">&lt;div&gt; for divisions</li>
+      <li class="fragment">&lt;span&gt; for spans of words</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Inline vs Block</h2>
+    <p class="fragment">
+      Most elements in HTML take up the full width of the screen (block), forcing the next element to be positioned below it on a new line.
+    </p>
+    <p class="fragment">
+      Some elements, like &lt;span&gt;, are inline, which means that it will appear on the same line as the content before and after itself, never causing a line break.
+    </p>
+  </section>
+  <section>
+    <h2>Semantic Tags</h2>
+    <p>
+      HTML5 (the newest standard) introduced a new set of tags that are more literal than the dated and obscure tags like "div" and "span". These new tags include:
+    </p>
+    <ul>
+      <li class="fragment">&lt;header&gt;</li>
+      <li class="fragment">&lt;footer&gt;</li>
+      <li class="fragment">&lt;nav&gt;</li>
+      <li class="fragment">&lt;article&gt;</li>
+      <li class="fragment">&lt;section&gt;</li>
+      <li class="fragment">&lt;aside&gt;</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Styling Elements</h1>
+    <i class="fa fa-paint-brush"></i>
+  </section>
+  <section>
+    <h2>Inline styles</h2>
+    <pre><code class="html"><p style="color: red;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px; background-color: blue; margin: 25px;">Some text</p></code></pre>
+  </section>
+  <section>
+    <h1>Separate form and content as much as possible</h1>
+  </section>
+  <section>
+    <h1>CSS to the rescue</h1>
+    <small class="fragment">"Cascading Style Sheets"</small>
+  </section>
+  <section>
+    <h2>Styles in the Head</h2>
+    <p>
+      CSS can be defined in the &lt;head&gt; of a document, and they will effect every element on the page.
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;style&gt;
+    p {
+      color: red;
+      font-size: 32px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Hello!&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h2>But Dave, what if I want to style two paragraphs separately?</h2>
+    <p class="fragment">
+      The ID attribute can be set on an element so that you can specifically select it in CSS:
+    </p>
+    <pre class="fragment"><code class="html"><p id="redParagraph">Some text</p></code></pre>
+    <pre class="fragment"><code class="html">&lt;style&gt;
+  p#redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the pound sign is optional.</small>
+  </section>
+  <section>
+    <h1>HOWEVER</h1>
+    <p class="fragment">
+      Element IDs should only be used on single elements. If you have multiple elements that need the same style applied to them, use the "class" attribute:
+    </p>
+    <pre class="fragment"><code class="html"><p class="redParagraph">Some text</p>
+<p class="redParagraph">Some text</p></code></pre>
+    <pre class="fragment"><code class="html">&lt;style&gt;
+  p.redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the decimal sign is also optional.</small>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p class="fragment">
+      Create a file called "style.css" in your root directory and cut/paste all of the code in between the &lt;style&gt; tags into there.
+    </p>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p>
+      In the place of your &lt;style&gt; tags, create a link to that file:
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+  <section class="stretch" data-background="http://media1.giphy.com/media/nu6XLY6QHeUk8/giphy.gif">
+    <h2 class="top" style="width: 100%; text-align: center;">Duplicate Code is Gross</h2>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>JavaScript Basics</h1>
+  </section>
+  <section>
+    <h2>What is JavaScript?</h2>
+    <p>
+      While HTML is a programming language used for page layout, JavaScript is a programming language used for page manipulation.
+    </p>
+    <p>
+      JavaScript code is written for the page to interpret, not render.
+    </p>
+  </section>
+  <section>
+    <h2>Script Tags</h2>
+    <p>
+      All JavaScript code must be wrapped in between two &lt;script&gt; tags. These tags can be anywhere on an HTML page, in the header or the body.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Code Syntax</h2>
+    <p>
+      JavaScript code is executed line-by-line, from top to bottom. While spacing and indentation do not matter, each line must end with a semi-colon.
+    </p>
+  </section>
+  <section>
+    <h2>Variables</h2>
+    <p>
+      A variable is a common name for a value that might change. By storing things as variables, we can access them later. Here we can store a number and print it out to the browser console.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Number Variables</h2>
+    <p>
+      Numbers can be manipulated with math!
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  myNumber = myNumber + 10;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>String Variables</h2>
+    <p>
+      Text is stored by surrounding the characters with quotation marks, and text strings can be concatenated to eachother.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myString = "JavaScript is Cool!";
+
+  console.log("D3 and " + myString);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Boolean Variables</h2>
+    <p>
+      Booleans are values that are either true or false.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 20;
+
+  var bigNumber = myNumber > 100;
+
+  console.log(bigNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Array Variables</h2>
+    <p>
+      A list of variables can be stored as an Array, and you select which entry you need by using a 0-index based numbering system.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myArray = ["one", "two", "three", "four"];
+
+  // Any line starting with double slashes is a comment
+  // that will not be interpreted by the browser.
+
+  // This should print out "two"
+  console.log(myArray[1]);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Object Variables</h2>
+    <p>
+      Instead of using a flat list as in Arrays, you can store data with keys and values to easily access later.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myObject = {
+    "name": "Dave",
+    "color": "red"
+  };
+
+  console.log(myObject.name);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Functions</h2>
+    <p>
+      When logic may need to be repeated multiple times, it is best practice to store that logic in one place. Functions are triggered by saying the variable name followed by a set of parenthesis.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayHello = function() {
+    console.log("Hello!");
+  }
+
+  sayHello();
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Variables</h2>
+    <p>
+      Functions may accept variables to use internally.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayText = function(txt) {
+    console.log(txt);
+  }
+
+  sayText("Goodbye");
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Returns</h2>
+    <p>
+      Additionally, functions can return a value.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var plusTen = function(num) {
+    return num + 10;
+  }
+
+  var thirty = plusTen(20);
+
+  console.log(thirty);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Conditional Statements</h2>
+    <p>
+      JavaScript contains syntax for evaluating logic and performing actions when a defined parameter is met.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 12;
+
+  if (myNumber > 10) {
+    console.log("greater than 10!");
+  }
+  else {
+    console.log("less than 10!");
+  }
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Combining Everything</h2>
+    <p>
+      JavaScript starts to shine once you start combining these concepts.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  function greaterThanTen(num) {
+
+    if (num > 10) {
+      console.log("greater than 10!");
+    }
+    else {
+      console.log("less than 10!");
+    }
+
+    return num > 10;
+
+  }
+
+  // this should return true
+  console.log(greaterThanTen(20));
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Interacting with HTML</h2>
+    <p>
+      The "document" is a pre-defined object with information and functions relating to the page itself. Here, we can select an element and change it's content:
+    </p>
+    <pre><code class="html">&lt;h1 id="name"&gt;&lt;/h1&gt;
+&lt;script&gt;
+
+  document.getElementById("name").innerHTML = "Dave";
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Great Job!</h1>
+</section>

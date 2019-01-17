@@ -1,0 +1,206 @@
+---
+title: SVG and CSS
+---
+
+<section>
+  <section>
+    <h2>January 17, 2019</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Review last week's homework</li>
+      <li class="fragment">SVG</li>
+      <li class="fragment">CSS</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework Grading</h1>
+    <p>30% of your overall class grade is the average grade of all homework assignments.</p>
+    <p>Each homework assignment is due at the start of each class, and is graded as follows:</p>
+    <table>
+      <tr>
+        <td>100%</td>
+        <td>Assignment complete and pushed to Github</td>
+      </tr>
+      <tr>
+        <td>75%</td>
+        <td>Assignment complete but not pushed to Github</td>
+      </tr>
+      <tr>
+        <td>50%</td>
+        <td>Assignment incomplete<br />(did not finish or properly follow directions)</td>
+      </tr>
+      <tr>
+        <td>0%</td>
+        <td>Assignment not completed</td>
+      </tr>
+    </table>
+  </section>
+  <section>
+    <h1>Let's take a look at everyone's homework</h1>
+    <a target="_blank" href="/classes/artg5330-spring2019/random">http://www.dave-landry.com/classes/artg5330-spring2019/random</a>
+  </section>
+</section>
+
+<section>
+  <h2>Start your servers!</h2>
+  <pre><code class="bash">http-server</code></pre>
+  <p>
+    If your terminal is closed, open it from the "Terminal" menu at the top of VS Code.
+  </p>
+</section>
+
+<section>
+  <section>
+    <h1>SVG</h1>
+    <small class="fragment" style="display: block; margin-bottom: 25px;">"Scalable Vector Graphics"</small>
+    <i class="fa fa-pie-chart"></i>
+  </section>
+  <section>
+    <h1>Raster vs Vector</h1>
+    <img class="stretch" src="/images/classes/raster-vector.png" />
+  </section>
+  <section>
+    <h1>Container Element</h1>
+    <p>
+      All SVG graphics need to be contained inside of a set of SVG tags:
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;&lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Draw shapes!</h1>
+    <p>
+      Shape properties are set as attributes of the element.
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;
+    &lt;rect x="50px" y="100px" width="150px" height="100px" fill="red" /&gt;
+  &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Built-in Shapes</h1>
+    <ul>
+      <li class="fragment">rect</li>
+      <li class="fragment">circle</li>
+      <li class="fragment">ellipse</li>
+      <li class="fragment">line</li>
+      <li class="fragment">polyline</li>
+      <li class="fragment">polygon</li>
+      <li class="fragment">path</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Styling Elements</h1>
+    <i class="fa fa-paint-brush"></i>
+  </section>
+  <section>
+    <h2>Inline styles</h2>
+    <pre><code class="html"><p style="color: red;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px; background-color: blue; margin: 25px;">Some text</p></code></pre>
+  </section>
+  <section>
+    <h1>Separate form and content as much as possible</h1>
+  </section>
+  <section>
+    <h1>CSS to the rescue</h1>
+    <small class="fragment">"Cascading Style Sheets"</small>
+  </section>
+  <section>
+    <h2>Styles in the Head</h2>
+    <p>
+      CSS for a specific tag can be defined in the &lt;head&gt; of a document, and it will effect every element of that type on the page.
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;style&gt;
+    p {
+      color: red;
+      font-size: 32px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Hello!&lt;/p&gt;
+  &lt;p&gt;Goodbye!&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h2>But Dave, what if I want to style two paragraphs separately?</h2>
+    <p>
+      The ID attribute can be set on an element so that you can specifically select it in CSS:
+    </p>
+    <pre><code class="html"><p id="redParagraph">Some text</p></code></pre>
+    <pre><code class="html">&lt;style&gt;
+  p#redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the pound sign is optional.</small>
+  </section>
+  <section>
+    <h1>HOWEVER</h1>
+    <p>
+      Element IDs should only be used on single elements. If you have multiple elements that need the same style applied to them, use the "class" attribute:
+    </p>
+    <pre><code class="html"><p class="redParagraph">Some text</p>
+<p class="redParagraph">Some text</p></code></pre>
+    <pre><code class="html">&lt;style&gt;
+  p.redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the decimal sign is also optional.</small>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p>
+      Create a file called "style.css" in your root respository and cut/paste all of the code in between the &lt;style&gt; tags into the new empty "style.css" file.
+    </p>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p>
+      In the place of your &lt;style&gt; tags, create a link to that file:
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+
+<section>
+  <h2>Homework</h2>
+  <img src="/images/classes/kandinsky.jpg" />
+  <ul>
+    <li>
+      Using SVG shapes, recreate as much of this Google Doodle as you can (at least 20 shapes).
+    </li>
+    <li>
+      Link to your final code from the index.html on your website.
+    </li>
+  </ul>
+</section>

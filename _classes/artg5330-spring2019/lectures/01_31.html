@@ -1,0 +1,115 @@
+---
+title: Intro to D3
+---
+
+<section>
+  <section>
+    <h2>January 31, 2019</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">Intro to D3</li>
+      <li class="fragment">In-Class Practice</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="/classes/artg5330-spring2019/random">http://www.dave-landry.com/classes/artg5330-spring2019/random</a>
+</section>
+
+<section>
+  <h2>Start your servers!</h2>
+  <pre><code class="bash">http-server</code></pre>
+  <p>
+    If your terminal is closed, open it from the "Terminal" menu at the top of VS Code.
+  </p>
+</section>
+
+<section>
+  <section>
+    <h1>D3 Basics</h1>
+  </section>
+  <section>
+    <h2>What is D3?</h2>
+    <p>
+      D3 is a JavaScript library that allows for manipulating HTML page elements in JavaScript using complex data arrays.
+    </p>
+    <p>
+      It also provides a lot of nice JavaScript shortcuts.
+    </p>
+  </section>
+  <section>
+    <h2>Let's load it!</h2>
+    <p>
+      We can use the JavaScript file directly from their website:
+    </p>
+    <pre><code class="html">&lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Selections</h2>
+    <p>
+      Similar to JavaScript and JQuery (if you are familiar), D3 has it's own element selector:
+    </p>
+    <pre><code class="js">document.getElementById("name");</code></pre>
+    <pre><code class="js">$("#name");</code></pre>
+    <pre><code class="js">d3.select("#name");</code></pre>
+  </section>
+  <section>
+    <h2>Attributes and Styles</h2>
+    <p>
+      Element attributes and styles can be changed by using the supplied D3 functions:
+    </p>
+    <pre><code class="js">var elem = d3.select("#name");
+
+elem.attr("class", "big");
+elem.style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h2>Chaining Styles</h2>
+    <p>
+      The <code>attr</code> and <code>style</code> functions always return the original element being modified, so they can be chained one after another:
+    </p>
+    <pre><code class="js">d3.select("#name").attr("class", "big").style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h2>Multi-Selection</h2>
+    <p>
+      You can also select multiple elements on a page and change all of their properties at the same time using the <code>selectAll</code> function:
+    </p>
+    <pre><code class="js">d3.selectAll(".big").style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h2>Applying Data to Elements</h2>
+    <p>
+      Now let's get into why D3 is so great. Instead of re-inventing the wheel, let's do the tutorial that the creator of D3 put together: <a href="https://bost.ocks.org/mike/circles/" target="_blank">https://bost.ocks.org/mike/circles/</a>.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>In-Class Practice</h1>
+  <p>
+    Experiment with D3 enter/update/exit. Refer to the D3 tutorial, these class notes, and run a function in the console that changes the SVG elements on the page based on different data arrays provided to the function.
+  </p>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>
+    Create an HTML page that has:
+  </p>
+  <ul>
+    <li>a function that uses enter/update/exit to draw SVG squares based on data provided to the function</li>
+    <li>two <code>&lt;button&gt;</code> elements</li>
+    <li>a "click" event for each <code>&lt;button&gt;</code> that runs the function, with different data for each button</li>
+  </ul>
+</section>

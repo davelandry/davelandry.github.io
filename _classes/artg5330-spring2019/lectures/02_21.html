@@ -1,0 +1,102 @@
+---
+title: Manipulating Data
+---
+
+<section>
+  <section>
+    <h2>February 21, 2019</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li>Review last week's homework</li>
+      <li>Manipulating Data</li>
+      <li>Work in Class</li>
+      <li>Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Data Review!</h1>
+  <a target="_blank" href="/classes/artg5330-spring2019/random">http://www.dave-landry.com/classes/artg5330-spring2019/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Manipulating Data</h1>
+  </section>
+  <section>
+    <h2>Changing Data</h2>
+    <p>Arrays have a built in "forEach" function that allows you to loop through and change things:</p>
+    <pre><code class="js">data.forEach(function(d) {
+  d.export_val = parseFloat(d.export_val);
+});</code></pre>
+  </section>
+  <section>
+    <h2>Filtering Data</h2>
+    <p>Arrays have a built in "filter" function that allows you to selectively trim a large data array:</p>
+    <pre><code class="js">var currentYearData = data.filter(function(d) {
+  return d.year == "2019";
+});</code></pre>
+  </section>
+  <section>
+    <h2>D3 Array Functions</h2>
+    <p>D3 contains a number of helper array functions that will analyze an Array in different ways. For example, finding the extent of data to be used in a scale:</p>
+    <pre><code class="js">var dataExtent = d3.extent(data, function(d) {
+  return d.export_val;
+});
+
+var xScale = d3.scaleLinear()
+  .domain(dataExtent)
+  .range([0, window.innerWidth]);
+</code></pre>
+  <p>Other helpful functions include "min" and "max".</p>
+  </section>
+  <section>
+    <h2>Grouping Data</h2>
+    <p>The d3.nest() function can be used to group data on a common key:</p>
+    <pre><code class="js">var groupedData = d3.nest()
+  .key(function(d) {
+    return d.continent;
+  })
+  .entries(csvData);</code></pre>
+  </section>
+  <section>
+    <h2>Creating a Mapping</h2>
+    <p>
+      When using 2 data files, like a geographical map and CSV data, it is sometimes necessary to create a mapping in order to cross-reference from one data file to the other.
+    </p>
+    <pre><code class="js">var countryMapping = {
+  "CAN": "Canada",
+  "USA": "United States",
+  "MEX": "Mexico"
+};
+
+data.forEach(function(d) {
+  d.fullName = countyMapping[d.country];
+});</code></pre>
+    <p>
+      This is often called "cross-walking".
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Create a scaffold/wireframe for your project.<br />This should include:
+    </p>
+    <ul>
+      <li>An HTML file that loads a JS and CSS file</li>
+      <li>A project title<br />(both visible on the page and in the browser tab)</li>
+      <li>Introductory text explaining the project</li>
+      <li>HTML and SVG elements placed on the page where content will eventually live (scaffold/skeleton)</li>
+    </ul>
+  </section>
+</section>

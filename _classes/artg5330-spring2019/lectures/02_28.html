@@ -1,0 +1,109 @@
+---
+title: Making a Map
+---
+
+<section>
+  <section>
+    <h2>February 28, 2019</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li>Review last week's homework</li>
+      <li>Making a Map</li>
+      <li>Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Wireframes!!!</h1>
+  <a target="_blank" href="/classes/artg5330-spring2019/random">http://www.dave-landry.com/classes/artg5330-spring2019/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Making a Map</h1>
+    <i class="fa fa-map-o"></i>
+  </section>
+  <section>
+    <h2>GeoJSON</h2>
+    <p>
+      GeoJSON is an open standard format designed for representing simple geographical features. It is based on JSON, the JavaScript Object Notation.
+    </p>
+    <p>
+      Let's take a look at the examples in Wikipedia:<br />
+      <a href="https://en.wikipedia.org/wiki/GeoJSON" target="_blank">https://en.wikipedia.org/wiki/GeoJSON</a>
+    </p>
+  </section>
+  <section>
+    <h2>Loading Geographies</h2>
+    <p>GeoJSON/TopoJSON files are loaded the same way as any other JSON data file:</p>
+    <pre><code class="js">d3.json("world.json", function(error, data) {
+  console.log(data);
+});</code></pre>
+    <p class="fragment">There are 2 sample TopoJSON files hosted for this class:<br />
+    <a target="_blank" href="http://www.dave-landry.com/classes/artg5330-spring2019/">http://www.dave-landry.com/classes/artg5330-spring2019/</a></p>
+  </section>
+  <section>
+    <h2>TopoJSON to GeoJSON</h2>
+    <p>The loaded TopoJSON must be converted to GeoJSON, after loading, before we are able to use it for drawing.</p>
+    <pre><code class="html">&lt;script src="https://unpkg.com/topojson@3"&gt;&lt;/script&gt;</code></pre>
+    <pre><code class="js">var geoJSON = topojson.feature(data, data.objects.countries);</code></pre>
+  </section>
+  <section>
+    <h2>Set up a Projection</h2>
+    <p>Similar to setting up a linearScale for mapping data values to pixel positions, we need to set up a projection that maps from coordinates to pixels.</p>
+    <p class="fragment"><a href="https://thetruesize.com/" target="_blank">This</a> is why projections matter.</p>
+  </section>
+  <section>
+    <h2>Set up a Projection</h2>
+    <p>Choose one of the projections included with D3 from <a href="https://github.com/d3/d3-geo#azimuthal-projections" target="_blank">here</a>.</p>
+    <pre><code class="js">var proj = d3.geoMercator()
+  .fitSize([width, height], geoJSON);
+
+var path = d3.geoPath()
+  .projection(proj);</code></pre>
+  </section>
+  <section>
+    <h2>Draw the Geographies</h2>
+    <p>The "path" variable can be passed a GeoJSON feature, and it will return an SVG path.</p>
+    <pre><code class="js">var countries = svg.selectAll("path")
+  .data(geoJSON.features);
+
+countries.enter().append("path")
+  .attr("d", function(d) {
+    return path(d);
+  })</code></pre>
+  </section>
+  <section>
+    <h2>Coordinate Points?</h2>
+    <p>The "path" variable can also be passed a coordinate point, and it will return it's pixel position.</p>
+    <pre><code class="js">var points = [
+  {"name": "Boston", "coords": [-71.0589, 42.3601]},
+  {"name": "London", "coords": [-0.1278, 51.5074]}
+];
+
+var points = svg.selectAll("circle")
+  .data(points);
+
+points.enter().append("circle")
+  .attr("transform", function(d){
+    return "translate(" + proj(d.coords) + ")";
+  })</code></pre>
+    <p>Be careful, it expects lat/long in the opposite order!</p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Have a first draft of 1 visualization using real data.
+    </p>
+  </section>
+</section>

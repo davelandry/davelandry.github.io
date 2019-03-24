@@ -55,7 +55,7 @@
                 console.log(d);
             })
             .on("mousemove", function(d) {
-                var mouse = d3.mouse(this);
+                var mouse = d3.mouse(document.body);
                 d3.select("#tooltip")
                     .style("display", "block")
                     .html("<h1>" + d + "</h1>")

@@ -217,6 +217,10 @@ body {
   border-spacing: 0;
 }
 
+.reveal table.small {
+  font-size: 0.6em;
+}
+
 .reveal table th {
   font-weight: bold;
 }

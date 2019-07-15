@@ -30,7 +30,11 @@ layout: default
   else if (dawn) var greetings = ["good morning", "rise and shine"];
   else var greetings = ["hello", "sup", "oh, hi there"];
 
-  var text = greetings[Math.floor(Math.random()*greetings.length)];
+  var text = greetings[Math.floor(Math.random() * greetings.length)];
   d3.select("h1").text(text);
+
+  // setTimeout(function() {
+  //   d3.select("#background").attr("class", "animate");
+  // }, 1000);
 
 </script>

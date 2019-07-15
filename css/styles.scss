@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-color: #e8eaf7;
+  background-color: #c5c4bf;
   font-family: "DaveLandry", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;
   font-weight: 900;
@@ -39,19 +39,24 @@ br {
 }
 
 #background {
-  background-position: right bottom;
+  background-position: calc(100% - 20px) 100%;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  background-image: url("/images/background.jpg");
+  background-size: 300px auto;
+  background-image: url("/images/avatar.png");
   position: fixed;
   top: 0;
+  // transition: transform 10s ease-in-out;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: -1;
+  // transform: translateY(450px);
+  // &.animate {
+  //   transform: translateY(0);
+  // }
 }
 
 section {

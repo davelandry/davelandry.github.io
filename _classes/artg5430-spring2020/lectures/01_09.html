@@ -1,0 +1,861 @@
+---
+title: Github and Revisiting HTML/SVG/CSS/JS
+---
+
+<section>
+  <section>
+    <h2>Welcome to</h2>
+    <h1>Visualization Technologies</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Introductions</li>
+      <li class="fragment">Course Overview</li>
+      <li class="fragment">Class Materials</li>
+      <li class="fragment">Github</li>
+      <li class="fragment">Revisit HTML/SVG/CSS/JS</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Instructor</h2>
+    <h1>Dave Landry</h1>
+    <a href="mailto:d.landry@northeastern.edu">d.landry@northeastern.edu</a>
+  </section>
+  <section>
+    <h2>I'm a husky</h2>
+    <img src="/images/classes/dave-husky.jpg">
+    <h4>Ryder Hall circa 2008</h4>
+  </section>
+  <section>
+    <h3>For my capstone, I developed an interactive map visualization in Java that showed co-authorship of SIGGRAPH papers.</h3>
+    <video class="stretch" data-autoplay>
+      <source data-src="/images/classes/paper_trail.mp4" type="video/mp4" />
+    </video>
+  </section>
+  <section>
+    <h3>Now I have a company that creates large-scale visualization platforms for big data.</h3>
+    <img class="inline noborder" src="/images/classes/datawheel.jpg" height="250px">
+    <img class="inline noborder" src="/images/classes/datausa.png" height="250px">
+  </section>
+  <section>
+    <h2>Questions for you</h2>
+    <ol>
+      <li class="fragment">What's your name?</li>
+      <li class="fragment">What's your concentration?</li>
+      <li class="fragment">What do you do in your free time?</li>
+      <li class="fragment">How comfortable are you with coding?</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Any questions for me?</h2>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Course Overview</h2>
+    <p>
+      Builds on the foundational skills acquired in ARTG 5330. Introduces students to intermediate-to advanced-level topics in web-based interactive visualization. Focuses on building greater proficiency in working with d3 and related JavaScript libraries and on acquiring knowledge of best practices and common patterns in data visualization problem solving. Through lectures, workshops, and
+a final project, the class offers students an opportunity to learn to effectively deploy their data visualization skills to explore and extract understanding from data in a critical and productive way.
+    </p>
+  </section>
+  <section>
+    <h1>You're going to create a narrative by visualizing data.</h1>
+  </section>
+  <section>
+    <h2>Final Project</h2>
+    <p style="text-align: left;">
+      Using a dataset of your choosing, you will be creating a visualization narrative that must:
+    </p>
+    <ul>
+      <li>guide users to gain an insight from the selected dataset</li>
+      <li>animate at least 1 visualization via user interaction</li>
+      <li>include at least 3 sentences of data-driven text description</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Topics Covered</h2>
+    <ul>
+      <li class="fragment">Github and Revisiting HTML/CSS/JS</li>
+      <li class="fragment">Data, Manipulation, and APIs</li>
+      <li class="fragment">Realtime APIs and Advanced JavaScript</li>
+      <li class="fragment">Timelines, Toggles, and Scrolling</li>
+      <li class="fragment">SVG Text and Label Positioning</li>
+      <li class="fragment">TopoJSON, Tiles, and Zooming</li>
+      <li class="fragment">Color, Legends, and Scales</li>
+      <li class="fragment">Cross-Browser Idiosyncrasies</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Homework Grading</h1>
+    <p>30% of your overall class grade is the average grade of all homework assignments.</p>
+    <p>Each homework assignment is due at the start of each class, and is graded as follows:</p>
+    <table>
+      <tr>
+        <td>100%</td>
+        <td>Assignment complete and pushed to Github</td>
+      </tr>
+      <tr>
+        <td>75%</td>
+        <td>Assignment complete but not pushed to Github</td>
+      </tr>
+      <tr>
+        <td>50%</td>
+        <td>Assignment incomplete<br />(did not finish or properly follow directions)</td>
+      </tr>
+      <tr>
+        <td>0%</td>
+        <td>Assignment not completed</td>
+      </tr>
+    </table>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Class Materials</h1>
+    <i class="fa fa-book"></i>
+  </section>
+  <section>
+    <h2>Course "Textbook"</h2>
+    <img class="stretch noborder" src="/images/classes/google.png">
+    <p>Programming textbooks quickly become dated, and the best solutions are often found through collaboration and open dialogue.</p>
+  </section>
+  <section>
+    <h2>Online Resources</h2>
+    <p>
+      Lectures, code references, and class resources:
+      <br>
+      <a href="http://www.dave-landry.com/classes/artg5430-spring2020/">http://www.dave-landry.com/classes/artg5430-spring2020/</a>
+    </p>
+    <p>
+      Class discussion board:
+      <br>
+      <a href="https://gitter.im/NEU-ARTG5430-Spring-2020/community">https://gitter.im/NEU-ARTG5430-Spring-2020/community</a>
+    </p>
+  </section>
+  <section>
+    <h2>Web Browser</h2>
+    <img class="stretch noborder" src="/images/classes/browsers.png">
+    <p>I don't care which one you use.</p>
+    <p>...but I use Chrome because I think it's the best, and I'll make fun of you if you use Internet Explorer.</p>
+  </section>
+  <section>
+    <h2>VS Code</h2>
+    <img class="stretch noborder" src="/images/classes/vscode.png" height="500px">
+    <p><a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
+    <p>I will be using VS Code throughout this class. If you are familiar with Terminal/PowerShell you are free to use any text editor you prefer.</p>
+  </section>
+  <section>
+    <h2>Node</h2>
+    <img class="stretch noborder" src="/images/classes/node.png">
+    <p><a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Github</h1>
+    <i class="fa fa-github"></i>
+  </section>
+  <section>
+    <h1>What is Github?</h1>
+    <blockquote class="fragment">
+      &ldquo;Git (/ɡɪt/) is a distributed revision control system with an emphasis on speed, data integrity, and support for distributed, non-linear workflows.&rdquo;
+    </blockquote>
+    <ul>
+      <li class="fragment">Saves all file revisions for easy rollbacks</li>
+      <li class="fragment">A central place for code collaboration</li>
+      <li class="fragment">Open Source</li>
+      <li class="fragment">A great way to host a simple website (Github Pages)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Sign up for an account</h2>
+    <p><em>(if you haven't already)</em></p>
+    <img class="stretch noborder" src="/images/classes/github-signup.png">
+    <p><a href="https://github.com/" target="_blank">https://github.com/</a></p>
+  </section>
+  <section>
+    <h2>Create your first repository</h2>
+    <img class="stretch noborder" src="/images/classes/github-home.png">
+    <p>Your repository list is on the bottom right. You can think of a repository as a shared project folder.</p>
+    <p>Click the big green button.</p>
+  </section>
+  <section>
+    <h2>Repository Settings</h2>
+    <img class="noborder inline" src="/images/classes/github-create.png" width="40%">
+    <ol class="inline">
+      <li><b>Repository name:</b> &lt;username&gt;.github.io<br /><small>(replace &lt;username&gt; with your github.com username)</small></li>
+      <li>🔘 Public<br /><small>&nbsp;</small></li>
+      <li>☑️ Initialize this repository with a README</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Congratulations</h2>
+    <img class="stretch noborder" src="/images/classes/github-repo.png">
+    <p>You've created your first repository.</p>
+    <p>In a few minutes, it will <em>automagically</em> be published to http://&lt;your username&gt;.github.io/</p>
+  </section>
+  <section>
+    <h2>Let's edit a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-readme.png">
+    <p><b>YOUR TASK:</b> Change the contents of the README.md file</p>
+  </section>
+  <section>
+    <h2>Let's add a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-add.png">
+    <p><b>YOUR TASK:</b> Create an index.html file and view it in a browser</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Syncing with<br />your Computer</h1>
+    <i class="fa fa-laptop"></i>
+  </section>
+  <section>
+    <h2>Why local? Github.com was easy!</h2>
+    <ul>
+      <li class="fragment">Trust me, the text editor you downloaded is better.</li>
+      <li class="fragment">Allows you to preview the changes on your computer before it goes live to the world.</li>
+      <li class="fragment">You can update/upload multiple files in the same commit.</li>
+      <li class="fragment">...and so much more!</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Clone your Repository</h2>
+    <small>Click the "Clone or Download" window and <em>copy</em> the URL shown in the popup.</small>
+    <img class="stretch noborder" src="/images/classes/github-url.png">
+  </section>
+  <section>
+    <h2>Clone your Repository</h2>
+    <small>Open VSCode, and press <code>CTRL+SHIFT+P</code> on Windows or <code>COMMAND+SHIFT+P</code> on Mac and search for the "Git Clone" command and press return. This command search is also viewable by clicking "Command Palette" in the "View" menu at the top of your screen.</small>
+    <img class="stretch noborder" src="/images/classes/vscode-clone.png">
+    <p><em>Paste</em> in the URL, press return, and choose a folder on your computer to hold your project.</p>
+  </section>
+  <section>
+    <h2>Changing Files Locally</h2>
+    <p>
+      Your repository has now been downloaded to your computer. You should see a list of the files in the panel on the left.
+    </p>
+    <br>
+    <p>
+      Click on index.html to open it, change the text inside of it, and save it. Now let's try to upload that file back to Github.com.
+    </p>
+  </section>
+  <section>
+    <h2>Uploading to your repository</h2>
+    <p>
+      Uploading files to your repository is called "pushing", and a push can contain several groups of changes called "commits".
+    </p>
+    <p>
+      Commits have comments attached to them that tells the world what was changed in those files.
+    </p>
+  </section>
+  <section>
+    <h2>Push example</h2>
+    <pre><code class="js">Commit: "created a new logo"
+index.html
+logo.png</code></pre>
+    <pre><code class="js">Commit: "changed background color and title"
+styles.css
+index.html</code></pre>
+  </section>
+  <section>
+    <h2>Syncing with Github.com</h2>
+    <p>
+      Click the "source control" button in the left panel to view files that have been changed. Add (+) the files you'd like to commit, and write a commit message.
+    </p>
+    <img class="stretch noborder" src="/images/classes/vscode-git.png">
+  </section>
+  <section>
+    <h2>Syncing with Github.com</h2>
+    <p>
+      Click the checkmark to commit your changes, and then click the up/down arrows at the very bottom of the screen to sync (push and pull) with github.com.
+    </p>
+    <img class="noborder" src="/images/classes/vscode-sync.png">
+  </section>
+  <section>
+    <h2>Check out your live URL!</h2>
+    <p>
+      After a few moments, your changes should be visible at your live URL (the one we with github.io, not localhost). This is what the world is able to see.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>The Internet</h1>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section>
+    <h1>What is it?</h1>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The internet is just a bunch of connected computers.</h2>
+  </section>
+  <section>
+    <h2>But what about "the cloud"?</h2>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The cloud is just a bunch of connected computers that you're allowed to store your data on.</h2>
+  </section>
+  <section>
+    <h2>Clients and Servers</h2>
+    <p>
+      When a user types an address into a browser, that computer makes a request (client) to another computer that is running software that can send back files (server).
+    </p>
+  </section>
+  <section>
+    <h2>Developing a Website</h2>
+    <p>
+      In order to test websites without publishing, our individual computer can act as both a server and a client.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Running a<br />Local Server</h1>
+    <i class="fa fa-server"></i>
+  </section>
+  <section>
+    <h2>Using the Terminal</h2>
+    <p>
+      The Terminal allows you to interact with your computer through text commands. You can make folders, move files, and even launch applications.
+    </p>
+    <p>
+      Commands are issued by writing the command and pressing the return key. Only 1 command can be issued at a time.
+    </p>
+  </section>
+  <section>
+    <h2>Testing Node</h2>
+    <p>In VSCode, open the Terminal (Terminal menu, select "New Terminal") and type the following command:</p>
+    <pre><code class="bash">node -v</code></pre>
+    <p>The Terminal should respond with the currently installed version.</p>
+  </section>
+  <section>
+    <h2>http-server</h2>
+    <p>We will now install the very last peace of software:</p>
+    <pre><code class="bash">npm install http-server -g</code></pre>
+    <p>This software, when run, will allow your computer to serve files to a web browser.</p>
+  </section>
+  <section>
+    <h2>http-server</h2>
+    <p>Run the following command to start the server:</p>
+    <pre><code class="bash">http-server</code></pre>
+  </section>
+  <section>
+    <h2>Look in your browser!</h2>
+    <p>
+      You should be able to see your site at the following URL:
+    </p>
+    <pre><code class="bash">http://localhost:8080/</code></pre>
+  </section>
+  <section>
+    <h2>Stopping the server</h2>
+    <p>
+      Anytime you would like to stop the server from running, you can <u><strong>cancel</strong></u> the process by pressing <u><strong>control + c</strong></u> on your keyboard while in the Terminal.
+    </p>
+    <p>
+      You should only be running the server while testing your site, so always stop it when you are done developing for the day.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>HTML</h1>
+    <i class="fa fa-code"></i>
+  </section>
+  <section>
+    <h2>A brief history</h2>
+    <img src="/images/classes/tbl.jpg" />
+    <p>Created by Tim Berners-Lee in 1995<br />as a way to distribute research papers.
+  </section>
+  <section>
+    <h2>Basic Structure</h2>
+    <p>
+      (this should look familiar)
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;My cool test page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Basic Tags</h2>
+    <p>
+      The structure of HTML was created based on what you would find in a research paper or Word document.
+    </p>
+    <ul>
+      <li class="fragment">&lt;p&gt; for paragraphs</li>
+      <li class="fragment">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc for headings</li>
+      <li class="fragment">&lt;ul&gt; and &lt;ol&gt; for unordered and ordered lists</li>
+      <li class="fragment">&lt;div&gt; for divisions</li>
+      <li class="fragment">&lt;span&gt; for spans of words</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Inline vs Block</h2>
+    <p class="fragment">
+      Most elements in HTML take up the full width of the screen (block), forcing the next element to be positioned below it on a new line.
+    </p>
+    <p class="fragment">
+      Some elements, like &lt;span&gt;, are inline, which means that it will appear on the same line as the content before and after itself, never causing a line break.
+    </p>
+  </section>
+  <section>
+    <h2>Semantic Tags</h2>
+    <p>
+      HTML5 (the newest standard) introduced a new set of tags that are more literal than the dated and obscure tags like "div" and "span". These new tags include:
+    </p>
+    <ul>
+      <li class="fragment">&lt;header&gt;</li>
+      <li class="fragment">&lt;footer&gt;</li>
+      <li class="fragment">&lt;nav&gt;</li>
+      <li class="fragment">&lt;article&gt;</li>
+      <li class="fragment">&lt;section&gt;</li>
+      <li class="fragment">&lt;aside&gt;</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Linking Pages Together</h2>
+    <p>
+      The web is made of pages that link to each other using "anchor" tags. An anchor can point to an HTML file on your site, or to a completely different site!
+    </p>
+    <pre><code class="html">&lt;a href="page.html"&gt;Click Here&lt;/a&gt;</code></pre>
+  </section>
+  <section>
+    <h2>What else is there?</h2>
+    <img class="stretch noborder" src="/images/classes/google-image.png">
+    <p>
+      When Googling for help, start your search with the language you are writing followed by what you are trying to do: <code>&nbsp;html image&nbsp;</code>
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>SVG</h1>
+    <small class="fragment" style="display: block; margin-bottom: 25px;">"Scalable Vector Graphics"</small>
+    <i class="fa fa-pie-chart"></i>
+  </section>
+  <section>
+    <h1>Raster vs Vector</h1>
+    <img class="stretch" src="/images/classes/raster-vector.png" />
+  </section>
+  <section>
+    <h1>Container Element</h1>
+    <p>
+      All SVG graphics need to be contained inside of a set of SVG tags:
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;&lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Draw shapes!</h1>
+    <p>
+      Shape properties are set as attributes of the element.
+    </p>
+    <pre><code class="html">&lt;body&gt;
+  &lt;svg&gt;
+    &lt;rect x="50px" y="100px" width="150px" height="100px" fill="red" /&gt;
+  &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Built-in Shapes</h1>
+    <ul>
+      <li class="fragment">rect</li>
+      <li class="fragment">circle</li>
+      <li class="fragment">ellipse</li>
+      <li class="fragment">line</li>
+      <li class="fragment">polyline</li>
+      <li class="fragment">polygon</li>
+      <li class="fragment">path</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Styling Elements</h1>
+    <i class="fa fa-paint-brush"></i>
+  </section>
+  <section>
+    <h2>Inline styles</h2>
+    <pre><code class="html"><p style="color: red;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px;">Some text</p></code></pre>
+    <pre class="fragment"><code class="html"><p style="color: red; font-size: 32px; background-color: blue; margin: 25px;">Some text</p></code></pre>
+  </section>
+  <section>
+    <h1>Separate form and content as much as possible</h1>
+  </section>
+  <section>
+    <h1>CSS to the rescue</h1>
+    <small class="fragment">"Cascading Style Sheets"</small>
+  </section>
+  <section>
+    <h2>Styles in the Head</h2>
+    <p>
+      CSS for a specific tag can be defined in the &lt;head&gt; of a document, and it will effect every element of that type on the page.
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;style&gt;
+    p {
+      color: red;
+      font-size: 32px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Hello!&lt;/p&gt;
+  &lt;p&gt;Goodbye!&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+  </section>
+  <section>
+    <h2>But Dave, what if I want to style two paragraphs separately?</h2>
+    <p>
+      The ID attribute can be set on an element so that you can specifically select it in CSS:
+    </p>
+    <pre><code class="html"><p id="redParagraph">Some text</p></code></pre>
+    <pre><code class="html">&lt;style&gt;
+  p#redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the pound sign is optional.</small>
+  </section>
+  <section>
+    <h1>HOWEVER</h1>
+    <p>
+      Element IDs should only be used on single elements. If you have multiple elements that need the same style applied to them, use the "class" attribute:
+    </p>
+    <pre><code class="html"><p class="redParagraph">Some text</p>
+<p class="redParagraph">Some text</p></code></pre>
+    <pre><code class="html">&lt;style&gt;
+  p.redParagraph {
+    color: red;
+    font-size: 32px;
+  }
+&lt;/style&gt;</code></pre>
+    <small class="fragment">The "p" before the decimal sign is also optional.</small>
+  </section>
+  <section>
+    <h2>Sharing Styles Between Files</h2>
+    <p>
+      In the place of &lt;style&gt; tags, add a &lt;link&gt; to a ".css" file that includes some general shared styles:
+    </p>
+    <pre><code class="html">&lt;head&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;title&gt;My cool test page&lt;/title&gt;
+
+  &lt;link rel="stylesheet" href="style.css" /&gt;
+&lt;/head&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>JavaScript</h1>
+  </section>
+  <section>
+    <h2>What is JavaScript?</h2>
+    <p>
+      While HTML is a templating language used<br />for page layout, while JavaScript is a programming<br />language used for page manipulation.
+    </p>
+    <p>
+      JavaScript code is written for<br />the browser to interpret, not display.
+    </p>
+  </section>
+  <section>
+    <h2>Script Tags</h2>
+    <p>
+      All JavaScript code must be nested in between two <code>&lt;script&gt;</code> tags. These tags can be anywhere on an HTML page, in the header or the body.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Code Syntax</h2>
+    <p>
+      JavaScript code is executed line-by-line, from top to bottom. While spacing and indentation do not matter, each line must end with a semi-colon.
+    </p>
+  </section>
+  <section>
+    <h2>Variables</h2>
+    <p>
+      A variable is a common name for a value that might change. By storing things as variables, we can access them later. Here we can store a number and print it out to the browser console.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Number Variables</h2>
+    <p>
+      Numbers can be manipulated with math!
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  myNumber = myNumber + 10;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>String Variables</h2>
+    <p>
+      Text is stored by surrounding the characters with quotation marks, and text strings can be concatenated to eachother.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myString = "JavaScript is Cool!";
+
+  console.log("D3 and " + myString);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Boolean Variables</h2>
+    <p>
+      Booleans are values that are either true or false.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 20;
+
+  var bigNumber = myNumber > 100;
+
+  console.log(bigNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Array Variables</h2>
+    <p>
+      A list of variables can be stored as an Array, and you select which entry you need by using a 0-index based numbering system.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myArray = ["one", "two", "three", "four"];
+
+  // Any line starting with double slashes is a comment
+  // that will not be interpreted by the browser.
+
+  // This should print out "two"
+  console.log(myArray[1]);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Object Variables</h2>
+    <p>
+      Instead of using a flat list as in Arrays, you can store data with keys and values to easily access later.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myObject = {
+    name: "Dave",
+    color: "red"
+  };
+
+  console.log(myObject.name);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Functions</h2>
+    <p>
+      When logic may need to be repeated multiple times, it is best practice to store that logic in one place. Functions are triggered by saying the variable name followed by a set of parenthesis.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayHello = function() {
+    console.log("Hello!");
+  }
+
+  sayHello();
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Variables</h2>
+    <p>
+      Functions may accept variables, called arguments, to use internally.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayText = function(txt) {
+    console.log(txt);
+  }
+
+  sayText("Goodbye");
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Returns</h2>
+    <p>
+      Additionally, functions can return a value.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var plusTen = function(num) {
+    return num + 10;
+  }
+
+  var thirty = plusTen(20);
+
+  console.log(thirty);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Conditional Statements</h2>
+    <p>
+      JavaScript contains syntax for evaluating logic and performing actions when a defined parameter is met.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 12;
+
+  if (myNumber > 10) {
+    console.log("greater than 10!");
+  }
+  else {
+    console.log("less than 10!");
+  }
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Combining Everything</h2>
+    <p>
+      JavaScript starts to shine once you start combining these concepts.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  function greaterThanTen(num) {
+
+    if (num > 10) {
+      console.log("greater than 10!");
+    }
+    else {
+      console.log("less than 10!");
+    }
+
+    return num > 10;
+
+  }
+
+  // this should return true
+  console.log(greaterThanTen(20));
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Interacting with HTML</h2>
+    <p>
+      The "document" is a pre-defined object with information and functions relating to the page itself. Here, we can select an element and change it's content:
+    </p>
+    <pre><code class="html">&lt;h1 id="name"&gt;&lt;/h1&gt;
+&lt;script&gt;
+
+  document.getElementById("name").innerHTML = "Dave";
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Sharing Across Pages</h2>
+    <p>
+      Similar to sharing CSS, JavaScript code can be stored in a ".js" file and included on multiple pages:
+      <pre><code class="html">&lt;script src="numbers.js"&gt;&lt;/script&gt;</code></pre>
+    </p>
+  </section>
+  <section>
+    <h2>JavaScript Libraries</h2>
+    <p>
+      A JavaScript "library" is simply a collection of pre-written functions and variables that provide shortcuts for more complex behavior.
+    </p>
+    <small class="fragment">
+      D3 is a library!
+    </small>
+  </section>
+  <section>
+    <h2>Using JavaScript Libraries</h2>
+    <p>
+      D3 is the only JavaScript library allowed to be used in this class to draw visualizations.
+    </p>
+    <p>
+      You can only use external libraries for techniques that are not taught in this class, at Dave's discretion.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Homework</h2>
+    <ul>
+      <li>
+        Create a page in your repository that contains:
+        <ul>
+          <li>an image that is meaningful to you</li>
+          <li>custom font and color styles defined in a CSS file</li>
+          <li>a button that triggers a JavaScript function that changes something on the page</li>
+        </ul>
+      </li>
+      <li>
+        Name the file <b>"homework/01-09/index.html"</b>
+      </li>
+      <li>
+        Link to that html file from your homepage.
+      </li>
+      <li>
+        E-mail me the link to your homepage no later than Wednesday 1/15 at 10am (remember to push your final code to Github to make it live).
+      </li>
+    </ul>
+  </section>
+</section>

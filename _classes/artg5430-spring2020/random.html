@@ -1,0 +1,66 @@
+---
+layout: default
+title: Random
+---
+
+<section class="class">
+  <center>
+    <button id="button">Start</button>
+    <br /><br />
+    <h1>
+      <a id="name" target="_blank"></a>
+    </h1>
+    <p id="assignment"></p>
+  </center>
+</section>
+
+<script>
+
+  var roster = [
+    ["Alanna", "https://amfusco.github.io", ""],
+    ["Annalee", "https://fullera1.github.io", ""],
+    ["Anni", "https://annixu.github.io", ""],
+    ["Arushi", "https://arushi5545.github.io", ""],
+    ["Bethany", "https://thebethbott.github.io", ""],
+    ["Dan", "https://dfarrow.github.io", ""],
+    ["Diana", "https://moreldiana.github.io", ""],
+    ["Eric", "https://tiangefei.github.io", ""],
+    ["Erin", "https://erinnicole.github.io", ""],
+    ["Floris", "https://floriswu.github.io", ""],
+    ["Lin", "https://qianlinxu.github.io", ""],
+    ["Lisa", "https://lilisa1.github.io", ""],
+    ["Matthew", "https://mhantsbarger.github.io", ""],
+    ["Mengyue", "https://sunmengyue.github.io", ""]
+  ];
+
+  var link = document.getElementById("name"),
+      assignment = document.getElementById("assignment"),
+      button = document.getElementById("button");
+
+  button.addEventListener("click", function() {
+
+    button.innerHTML = "Next";
+
+    var person;
+
+    if (roster.length) {
+      var int = Math.floor(Math.random() * roster.length);
+      person = roster.splice(int, 1)[0];
+
+    }
+    else {
+      person = ["Done!", "#"];
+      button.style.visibility = "hidden";
+    }
+
+    console.log(person);
+
+    link.innerHTML = person[0];
+    link.href = person[1] || "#";
+    assignment.innerHTML = person[2] || "";
+
+    console.log(roster.length + " people left");
+
+  }, false);
+
+</script>

@@ -1,0 +1,280 @@
+---
+title: Data, Manipulation, and APIs
+---
+
+<section>
+  <section>
+    <h2>January 16, 2020</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">Github Review</li>
+      <li class="fragment">Data File Formats</li>
+      <li class="fragment">APIs</li>
+      <li class="fragment">Manipulating Data</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="/classes/artg5430-spring2020/random">http://www.dave-landry.com/classes/artg5430-spring2020/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Github Review</h1>
+    <i class="fa fa-github"></i>
+  </section>
+  <section>
+    <h2>Uploading Files</h2>
+    <p>
+      Uploading files to your repository is called "pushing", and a push can contain several groups of changes called "commits".
+    </p>
+    <p>
+      Commits have comments attached to them that tells the world what was changed in those files.
+    </p>
+  </section>
+  <section>
+    <h2>Example of a Push</h2>
+    <pre><code class="js">Commit: "created a new logo"
+index.html
+logo.png</code></pre>
+    <pre><code class="js">Commit: "changed background color and title"
+styles.css
+index.html</code></pre>
+  </section>
+  <section>
+    <h2>Writing a Commit</h2>
+    <ol>
+      <li>Add (+) files to the staging area</li>
+      <li>Write a message describing the changes</li>
+      <li>Click the checkmark to commit your changes</li>
+    </ol>
+    <img class="stretch noborder" src="/images/classes/vscode-git.png">
+  </section>
+  <section>
+    <h2>Pushing the Commit</h2>
+    <p>
+      Click the up/down arrows at the very bottom of the screen to sync (push and pull) with github.com.
+    </p>
+    <img class="noborder" src="/images/classes/vscode-sync.png">
+  </section>
+  <section>
+    <h2>POP QUIZ!</h2>
+    <ol>
+      <li>Create an index.html for next week's homework, following the same folder structure as last week.</li>
+      <li>Put the text "HELLO DAVE" somewhere in the file.</li>
+      <li>Commit the change, and push it to your repository.</li>
+      <li>Show the final live webpage to Dave.</li>
+    </ol>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Data File Formats</h1>
+    <i class="fa fa-table"></i>
+  </section>
+  <section>
+    <h2>Start your servers!</h2>
+    <pre><code class="bash">http-server</code></pre>
+    <p>
+      If your terminal is closed, open it from the "Terminal" menu at the top of VS Code.
+    </p>
+  </section>
+  <section>
+    <h2>External Files</h2>
+    <p>
+      Just like CSS and JS, data is often stored in external files and loaded into the page dynamically.
+    </p>
+  </section>
+  <section>
+    <h2>Filetypes</h2>
+    <p>
+      D3 comes with functions that can read in external data files automagically. Filetypes include:
+    </p>
+    <ul>
+      <li class="fragment">txt</li>
+      <li class="fragment">csv</li>
+      <li class="fragment">json</li>
+    </ul>
+  </section>
+  <section>
+    <h2>file.txt</h2>
+    <p>
+      Reads text in as a string. 'Nuff said.
+    </p>
+    <pre><code class="js">Some sample text</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.text("file.txt", function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h2>file.csv</h2>
+    <p>
+      Comma-separated values. Each line of the file is a data object, with it's values separated by commas. The first row in the file is expected to be the key names for each data point.
+    </p>
+    <pre><code class="js">country,value
+usa,4
+mexico,10
+canada,6</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.csv("file.csv", function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h2>file.json</h2>
+    <p>
+      JavaScript Object Notation. Data is stored with the same syntax as it would be in Javascript, with keys and values.
+    </p>
+    <pre><code class="js">[
+  {
+    country: "usa",
+    value: 4
+  }
+]</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.json("file.json", function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>API</h1>
+    <sub class="fragment">"application programming interface"</sub>
+  </section>
+  <section>
+    <h2>What is an API?</h2>
+    <p>
+      In the context of data, developers who store data in databases need to enable an easy way for themselves and others to extract data based on specific query parameters.
+    </p>
+  </section>
+  <section>
+    <h2>Shameless Example</h2>
+    <h1>Data USA</h1>
+    <p>
+      <a href="https://datausa.io/" target="_blank">Data USA</a> collates data from 17 public US datasets.
+    </p>
+    <p>
+      Additionally, all of the data is available for free through a JSON API. Documentation is <a href="https://datausa.io/about/api/" target="_blank">here</a>.
+    </p>
+  </section>
+  <section>
+    <h2>Loading from an API</h2>
+    <p>
+      Data from an API is commonly delivered as JSON, so instead of giving d3.json a filename, we can give it a URL:
+    </p>
+    <pre><code class="js">var url = "https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest";
+
+d3.json(url, function(error, data) {
+  console.log(data);
+});</code></pre>
+  </section>
+  <section>
+    <h2>Loading from an <em>Realtime</em> API</h2>
+    <p>
+      When using an API that changes frequently (in "realtime"), it's necessary to write a timer that polls the URL at a certain interval:
+    </p>
+    <pre><code class="js">var url = "https://whiteboard.datawheel.us/api/google-analytics/realtime/111999474";
+
+function loadData() {
+  d3.json(url, function(err, data) {
+    console.log(data);
+  });
+}
+
+setInterval(loadData, 10000);</code></pre>
+  </section>
+  <section>
+    <h2>Example Public APIs</h3>
+    <p><a href="https://github.com/public-apis/public-apis/blob/master/README.md" target="_blank">https://github.com/public-apis/public-apis/blob/master/README.md</a></p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Manipulating Data</h1>
+  </section>
+  <section>
+    <h2>Changing Data</h2>
+    <p>Arrays have a built in "forEach" function that allows you to loop through and change things:</p>
+    <pre><code class="js">data.forEach(function(d) {
+  d.export_val = parseFloat(d.export_val);
+});</code></pre>
+  </section>
+  <section>
+    <h2>Filtering Data</h2>
+    <p>Arrays have a built in "filter" function that allows you to selectively trim a large data array:</p>
+    <pre><code class="js">var currentYearData = data.filter(function(d) {
+  return d.year == "2019";
+});</code></pre>
+  </section>
+  <section>
+    <h2>D3 Array Functions</h2>
+    <p>D3 contains a number of helper array functions that will analyze an Array in different ways. For example, finding the extent of data to be used in a scale:</p>
+    <pre><code class="js">var dataExtent = d3.extent(data, function(d) {
+  return d.export_val;
+});
+
+var xScale = d3.scaleLinear()
+  .domain(dataExtent)
+  .range([0, window.innerWidth]);
+</code></pre>
+  <p>Other helpful functions include "min" and "max".</p>
+  </section>
+  <section>
+    <h2>Grouping Data</h2>
+    <p>The d3.nest() function can be used to group data on a common key:</p>
+    <pre><code class="js">var groupedData = d3.nest()
+  .key(function(d) {
+    return d.continent;
+  })
+  .entries(csvData);</code></pre>
+  </section>
+  <section>
+    <h2>Creating a Mapping</h2>
+    <p>
+      When using 2 data files, like a geographical map and CSV data, it is sometimes necessary to create a mapping in order to cross-reference from one data file to the other.
+    </p>
+    <pre><code class="js">var countryMapping = {
+  "CAN": "Canada",
+  "USA": "United States",
+  "MEX": "Mexico"
+};
+
+data.forEach(function(d) {
+  d.fullName = countyMapping[d.country];
+});</code></pre>
+    <p>
+      This is often called "cross-walking".
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>
+    Create a data visualization using the Realtime API shown today in class, and post it to your Github website.
+  </p>
+  <p>
+    This visualization should use the D3 enter/update/exit paradigm, and update itself every 10 seconds.
+  </p>
+</section>

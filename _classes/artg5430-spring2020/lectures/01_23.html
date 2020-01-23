@@ -1,0 +1,274 @@
+---
+title: D3 Practice
+---
+
+<section>
+  <section>
+    <h2>January 23, 2020</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">D3 Practice</li>
+      <li class="fragment">Peer Coding Time</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="/classes/artg5430-spring2020/random">http://www.dave-landry.com/classes/artg5430-spring2020/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>D3 Practice</h1>
+    <p>"the enter/update/exit paradigm"</p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-01.png">
+    <p>
+      One of the defining characteristics of D3 is how it let's us easily manipulate shapes as the underlying data is changed.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-02.png">
+    <p>
+      Think of each stage in the lifecycle of the changing data as a frame in an animation. As the data changes, we need to manage the transitions in between each frame.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-03.png">
+    <p>
+      D3 can be configured to match the data based on specific keys (default is to match by index). In this example, let's match the data on the "country" key values.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-04.png">
+    <p>
+      When starting from nothing (as with most first frames), all data points are considered to be "entering" the visualization.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-05.png">
+    <p>
+      If a data point is no longer present in the new data array, it is "exiting" the visualization. If a data point persists across the transition it is called "updating".
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-06.png">
+    <p>
+      This pattern repeats itself indefinitely each time your code is run. Shapes/data can only ever be one of three: "entering", "updating", or "exiting" the visualization.
+    </p>
+  </section>
+  <section>
+    <h3>Let's start coding</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+  <section>
+    <h3>Basic HTML Structure</h3>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p><strong>Reminder:</strong> please only use version 4 of D3. Version 5 changes the way data is loaded, and will not work for this class.</p>
+  </section>
+  <section>
+    <h3>Realtime API from Last Class</h3>
+    <pre><code class="html">&lt;script&gt;
+  var realtimeURL = "https://whiteboard.datawheel.us/api/google-analytics/realtime/random";
+  var frequency = 10 * 1000; // 10 seconds
+
+  function fetchData() {
+
+    d3.json(realtimeURL, function(error, users) {
+
+    });
+
+  }
+
+  fetchData();
+  setInterval(fetchData, frequency);
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Today's Goal</h3>
+    <img class="stretch" src="/images/classes/google-analytics.png">
+    <p>Let's recreate the Google Analytics bar visualization showing the current users over a set time window.</p>
+  </section>
+  <section>
+    <h3>Data Prep</h3>
+    <pre><code class="js">var dataMax = 5;
+var data = [];
+
+function fetchData() {
+
+  d3.json(realtimeURL, function(error, users) {
+
+    data.unshift(users);
+    if (data.length > dataMax) data.pop();
+
+  });
+
+}</code></pre>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift" target="_blank">Unshift</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift" target="_blank">shift</a> modifies the beginning a JavaScript array, and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push" target="_blank">push</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank">pop</a> modifies the end. Here we define the maximum number of data points desired, and then remove the oldest data point if the array's length is greater than that value.</p>
+  </section>
+  <section>
+    <h3>Creating our Container</h3>
+    <pre><code class="html">&lt;svg id="chart"&gt;&lt;/svg&gt;</code></pre>
+    <p>Add an SVG element into the body, and make sure to place it before your script tag.</p>
+    <pre><code class="js">var width = window.innerWidth;
+var height = 300;
+
+var svg = d3.select("#chart")
+  .attr("width", width)
+  .attr("height", height);</code></pre>
+    <p>Let's create a chart that spans across the entire width of the screen. This code should be declared at the top of your script with the other variables.</p>
+  </section>
+  <section>
+    <h3>Basic Enter/Exit Structure</h3>
+    <pre><code class="js">var bars = svg.selectAll(".bar")
+  .data(data);
+
+bars.enter().append("rect")
+  .attr("class", "bar");
+
+bars.exit().remove();</code></pre>
+    <p>When setting up a new enter/update/exit animation, it can be helpful to not worry about styling initially and simply use the browser "Elements" inspector to confirm the correct behavior of the DOM elements.</p>
+    <p>Confirm in your browser inspector that elements are being added and removed appropriately.</p>
+  </section>
+  <section>
+    <h3>Bar X Position</h3>
+    <pre><code class="js">var x = d3.scaleLinear()
+  .domain([dataMax, 1])
+  .range([0, width]);
+
+bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  });</code></pre>
+    <p>We can use the "dataMax" variable to inversely map each array index to the available screen width.</p>
+  </section>
+  <section>
+    <h3>Bar Width</h3>
+    <pre><code class="js">var barWidth = width / dataMax;
+
+bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  });</code></pre>
+    <p>We can calculate the width for each bar by dividing the available screen width by the number of bars.</p>
+  </section>
+  <section>
+    <h3>Bar Height</h3>
+    <pre><code class="js">var barHeight = d3.scaleLinear()
+  .domain([0, d3.max(data)])
+  .range([0, height]);
+
+var enterBars = bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight);
+
+bars
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight);</code></pre>
+    <p>The domain for the height of the bars can be calculated from the highest value in the data using the d3.max function. We also need to add an update cycle to change pre-existing rectangles.</p>
+  </section>
+  <section>
+    <h3>Bar Y Position</h3>
+    <pre><code class="js">var enterBars = bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight)
+  .attr("y", function(d, i) {
+    var h = barHeight(d.users);
+    return height - h;
+  });
+
+bars
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight)
+  .attr("y", function(d, i) {
+    var h = barHeight(d.users);
+    return height - h;
+  });</code></pre>
+    <p>Since we want the bars to be anchored on the bottom of the screen, we need to offset the y position by the difference between it's height and the overall available vertical space.</p>
+  </section>
+  <section>
+    <h3>Adding Animation</h3>
+    <pre><code class="js">var enterBars = bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", 0)
+  .attr("y", height);
+
+bars.transition().duration(frequency / 2)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight)
+  .attr("y", function(d, i) {
+    var h = barHeight(d.users);
+    return height - h;
+  });</code></pre>
+    <p>We can use the frequency variable to define a transition for updating shapes. This also allows us to change some of the enter states to make entering shapes grow into place.</p>
+  </section>
+  <section>
+    <h3>Changing the Binding ID</h3>
+    <pre><code class="js">data.unshift({
+  users: users,
+  timestamp: new Date()
+});</code></pre>
+    <p>By default, d3 binds data to shapes based on their index in the array. In order to have our bars move to the left, we need to give each of them a unique ID. We can use the Date constructor to make a new timestamp each time new data is fetched.</p>
+    <pre><code class="js">var bars = svg.selectAll(".bar")
+  .data(data, function(d) {
+    return d.timestamp;
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <p>Take a few minutes to adjust your code to the new format of the data. You will need to rewrite any function that references the data, such as the d3.max function and the height/y functions.</p>
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>
+    Experiment with the bar visualization we made in class today. You can even take my code as a starting point.
+  </p>
+  <p>
+    Some examples of improvements: coloring the bars, adding a y-axis.
+  </p>
+</section>

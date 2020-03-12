@@ -1,0 +1,327 @@
+---
+title: Pitches, Structure, and Listeners
+---
+
+<section>
+  <section>
+    <h2>March 12, 2020</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Project Pitches</li>
+      <li class="fragment">Code Structure</li>
+      <li class="fragment">Event Listeners</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Please Interrupt Me</h1>
+  <p>Now that we're remote, I cannot see if you raise your hand. Additionally, while I'm screen sharing, I cannot see anyone's camera. Please speak up and interrupt me if you have a question!</p>
+</section>
+
+<section>
+  <h1>Project Pitches</h1>
+  <p>Assignment: find a dataset and pitch it to the class!</p>
+  <a target="_blank" href="/classes/artg5430-spring2020/random">http://www.dave-landry.com/classes/artg5430-spring2020/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Code Structure</h1>
+    <i class="fa fa-folder-open"></i>
+  </section>
+  <section>
+    <h3>Today's Goal</h3>
+    <img class="stretch noborder" src="/images/classes/cats.png">
+    <p>Let's create the structure for a fake project about cats.</p>
+  </section>
+  <section>
+    <h3>Let's start coding</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your local "username.github.io" repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+  <section>
+    <h3>index.html</h3>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>Put this file (and all other new files) in a new folder specifically for this project. Your life will be a lot easier if you keep all of your final project files in their own folder.</p>
+  </section>
+  <section>
+    <h3>Fictional Prompt</h3>
+    <p>Let's pretend we have a dataset that contains statistics on the different breeds of cats. 😸</p>
+    <p>Maybe there's some correlations between the size of the cat and other characteristics?</p>
+  </section>
+  <section>
+    <h3>Start with the title</h3>
+    <p>It may seem trivial, but we need to introduce our project to our users. We can't just throw a chart in their face.</p>
+    <pre><code class="html">&lt;h1&gt;The Little Prints&lt;/h1&gt;</code></pre>
+    <p>Don't forget to also set the window title!</p>
+    <pre><code class="html">&lt;title&gt;The Little Prints&lt;/title&gt;</code></pre>
+  </section>
+  <section>
+    <h3>styles.css</h3>
+    <p>Create a separate CSS file for your styles. This will help us down the road when we have a lot more code.</p>
+    <pre><code class="html">&lt;link rel="stylesheet" href="./styles.css" /&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Initial Styles</h3>
+    <p>Let's remove the page margin and make the title "pretty" (put this in styles.css):</p>
+    <pre><code class="css">body {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Comic Sans MS";
+  text-align: center;
+}</code></pre>
+  </section>
+  <section>
+    <h3>Context</h3>
+    <p>What is our project about? When people come to our page, they expect a short description of what they're about to read and see. It's helpful to put a subtitle and/or intro paragraph introducing the subject matter.</p>
+    <pre><code class="html">&lt;div id="banner"&gt;
+  &lt;h1&gt;The Little Prints&lt;/h1&gt;
+  &lt;p&gt;
+    Are big cats better than small cats, or just
+    a nuisance? The results may surprise you.
+  &lt;/p&gt;
+  &lt;p&gt;
+    Created by Dave Landry
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Style that Banner</h3>
+    <p>We can refactor our CSS slightly so that both the title AND the description have shared styles using that new "banner" container we created:</p>
+    <pre><code class="css">body {
+  font-family: "Comic Sans MS";
+  margin: 0;
+}
+
+#banner {
+  background-color: #00cc00;
+  padding: 20vh 20px;
+  text-align: center;
+}</code></pre>
+  </section>
+  <section>
+    <h3>Background Image</h3>
+    <p>I feel like we should have a picture of a cat... let's take one from that free cat API!</p>
+    <a href="https://api.thecatapi.com/v1/images/search" target="_blank">https://api.thecatapi.com/v1/images/search</a>
+    <pre><code class="css">#banner {
+  background-color: #00cc00;
+  background-image: url('https://cdn2.thecatapi.com/images/9pf.jpg');
+  background-position: center;
+  background-size: cover;
+  padding: 20vh 20px;
+  text-align: center;
+}</code></pre>
+  </section>
+  <section>
+    <h3>Dynamic Catz</h3>
+    <p>What if we wanted to use the API to have a random cat picture every time? Let's make a JavaScript file to handle it!</p>
+    <p>Put all of your custom JavaScript files at the very end of the body, so that they can access all of the previous HTML:</p>
+    <pre><code class="html">  &lt;script src="./banner.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+    <p>It's good practice to have separate JS files for different features of your site.</p>
+  </section>
+  <section>
+    <h3>Load the Image</h3>
+    <p>Hit the API and use the data for the background-image!</p>
+    <pre><code class="js">var url = "https://api.thecatapi.com/v1/images/search";
+d3.json(url, function(error, data) {
+
+  if (!error) {
+    d3.select("#banner")
+      .style("background-image", "url('" + data[0].url + "')");
+  }
+
+});</code></pre>
+  </section>
+  <section>
+    <h3>Add Placeholders</h3>
+    <p>If we know we want 2 charts with description text, create the HTML elements that will eventually hold the final content:</p>
+    <pre><code class="html">&lt;div class="section"&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend egestas aliquet. Suspendisse non felis sed felis pellentesque convallis quis eget arcu. Aliquam eget dolor commodo eros rhoncus egestas. Nullam dapibus eget diam nec accumsan. Fusce tincidunt augue a libero semper vulputate. Fusce vel metus sit amet dolor pulvinar varius sit amet vehicula nibh. Sed ultricies interdum tellus, in varius augue eleifend vel.&lt;/p&gt;
+  &lt;svg id="chart1"&gt;&lt;/svg&gt;
+&lt;/div&gt;
+&lt;div class="section"&gt;
+  &lt;svg id="chart1"&gt;&lt;/svg&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend egestas aliquet. Suspendisse non felis sed felis pellentesque convallis quis eget arcu. Aliquam eget dolor commodo eros rhoncus egestas. Nullam dapibus eget diam nec accumsan. Fusce tincidunt augue a libero semper vulputate. Fusce vel metus sit amet dolor pulvinar varius sit amet vehicula nibh. Sed ultricies interdum tellus, in varius augue eleifend vel.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+  <p>Does anyone know what <a href="https://www.lipsum.com/" target="_blank">Lorum Ipsum</a> is?</p>
+  </section>
+  <section>
+    <h3>💪🏻 Flexbox</h3>
+    <img class="stretch noborder" src="/images/classes/flex-direction.svg">
+    <p>One of my favorite ways to have elements positioned next to eachother and resize with the screen is to use the CSS Flexbox properties. Here's the best guide I've found: <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a></p>
+  </section>
+  <section>
+    <h3>💪🏻 Flexbox</h3>
+    <pre><code class="css">.section {
+  display: flex;
+  padding: 50px;
+}
+
+.section p {
+  flex: 1;
+}
+
+.section svg {
+  border: 1px solid red;
+  flex: 2;
+  height: 300px;
+  margin: 20px;
+}</code></pre>
+  </section>
+  <section>
+    <h3>Mobile Styles</h3>
+    <p>"Media Queries" contain styles that will only be applied when a certain condition of the user's device is met, in this case only on screens under a maximum width:</p>
+    <pre><code class="css">@media (max-width: 600px) {
+  .section {
+    flex-direction: column;
+  }
+  .section svg {
+    flex: none;
+  }
+}</code></pre>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <img class="stretch noborder" src="/images/classes/cats.png">
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Event Listeners</h1>
+    <i class="fa fa-volume-up"></i>
+  </section>
+  <section>
+    <h3>Events</h3>
+    <p>Every time a user interacts with a webpage, JavaScript records this interaction as an "event".</p>
+    <p></p>Each type of event contains information specific to that action. For example, which keyboard button was pressed or how far down the page they have scrolled.</p>
+    <p>👆🏻 Here's <a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">a list</a> of every event type!</p>
+  </section>
+  <section>
+    <h3>Window Scroll</h3>
+    <p>Select the window itself, and listen for the scroll event:</p>
+    <pre><code class="js">d3.select(window)
+  .on("scroll", function() {
+    console.log(window.scrollY);
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Parallax</h3>
+    <p>First, what the heck is "parallax"? (hint, you've seen it before)</p>
+    <a href="https://en.wikipedia.org/wiki/Parallax" target="_blank">https://en.wikipedia.org/wiki/Parallax</a>
+  </section>
+  <section>
+    <h3>Parallax Image</h3>
+    <p>We can use the scrollY property to change the background position of our banner image:</p>
+    <a href="https://en.wikipedia.org/wiki/Parallax" target="_blank">https://en.wikipedia.org/wiki/Parallax</a>
+    <pre><code class="js">var bannerPosition = d3.scaleLinear()
+  .domain([0, window.innerHeight])
+  .range([100, 0]);
+
+d3.select(window)
+  .on("scroll", function() {
+
+    var y = bannerPosition(window.scrollY);
+    d3.select("#banner")
+      .style("background-position", "50% " + y + "%");
+
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Tooltips</h3>
+    <p>Let's listen for when the user's mouse is positioned on top of our first chart, and display a tooltip!</p>
+  </section>
+  <section>
+    <h3>Tooltip Structure</h3>
+    <p>The first step is to create a container<br />that we will use for our tooltip:</p>
+    <pre><code class="html">&lt;div id="tooltip"&gt;&lt;/div&gt;</code></pre>
+    <p>And make it hidden by default:</p>
+    <pre><code class="css">#tooltip {
+  display: none;
+  position: absolute;
+}</code></pre>
+  </section>
+  <section>
+    <h3>Tooltip JavaScript</h3>
+    <p>Since this code will be part of only the first chart, let's put it in a separate JavaScript file:</p>
+    <pre><code class="html">&lt;script src="./chart1.js"&gt;&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Mousemove</h3>
+    <p>Select the first chart, and listen for when the user's mouse moves on top of it:</p>
+    <pre><code class="js">d3.select("#chart1")
+  .on("mousemove", function() {
+
+    console.log(d3.event);
+
+  });</code></pre>
+    <p>D3 gives us access to the current user event with "d3.event". Console it out to see what's going on!</p>
+  </section>
+  <section>
+    <h3>Absolute Position</h3>
+    <p>Use the pageX and pageY properties to set the "left" and "top" style of the tooltip, along with making it visible ("block") and adding inner HTML content:</p>
+    <pre><code class="js">d3.select("#chart1")
+  .on("mousemove", function() {
+    d3.select("#tooltip")
+      .style("display", "block")
+      .style("top", d3.event.pageY + 20 + "px")
+      .style("left", d3.event.pageX + 20 + "px")
+      .html("Welcome to the first chart!");
+  });</code></pre>
+    <small>...if you were selecting an element with data as "d", you could put that data into the tooltip!</small>
+  </section>
+  <section>
+    <h3>Mouseout</h3>
+    <p>Add a "mouseout" event to hide the tooltip when not in use:</p>
+    <pre><code class="js">d3.select("#chart1")
+  .on("mousemove", function() {
+    d3.select("#tooltip")
+      .style("display", "block")
+      .style("top", d3.event.pageY + 20 + "px")
+      .style("left", d3.event.pageX + 20 + "px")
+      .html("Welcome to the first chart!");
+  })
+  .on("mouseout", function() {
+    d3.select("#tooltip")
+      .style("display", "none");
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <img class="stretch noborder" src="/images/classes/cats.png">
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Whether storing as a file in your repository or using an API, set up an HTML page that loads the data you need for your final project into Javascript using D3.
+    </p>
+    <p>
+      Use console.log to view your data,<br />and we will look at it next class all together.
+    </p>
+  </section>
+</section>

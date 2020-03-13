@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>The Little Prints</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+      body {
+        font-family: "Comic Sans MS";
+        margin: 0;
+      }
+
+      #banner {
+        background-color: black;
+        background-position: 50% 100%;
+        background-size: cover;
+        color: white;
+        padding: 20vh 20px;
+        text-align: center;
+        text-shadow: 0 2px 5px black;
+      }
+
+      .section {
+        display: flex;
+        padding: 20px;
+      }
+
+      .section p {
+        flex: 1;
+      }
+
+      .section svg {
+        border: 1px solid red;
+        flex: 2;
+        height: 400px;
+        margin: 20px;
+      }
+
+      @media (max-width: 600px) {
+        .section {
+          flex-direction: column;
+        }
+        .section svg {
+          flex: none;
+        }
+      }
+
+      #tooltip {
+        background-color: #ccc;
+        border: 1px solid cornflowerblue;
+        display: none;
+        padding: 10px;
+        position: absolute;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="banner">
+      <h1>The Little Prints</h1>
+      <p>
+        Here is some introduction text. Cats are cool, but dogs are better.
+      </p>
+      <p>
+        Created by Dave Landry
+      </p>
+    </div>
+
+    <div class="section">
+      <p>
+        Phasellus non lacus laoreet, vehicula libero at, commodo diam. Proin eleifend facilisis dapibus. Proin pretium, odio vel condimentum rutrum, odio massa feugiat arcu, in euismod nisl sem vel quam. Aenean sed blandit libero. Sed at lacus quis libero hendrerit scelerisque. Phasellus ut ultrices nisi. Ut elementum ut augue eu facilisis. Quisque quam augue, ullamcorper at est volutpat, eleifend cursus ante. In arcu metus, malesuada vel laoreet tristique, venenatis vitae dolor.
+      </p>
+      <svg id="barchart"></svg>
+    </div>
+
+    <div class="section">
+      <p>
+        Phasellus non lacus laoreet, vehicula libero at, commodo diam. Proin eleifend facilisis dapibus. Proin pretium, odio vel condimentum rutrum, odio massa feugiat arcu, in euismod nisl sem vel quam. Aenean sed blandit libero. Sed at lacus quis libero hendrerit scelerisque. Phasellus ut ultrices nisi. Ut elementum ut augue eu facilisis. Quisque quam augue, ullamcorper at est volutpat, eleifend cursus ante. In arcu metus, malesuada vel laoreet tristique, venenatis vitae dolor.
+      </p>
+      <svg id="geomap"></svg>
+    </div>
+    <div id="tooltip"></div>
+    <script src="banner.js"></script>
+    <script src="chart1.js"></script>
+  </body>
+</html>

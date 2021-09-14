@@ -1,0 +1,589 @@
+---
+title: Github and Revisiting HTML/SVG/CSS/JS
+---
+
+<section>
+  <section>
+    <h2>Welcome to</h2>
+    <h1>Visualization Technologies</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Introductions</li>
+      <li class="fragment">Course Overview</li>
+      <li class="fragment">Class Materials</li>
+      <li class="fragment">Github</li>
+      <li class="fragment">Servers</li>
+      <li class="fragment">HTML</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Instructor</h2>
+    <h1>Dave Landry</h1>
+    <a href="mailto:d.landry@northeastern.edu">d.landry@northeastern.edu</a>
+  </section>
+  <section>
+    <h2>I'm a husky</h2>
+    <img src="/images/classes/dave-husky.jpg">
+    <h4>Ryder Hall circa 2008</h4>
+  </section>
+  <section>
+    <h3>For my capstone, I developed an interactive map visualization in Java that showed co-authorship of SIGGRAPH papers.</h3>
+    <video class="stretch" data-autoplay>
+      <source data-src="/images/classes/paper_trail.mp4" type="video/mp4" />
+    </video>
+  </section>
+  <section>
+    <h3>Now I have a company that creates large-scale visualization platforms for big data.</h3>
+    <img class="inline noborder" src="/images/classes/datawheel.jpg" height="250px">
+    <img class="inline noborder" src="/images/classes/datausa.png" height="250px">
+  </section>
+  <section>
+    <h2>Questions for you</h2>
+    <ol>
+      <li class="fragment">What's your name?</li>
+      <li class="fragment">What's your concentration?</li>
+      <li class="fragment">What do you do in your free time?</li>
+      <li class="fragment">How comfortable are you with coding?</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Any questions for me?</h2>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Course Overview</h2>
+    <p>
+      Introduces students to beginner to intermediate level topics in web-based interactive visualization. Focuses on building familiarity with HTML, CSS, JavaScript, and the d3js library, as well as teaching best practices and common patterns in data visualization problem solving. Through lectures, workshops, and an over-arching final project, the class offers students an opportunity to learn to effectively deploy their data visualizaion skills on the web and to explore and extract understanding from data in a critical and efficient manner.
+    </p>
+  </section>
+  <section>
+    <h1>You're going to create a narrative by visualizing data.</h1>
+  </section>
+  <section>
+    <h2>Final Project</h2>
+    <p style="text-align: left;">
+      Using a dataset of your choosing, you will be creating a visualization narrative that must:
+    </p>
+    <ul>
+      <li>guide users to gain an insight from the selected dataset</li>
+      <li>animate at least 1 visualization via user interaction</li>
+      <li>include at least 3 sentences of data-driven text description</li>
+    </ul>
+    <p class="fragment" style="text-align: left;">
+      The grade you receive on your final project is <b>70% of your overall grade</b>.
+    </p>
+  </section>
+  <section>
+    <h2>Topics Covered</h2>
+    <ul>
+      <li class="fragment">Github, Servers, and HTML</li>
+      <li class="fragment">SVG and CSS</li>
+      <li class="fragment">JavaScript and D3 Basics</li>
+      <li class="fragment">Data, Manipulation, and APIs</li>
+      <li class="fragment">SVG Text</li>
+      <li class="fragment">Axes</li>
+      <li class="fragment">Color Scales and Legends</li>
+      <li class="fragment">Geographical Maps</li>
+      <li class="fragment">Page Structure and Listeners</li>
+    </ul>
+  </section>
+  <section>
+    <h1>Homework Grading</h1>
+    <p>30% of your overall class grade is the average grade of all homework assignments.</p>
+    <p>Each homework assignment is due at the start of each class (except for today's assignment), and uses the following grading rubric:</p>
+    <table>
+      <tr>
+        <td>100%</td>
+        <td>Assignment complete and pushed to Github</td>
+      </tr>
+      <tr>
+        <td>75%</td>
+        <td>Assignment complete but not pushed to Github</td>
+      </tr>
+      <tr>
+        <td>50%</td>
+        <td>Assignment incomplete<br />(did not finish or properly follow directions)</td>
+      </tr>
+      <tr>
+        <td>0%</td>
+        <td>Assignment not completed</td>
+      </tr>
+    </table>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Class Materials</h1>
+    <i class="fa fa-book"></i>
+  </section>
+  <section>
+    <h2>Course "Textbook"</h2>
+    <img class="stretch noborder" src="/images/classes/google.png">
+    <p>Programming textbooks quickly become dated, and the best solutions are often found through collaboration and open dialogue.</p>
+  </section>
+  <section>
+    <h2>Online Resources</h2>
+    <p>
+      Lectures, code references, and class resources:
+      <br>
+      <a href="http://www.dave-landry.com/classes/artg5330-fall2021/">http://www.dave-landry.com/classes/artg5330-fall2021/</a>
+    </p>
+    <p>
+      Class discussion board:
+      <br>
+      <a href="https://gitter.im/NEU-ARTG5330-Fall-2021/community">https://gitter.im/NEU-ARTG5330-Fall-2021/community</a>
+    </p>
+  </section>
+  <section>
+    <h2>Web Browser</h2>
+    <img class="stretch noborder" src="/images/classes/browsers.png">
+    <p>I don't care which one you use.</p>
+    <p>...but I use Chrome because I think it's the best, and I'll make fun of you if you use Internet Explorer.</p>
+  </section>
+  <section>
+    <h2>VS Code</h2>
+    <img class="stretch noborder" src="/images/classes/vscode.png" height="500px">
+    <p><a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></p>
+    <p>I will be using VS Code throughout this class. If you are familiar with Terminal/PowerShell you are free to use any text editor you prefer.</p>
+  </section>
+  <section>
+    <h2>Node</h2>
+    <img class="stretch noborder" src="/images/classes/node.png">
+    <p><a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></p>
+    <p>Download the "LTS" Version</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Github</h1>
+    <i class="fa fa-github"></i>
+  </section>
+  <section>
+    <h1>What is Github?</h1>
+    <blockquote class="fragment">
+      &ldquo;Git (/ɡɪt/) is a distributed revision control system with an emphasis on speed, data integrity, and support for distributed, non-linear workflows.&rdquo;
+    </blockquote>
+    <ul>
+      <li class="fragment">Saves all file revisions for easy rollbacks</li>
+      <li class="fragment">A central place for code collaboration</li>
+      <li class="fragment">Open Source</li>
+      <li class="fragment">A great way to host a simple website (Github Pages)</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Sign up for an account</h2>
+    <p><em>(if you haven't already)</em></p>
+    <img class="stretch noborder" src="/images/classes/github-signup.png">
+    <p><a href="https://github.com/" target="_blank">https://github.com/</a></p>
+  </section>
+  <section>
+    <h2>Create your first repository</h2>
+    <img class="stretch noborder" src="/images/classes/github-home.png">
+    <p>Your repository list is on the top right. You can think of a repository as a shared project folder.</p>
+    <p>Click the big green "New" button to create your first repo.</p>
+  </section>
+  <section>
+    <h2>Repository Settings</h2>
+    <img class="noborder inline" src="/images/classes/github-create.png" width="40%">
+    <ol class="inline">
+      <li><b>Repository name:</b> &lt;username&gt;.github.io<br /><small>(replace &lt;username&gt; with your github.com username)</small></li>
+      <li>🔘 Public<br /><small>&nbsp;</small></li>
+      <li>☑️ Add a README file</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Congratulations</h2>
+    <img class="stretch noborder" src="/images/classes/github-repo.png">
+    <p>You've created your first repository.</p>
+    <p>In a few minutes, it will <em>automagically</em> be published to http://&lt;your username&gt;.github.io/</p>
+  </section>
+  <section>
+    <h2>Let's edit a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-readme.png">
+    <p><b>YOUR TASK:</b> Change the contents of the README.md file</p>
+  </section>
+  <section>
+    <h2>Let's add a file</h2>
+    <img class="stretch noborder" src="/images/classes/github-add.png">
+    <p><b>YOUR TASK:</b> Create an index.html file and view it in a browser</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Syncing with<br />your Computer</h1>
+    <i class="fa fa-laptop"></i>
+  </section>
+  <section>
+    <h2>Why local? Github.com was easy!</h2>
+    <ul>
+      <li class="fragment">Trust me, the text editor you downloaded is better.</li>
+      <li class="fragment">Allows you to preview the changes on your computer before it goes live to the world.</li>
+      <li class="fragment">You can update/upload multiple files in the same commit.</li>
+      <li class="fragment">...and so much more!</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Clone your Repository</h2>
+    <small>Click the green "Code" button and <em>copy</em> the URL shown in the popup.</small>
+    <img class="stretch noborder" src="/images/classes/github-url.png">
+  </section>
+  <section>
+    <h2>Clone your Repository</h2>
+    <small>Open VSCode, and press <code>CTRL+SHIFT+P</code> on Windows or <code>COMMAND+SHIFT+P</code> on Mac and search for the "Git Clone" command and press return. This command search is also viewable by clicking "Command Palette" in the "View" menu at the top of your screen.</small>
+    <img class="stretch noborder" src="/images/classes/vscode-clone.png">
+    <p><em>Paste</em> in the URL, press return, and choose a folder on your computer to hold your project.</p>
+  </section>
+  <section>
+    <h2>Changing Files Locally</h2>
+    <p>
+      Your repository has now been downloaded to your computer. You should see a list of the files in the panel on the left.
+    </p>
+    <br>
+    <p>
+      Click on index.html to open it, change the text inside of it, and save it. Now let's try to upload that file back to Github.com.
+    </p>
+  </section>
+  <section>
+    <h2>Uploading to your repository</h2>
+    <p>
+      Uploading files to your repository is called "pushing", and a push can contain several groups of changes called "commits".
+    </p>
+    <p>
+      Commits have comments attached to them that tells the world what was changed in those files.
+    </p>
+  </section>
+  <section>
+    <h2>Push example</h2>
+    <pre><code class="js">Commit: "created a new logo"
+index.html
+logo.png</code></pre>
+    <pre><code class="js">Commit: "changed background color and title"
+styles.css
+index.html</code></pre>
+  </section>
+  <section>
+    <h2>Syncing with Github.com</h2>
+    <p>
+      Click the "source control" button in the left panel to view files that have been changed. Add (+) the files you'd like to commit, and write a commit message.
+    </p>
+    <img class="stretch noborder" src="/images/classes/vscode-git.png">
+  </section>
+  <section>
+    <h2>Syncing with Github.com</h2>
+    <p>
+      Click the checkmark to commit your changes, and then click the up/down arrows at the very bottom of the screen to sync (push and pull) with github.com.
+    </p>
+    <img class="noborder" src="/images/classes/vscode-sync.png">
+  </section>
+  <section>
+    <h2>Check out your live URL!</h2>
+    <p>
+      After a few moments, your changes should be visible at your live URL (the one we with github.io, not localhost). This is what the world is able to see.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>The Internet</h1>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section>
+    <h1>What is it?</h1>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The internet is just a bunch of connected computers.</h2>
+  </section>
+  <section>
+    <h2>But what about "the cloud"?</h2>
+    <i class="fa fa-cloud"></i>
+  </section>
+  <section data-background="/images/classes/servers.jpg">
+    <h2>The cloud is just a bunch of connected computers that you're allowed to store your data on.</h2>
+  </section>
+  <section>
+    <h2>Clients and Servers</h2>
+    <p>
+      When a user types an address into a browser, that computer makes a request (client) to another computer that is running software that can send back files (server).
+    </p>
+  </section>
+  <section>
+    <h2>Developing a Website</h2>
+    <p>
+      In order to test websites without publishing, our individual computer can act as both a server and a client.
+    </p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Running a<br />Local Server</h1>
+    <i class="fa fa-server"></i>
+  </section>
+  <section>
+    <h2>Using the Terminal</h2>
+    <p>
+      The Terminal allows you to interact with your computer through text commands. You can make folders, move files, and even launch applications.
+    </p>
+    <p>
+      Commands are issued by writing the command and pressing the return key. Only 1 command can be issued at a time.
+    </p>
+  </section>
+  <section>
+    <h2>Testing Node</h2>
+    <p>In VSCode, open the Terminal (Terminal menu, select "New Terminal") and type the following command:</p>
+    <pre><code class="bash">node -v</code></pre>
+    <p>The Terminal should respond with the currently installed version.</p>
+  </section>
+  <section>
+    <h2>http-server</h2>
+    <p>We will now install the very last peace of software:</p>
+    <pre><code class="bash">npm install http-server -g</code></pre>
+    <p>This software, when run, will allow your computer to serve files to a web browser.</p>
+  </section>
+  <section>
+    <h2>http-server</h2>
+    <p>Run the following command to start the server:</p>
+    <pre><code class="bash">http-server</code></pre>
+  </section>
+  <section>
+    <h2>Look in your browser!</h2>
+    <p>
+      You should be able to see your site at the following URL:
+    </p>
+    <pre><code class="bash">http://localhost:8080/</code></pre>
+  </section>
+  <section>
+    <h2>Stopping the server</h2>
+    <p>
+      Anytime you would like to stop the server from running, you can <u><strong>cancel</strong></u> the process by pressing <u><strong>control + c</strong></u> on your keyboard while in the Terminal.
+    </p>
+    <p>
+      You should only be running the server while testing your site, so always stop it when you are done developing for the day.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>HTML</h1>
+    <i class="fa fa-code"></i>
+  </section>
+  <section>
+    <h2>A brief history</h2>
+    <img src="/images/classes/tbl.jpg" />
+    <p>Created by Tim Berners-Lee in 1995<br />as a way to distribute research papers.
+  </section>
+  <section>
+    <h2>More From Wikipedia:</h2>
+    <blockquote>
+      "The language is written in the form of HTML elements consisting of tags enclosed in angle brackets (like &lt;html&gt;).
+      <br /><br />
+      Browsers do not display the HTML tags and scripts, but use them to interpret the content of the page."
+    </blockquote>
+  </section>
+  <section>
+    <h2>So let's start writing some code</h2>
+    <p>
+      In the root directory of your project, create a new HTML file.
+    </p>
+  </section>
+  <section>
+    <h2>DOCTYPE Declaration</h2>
+    <p>
+      The Document Type Declaration is for HTML5 and "should" be the included as the first line of every HTML file.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;</code></pre>
+    <p>
+      If a declaration is not included, some browsers will revert to their legacy "quirks mode" for rendering.
+    </p>
+  </section>
+  <section>
+    <h2>HTML Wrapper</h2>
+    <p>
+      The contents of every HTML file (except for the DOCTYPE) should be wrapped in &lt;html&gt; tags:
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">Capitalization does not matter.</li>
+      <li class="fragment">Remember to close any tags that you open.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>The Head and Body</h2>
+    <p>
+      All webpages have a head and a body. The head contains information about the page (the brains) and the body contains information that will be visible to the user (the brawn).
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">The head MUST come before the body.</li>
+      <li class="fragment">Identation does not matter, but will help keep your sanity.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Character Encoding</h2>
+    <p>
+      Like the DOCTYPE before it, there is one more "required" tag that must be present in the head of every document.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <ul>
+      <li class="fragment">This explicitly sets the character set used, if not passed by the server.</li>
+      <li class="fragment">Dave, did you mention how we're setting an attribute of a tag?</li>
+      <li class="fragment">Did you also mention self-closing tags?</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Stop and test</h2>
+    <p>
+      Put something in the body of the page and make sure it's rendering to your browser.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Get rid of that ugly page title</h2>
+    <p>
+      One of the many tags that the head supports is &lt;title&gt;.
+    </p>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;My cool test page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Hello World
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="fragment">Great for browsers, bookmarks, screen readers, and SEO</p>
+  </section>
+  <section>
+    <h2>Wikipedia, what's "SEO"?</h2>
+    <blockquote class="fragment">
+      "Search engine optimization (SEO) is the process of affecting the visibility of a website or a web page in a search engine's unpaid results - often referred to as "natural," "organic," or "earned" results. In general, the earlier (or higher ranked on the search results page), and more frequently a site appears in the search results list, the more visitors it will receive from the search engine's users."
+    </blockquote>
+  </section>
+  <section>
+    <h2>Dave, what the hell does that mean?</h2>
+    <p class="fragment">
+      Search engines, in their spare time, go to every webpage they can find over the internet and either add or update their listings with the information it can read from the page.
+    </p>
+    <small class="fragment">That's known as "crawling".</small>
+    <p class="fragment">
+      The more clear, organized, and descriptive the content is on a webpage, the more accurate the search engine's listing will become.
+    </p>
+  </section>
+  <section>
+    <h2>Back to the body</h2>
+    <p>
+      The basic structure of HTML was created based on what you would find in a research paper or Word document.
+    </p>
+    <ul>
+      <li class="fragment">&lt;p&gt; for paragraphs</li>
+      <li class="fragment">&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, etc for headings</li>
+      <li class="fragment">&lt;ul&gt; and &lt;ol&gt; for unordered and ordered lists</li>
+      <li class="fragment">&lt;div&gt; for divisions</li>
+      <li class="fragment">&lt;span&gt; for spans of words</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Inline vs Block</h2>
+    <p class="fragment">
+      Most elements in HTML take up the full width of the screen (block), forcing the next element to be positioned below it on a new line.
+    </p>
+    <p class="fragment">
+      Some elements, like &lt;span&gt;, are inline, which means that it will appear on the same line as the content before and after itself, never causing a line break.
+    </p>
+  </section>
+  <section>
+    <h2>Semantic Tags</h2>
+    <p>
+      HTML5 (the newest standard) introduced a new set of tags that are more literal than the dated and obscure tags like "div" and "span". These new tags include:
+    </p>
+    <ul>
+      <li class="fragment">&lt;header&gt;</li>
+      <li class="fragment">&lt;footer&gt;</li>
+      <li class="fragment">&lt;nav&gt;</li>
+      <li class="fragment">&lt;article&gt;</li>
+      <li class="fragment">&lt;section&gt;</li>
+      <li class="fragment">&lt;aside&gt;</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Linking Pages Together</h2>
+    <p>
+      The web is made of pages that link to each other using "anchor" tags. An anchor can point to an HTML file on your site, or to a completely different site!
+    </p>
+    <pre><code class="html">&lt;a href="page.html"&gt;Click Here&lt;/a&gt;</code></pre>
+  </section>
+  <section>
+    <h2>What else is there?</h2>
+    <img class="stretch noborder" src="/images/classes/google-image.png">
+    <p>
+      When Googling for help, start your search with the language you are writing followed by what you are trying to do: <code>&nbsp;html image&nbsp;</code>
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Homework</h2>
+    <ul>
+      <li>
+        Create this file: <b>"homework/01-09/index.html"</b>
+      </li>
+      <li>
+        Find an image that is meaningful to you, and diaply it nested inside the &lt;body&gt; tag of the page.
+      </li>
+      <li>
+        Link to that html file from your homepage.
+      </li>
+      <li>
+        E-mail me the link to your homepage no later than Monday 9/20 at 10am (remember to push your final code to Github to make it live).
+      </li>
+    </ul>
+  </section>
+</section>

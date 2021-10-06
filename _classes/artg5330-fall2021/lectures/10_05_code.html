@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My JavaScript Test Page</title>
+  </head>
+  <body>
+
+    <h1 id="title">Hello Username</h1>
+
+    <script>
+
+      // Numbers
+      var myNumber = 42;
+      console.log(myNumber);
+
+      // Math
+      myNumber = myNumber * myNumber;
+      console.log(myNumber);
+
+      // Strings
+      var language1 = "\"JavaScript\"";
+      var language2 = "D3";
+      console.log(language1 + " and " + language2 + " are cool!");
+
+      // Booleans
+      var bigNumber = myNumber >= 2000;
+      console.log(bigNumber);
+
+      // Arrays
+      var studentNames = ["Dave", "CeCe", "Andrew", "Luis"];
+      console.log(studentNames[0], studentNames[studentNames.length - 1]);
+
+      // Objects
+      var student1 = {
+        username: "Dave",
+        color: "red",
+        hasPet: true
+      };
+      console.log(student1.username, student1.hasPet);
+
+
+      var student2 = {
+        username: "CeCe",
+        color: "pink",
+        hasPet: true
+      };
+      var studentArray = [student1, student2];
+      console.log(studentArray[1]);
+
+      // Functions
+      var sayText = function(txt) {
+        var alertString = "Hello " + txt + "!";
+        console.log(alertString);
+        // alert(alertString);
+        return alertString;
+      };
+
+      var daveString = sayText("Dave");
+      var luisString = sayText("Luis");
+      console.log(daveString, luisString);
+
+      // Conditionals
+      if (bigNumber) {
+        console.log("Whoa, big number!");
+      }
+      else if (myNumber >= 1000) {
+        console.log("Okay, that's a decent number.");
+      }
+      else {
+        console.log("Sorry, little number...");
+      }
+
+      // Document Access
+      var pageTitle = document.getElementById("title");
+      pageTitle.innerHTML = "Hello " + student1.username;
+
+    </script>
+
+  </body>
+</html>

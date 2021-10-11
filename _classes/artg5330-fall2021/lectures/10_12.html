@@ -1,0 +1,174 @@
+---
+title: D3
+---
+
+<section>
+  <section>
+    <h2>October 12, 2021</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">D3 Basics</li>
+      <li class="fragment">The Magic of D3</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="/classes/artg5330-fall2021/random">http://www.dave-landry.com/classes/artg5330-fall2021/random</a>
+</section>
+
+<section>
+  <section>
+    <h3>Let's start coding</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>D3 Basics</h1>
+  </section>
+  <section>
+    <h2>What is D3?</h2>
+    <p>
+      D3 is a JavaScript library that allows for manipulating HTML page elements in JavaScript using complex data arrays.
+    </p>
+    <p>
+      It also provides a lot of nice JavaScript shortcuts.
+    </p>
+  </section>
+  <section>
+    <h2>Let's load it!</h2>
+    <p>
+      We can use the JavaScript file directly from their website:
+    </p>
+    <pre><code class="html">&lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;</code></pre>
+    <p><strong>Reminder:</strong> please only use version 4 of D3. Version 5 and 6 change the way data is loaded, and will not work for this class.</p>
+  </section>
+  <section>
+    <h3>Basic HTML Structure</h3>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Selections</h2>
+    <p>
+      Similar to JavaScript and JQuery (if you are familiar), D3 has it's own element selector:
+    </p>
+    <pre><code class="js">document.getElementById("name");</code></pre>
+    <pre><code class="js">$("#name");</code></pre>
+    <pre><code class="js">d3.select("#name");</code></pre>
+  </section>
+  <section>
+    <h2>Attributes and Styles</h2>
+    <p>
+      Element attributes and styles can be changed by using the supplied D3 functions:
+    </p>
+    <pre><code class="js">var elem = d3.select("#name");
+
+elem.attr("class", "big");
+elem.style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h2>Chaining Styles</h2>
+    <p>
+      The <code>attr</code> and <code>style</code> functions always return the original element being modified, so they can be chained one after another:
+    </p>
+    <pre><code class="js">d3.select("#name").attr("class", "big").style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h2>Multi-Selection</h2>
+    <p>
+      You can also select multiple elements on a page and change all of their properties at the same time using the <code>selectAll</code> function:
+    </p>
+    <pre><code class="js">d3.selectAll(".big").style("color", "red");</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>The Magic of D3</h1>
+    <p>"enter/update/exit"</p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-01.png">
+    <p>
+      One of the defining characteristics of D3 is how it let's us easily manipulate shapes as the underlying data is changed.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-02.png">
+    <p>
+      Think of each stage in the lifecycle of the changing data as a frame in an animation. As the data changes, we need to manage the transitions in between each frame.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-03.png">
+    <p>
+      D3 can be configured to match the data based on specific keys (default is to match by index). In this example, let's match the data on the "country" key values.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-04.png">
+    <p>
+      When starting from nothing (as with most first frames), all data points are considered to be "entering" the visualization.
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-05.png">
+    <p>
+      If a data point is no longer present in the new data array, it is "exiting" the visualization. If a data point persists across the transition it is called "updating".
+    </p>
+  </section>
+  <section>
+    <img class="stretch noborder" src="/images/classes/d3js-06.png">
+    <p>
+      This pattern repeats itself indefinitely each time your code is run. Shapes/data can only ever be one of three: "entering", "updating", or "exiting" the visualization.
+    </p>
+  </section>
+  <section>
+    <h2>Extra Reading</h2>
+    <p>
+      The creator of D3 has a great walkthrough of what we went over today: <a href="https://bost.ocks.org/mike/circles/" target="_blank">https://bost.ocks.org/mike/circles/</a>.
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <ul>
+    <li>
+      Create an HTML page containing a function that uses enter/update/exit to draw SVG squares based on a data Array provided to the function.
+    </li>
+    <li>
+      Link to your code from the homepage of your website.
+    </li>
+  </ul>
+  <p><small>You do not need to e-mail me the link to your homework.</small></p>
+</section>

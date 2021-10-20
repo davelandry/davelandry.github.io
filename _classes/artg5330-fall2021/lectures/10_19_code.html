@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My Data Test Page</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+
+    <h1 id="title">Look in the Console</h1>
+
+    <script>
+
+      // Loading TXT files
+      d3.text("data/data.txt", function(error, data) {
+
+        if (error) {
+          console.log(error);
+        }
+        else {
+          console.log("we've got data!");
+          console.log(data);
+        }
+
+      });
+
+      // Loading CSV files
+      d3.csv("data/data.csv", function(error, data) {
+
+        // Loop through an array to change the String "value"
+        // into a number.
+        data.forEach(function(row) {
+          row.value = parseFloat(row.value);
+        });
+
+        // Filter an Array of data to only specific rows
+        // by returning a boolean value for each row.
+        var usData = data.filter(function(row) {
+          return row.country == "usa";
+        });
+        console.log("usData", usData);
+
+        // Returns the smallest number given a specific
+        // data array
+        var columnName = "value";
+        var minimumValue = d3.min(data, function(row) {
+          return row[columnName];
+        });
+        console.log("min", minimumValue);
+
+        // Nesting data based on a specific key
+        var groupedData = d3.nest()
+          .key(function(d) {
+            return d.country;
+          })
+          .entries(data);
+        console.log("groupedData", groupedData);
+
+        // folding in full names based on an Object
+        var nameMapping = {
+          usa: "United States",
+          mex: "Mexico",
+          can: "Canada",
+          chn: "China"
+        };
+        data.forEach(function(row) {
+          row.fullName = nameMapping[row.country];
+        });
+
+        console.log(data);
+
+      });
+
+      // Loading JSON files
+      d3.json("data/data.json", function(error, countryData) {
+
+        console.log(countryData);
+
+      });
+
+      // Loading JSON APIs
+      var url = "https://datausa.io/api/data?measures=Population&year=latest&apiKey=2394872ibjk2d23db2";
+      d3.json(url, function(err, popData) {
+        console.log(popData);
+      });
+
+    </script>
+
+  </body>
+</html>

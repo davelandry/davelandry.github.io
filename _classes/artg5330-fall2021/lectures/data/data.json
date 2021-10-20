@@ -1,6 +1,14 @@
 [
   {
-    "country": "usa",
-    "value": 2342342
+    "country": "United States",
+    "value": 10
+  },
+  {
+    "country": "Mexico",
+    "value": 5
+  },
+  {
+    "country": "Rwanda",
+    "value": 8
   }
 ]

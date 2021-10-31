@@ -1,0 +1,451 @@
+---
+title: Bar Chart
+---
+
+<section>
+  <section>
+    <h2>November 2, 2021</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">Making a Bar Chart</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="/classes/artg5330-fall2021/random">http://www.dave-landry.com/classes/artg5330-fall2021/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Making a Bar Chart</h1>
+  </section>
+  <section>
+    <h3>Today's Goal</h3>
+    <img class="stretch noborder" src="/images/classes/axes-goal.png">
+    <p>A bar chart with x and y axes and data that updates in realtime!</p>
+  </section>
+  <section>
+    <h3>Let's start coding</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+  <section>
+    <h3>Basic HTML Structure</h3>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p><strong>Reminder:</strong> please only use version 4 of D3. Version 5 changes the way data is loaded, and will not work for this class.</p>
+  </section>
+  <section>
+    <h3>Using a Realtime API</h3>
+    <pre><code class="html">&lt;script&gt;
+  var url = "https://whiteboard.datawheel.us/api/google-analytics/realtime/random";
+  var frequency = 10 * 1000; // 10 seconds
+
+  function fetchData() {
+
+    d3.json(url, function(error, users) {
+      // we'll enter/update/exit the bars here
+    });
+
+  }
+
+  fetchData();
+  setInterval(fetchData, frequency);
+&lt;/script&gt;</code></pre>
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" target="_blank">setInterval</a> function will repeatedly run a provided function at a given time interval.</p>
+  </section>
+  <section>
+    <h3>Data Prep</h3>
+    <pre><code class="js">var dataMax = 5;
+var data = [];
+
+function fetchData() {
+
+  d3.json(realtimeURL, function(error, users) {
+
+    data.unshift(users);
+    if (data.length > dataMax) data.pop();
+
+  });
+
+}</code></pre>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift" target="_blank">Unshift</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift" target="_blank">shift</a> modifies the beginning a JavaScript array, and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push" target="_blank">push</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" target="_blank">pop</a> modifies the end. Here we define the maximum number of data points desired, and then remove the oldest data point if the array's length is greater than that value.</p>
+  </section>
+  <section>
+    <h3>Creating our Container</h3>
+    <pre><code class="html">&lt;svg id="chart"&gt;&lt;/svg&gt;</code></pre>
+    <p>Add an SVG element into the body, and make sure to place it before your script tag.</p>
+    <pre><code class="js">var width = window.innerWidth;
+var height = window.innerHeight;
+
+var svg = d3.select("#chart")
+  .attr("width", width)
+  .attr("height", height);</code></pre>
+    <p>Let's create a chart that spans across the entire width of the screen. This code should be declared at the top of your script with the other variables.</p>
+  </section>
+  <section>
+    <h3>Basic Enter/Exit Structure</h3>
+    <pre><code class="js">var bars = svg.selectAll(".bar")
+  .data(data);
+
+bars.enter().append("rect")
+  .attr("class", "bar");
+
+bars.exit().remove();</code></pre>
+    <p>When setting up a new enter/update/exit animation, it can be helpful to not worry about styling initially and simply use the browser "Elements" inspector to confirm the correct behavior of the DOM elements.</p>
+    <p>Confirm in your browser inspector that elements are being added and removed appropriately.</p>
+  </section>
+  <section>
+    <h3>Bar X Position</h3>
+    <pre><code class="js">var x = d3.scaleLinear()
+  .domain([dataMax, 1])
+  .range([0, width]);
+
+bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  });</code></pre>
+    <p>We can use the "dataMax" variable to inversely map each array index to the available screen width.</p>
+  </section>
+  <section>
+    <h3>Bar Width</h3>
+    <pre><code class="js">var barWidth = width / dataMax;
+
+bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  });</code></pre>
+    <p>We can calculate the width for each bar by dividing the available screen width by the number of bars.</p>
+  </section>
+  <section>
+    <h3>Bar Height</h3>
+    <pre><code class="js">var barHeight = d3.scaleLinear()
+  .domain([0, d3.max(data)])
+  .range([0, height]);
+
+var enterBars = bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight);
+
+bars
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight);</code></pre>
+    <p>The domain for the height of the bars can be calculated from the highest value in the data using the d3.max function. We also need to add an update cycle to change pre-existing rectangles.</p>
+  </section>
+  <section>
+    <h3>Bar Y Position</h3>
+    <pre><code class="js">var enterBars = bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight)
+  .attr("y", function(d, i) {
+    var h = barHeight(d.users);
+    return height - h;
+  });
+
+bars
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight)
+  .attr("y", function(d, i) {
+    var h = barHeight(d.users);
+    return height - h;
+  });</code></pre>
+    <p>Since we want the bars to be anchored on the bottom of the screen, we need to offset the y position by the difference between it's height and the overall available vertical space.</p>
+  </section>
+  <section>
+    <h3>Adding Animation</h3>
+    <pre><code class="js">var enterBars = bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", 0)
+  .attr("y", height);
+
+bars.transition().duration(frequency / 2)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  })
+  .attr("height", barHeight)
+  .attr("y", function(d, i) {
+    var h = barHeight(d.users);
+    return height - h;
+  });</code></pre>
+    <p>We can use the frequency variable to define a transition for updating shapes. This also allows us to change some of the enter states to make entering shapes grow into place.</p>
+  </section>
+  <section>
+    <h3>Changing the Binding ID</h3>
+    <pre><code class="js">data.unshift({
+  users: users,
+  timestamp: new Date()
+});</code></pre>
+    <p>By default, d3 binds data to shapes based on their index in the array. In order to have our bars move to the left, we need to give each of them a unique ID. We can use the Date constructor to make a new timestamp each time new data is fetched.</p>
+    <pre><code class="js">var bars = svg.selectAll(".bar")
+  .data(data, function(d) {
+    return d.timestamp;
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <p>Take a few minutes to adjust your code to the new format of the data. You will need to rewrite any function that references the data, such as the d3.max function and the height/y functions.</p>
+  </section>
+  <section>
+    <h3>Time for Axes</h3>
+    <p>The first step of adding axes to any chart is to create padding around the chart so that the axes have space to display. Create a margin Object at the top of your script:</p>
+    <pre><code class="js">var margin = {top: 20, right: 20, bottom: 50, left: 100};</code></pre>
+  </section>
+  <section>
+    <h3>Adjusting Positioning</h3>
+    <p>Now we must use our new margin values to adjust all of the bar positioning. First, it's helpful to create 2 variables that represent the inner chart width and height:</p>
+    <pre><code class="js">var chartWidth = width - margin.left - margin.right;
+var chartHeight = height - margin.top - margin.bottom;</code></pre>
+  </section>
+  <section>
+    <h3>X Scale</h3>
+    <p>Next, we need to update the X scale:</p>
+    <pre><code class="js">var x = d3.scaleLinear()
+  .domain([dataMax, 1])
+  .range([margin.left, margin.left + chartWidth - barWidth]);</code></pre>
+  </section>
+  <section>
+    <h3>Bar Height</h3>
+    <p>And then the barHeight scale:</p>
+    <pre><code class="js">var barHeight = d3.scaleLinear()
+  .domain([0, maximum])
+  .range([0, chartHeight]);</code></pre>
+  </section>
+  <section>
+    <h3>Bar Y Position</h3>
+    <p>Let's create an actual scale for the Y positioning:</p>
+    <pre><code class="js">var y = d3.scaleLinear()
+  .domain([0, maximum])
+  .range([margin.top + chartHeight, margin.top]);</code></pre>
+  <small>This will be super helpful when we move on to creating axes...</small>
+  </section>
+  <section>
+    <h3>Bar Y Position</h3>
+    <p>Use the zero value for the enter/exit bars:</p>
+    <pre><code class="js">.attr("y", y(0))</code></pre>
+    <p>And simplify the update bars:</p>
+    <pre><code class="js">.attr("y", function(d) {
+  return y(d.users);
+})</code></pre>
+  </section>
+  <section>
+    <h3>SVG Scaffolding</h3>
+    <p>Let's create separate SVG groups for each element: shapes, x-axis, and y-axis. It's always best practice to be as organized as possible!</p>
+    <pre><code class="html">&lt;svg id="chart"&gt;
+  &lt;g id="shapes"&gt;&lt;/g&gt;
+  &lt;g id="x"&gt;&lt;/g&gt;
+  &lt;g id="y"&gt;&lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Adjust our D3 selection:</h3>
+    <p>We want to add our bars to the "#shapes" group, not the SVG itself:</p>
+    <pre><code class="js">var bars = svg.select("#shapes").selectAll(".bar")
+  .data(data, function(d) {
+    return d.timestamp;
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Let's add a Y-axis</h3>
+    <p>We simply use our "y" scaleLinear during the creation of an "axisLeft", and then "call" it on our "#y" group element.</p>
+    <pre><code class="js">var yAxis = d3.axisLeft(y);
+svg.select("#y").call(yAxis);</code></pre>
+    <p>The "Left", "Right", "Bottom", and "Top" orientation of each axis refers to the direction of the tick marks.</p>
+  </section>
+  <section>
+    <h3>Where's our axis?</h3>
+    <p>Axes are positioned relative to the SVG origin ([0, 0]). We need to push our axis to the right using the "transform" attribute:</p>
+    <pre><code class="js">var yAxis = d3.axisLeft(y);
+svg.select("#y")
+  .attr("transform", "translate(" + margin.left + ", 0)")
+  .call(yAxis);</code></pre>
+  </section>
+  <section>
+    <h3>What about transitions?</h3>
+    <p>Just add it in!</p>
+    <pre><code class="js">var yAxis = d3.axisLeft(y);
+svg.select("#y")
+  .attr("transform", "translate(" + margin.left + ", 0)")
+  .transition().duration(frequency / 2)
+  .call(yAxis);</code></pre>
+  </section>
+  <section>
+    <h3>But wait, how does "call" work?</h3>
+    <p>The "call" function invokes your function once, passing in the current selection as the first argument. Let's try using it for the enter/exit state!</p>
+    <pre><code class="js">function zeroState(selection) {
+  selection
+    .attr("height", 0)
+    .attr("y", y(0));
+}</code></pre>
+  </section>
+  <section>
+    <h3>zeroState FTW</h3>
+    <p>And then replace those "height" and "y" attributes in both the enter and exit code:</p>
+    <pre><code class="js">var enter = bars.enter().append("rect")
+  .attr("class", "bar")
+  .attr("width", barWidth)
+  .call(zeroState)
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  });
+
+bars.exit()
+  .transition().duration(frequency / 2)
+  .call(zeroState)
+  .remove();</code></pre>
+  </section>
+  <section>
+    <h3>Time for an X-axis</h3>
+    <p>Using what we learned with the Y-axis:</p>
+    <pre><code class="js">var xAxis = d3.axisBottom(x);
+svg.select("#x")
+  .attr("transform", "translate(0, " + (chartHeight + margin.top) + ")")
+  .call(xAxis);</code></pre>
+  </section>
+  <section>
+    <h3>This... is not ideal.</h3>
+    <img class="noborder" src="/images/classes/fuck-no.png">
+    <img class="stretch noborder" src="/images/classes/xaxis-broken.png">
+  </section>
+  <section>
+    <h3>Band Scales to the Rescue</h3>
+    <img class="stretch noborder" src="/images/classes/scaleBand.png">
+    <p>Band Scales are meant for bar charts. The main difference from our linear code is that band scales require all values to be defined in the "domain".</p>
+  </section>
+  <section>
+    <h3>Example Domain</h3>
+    <pre><code class="js">.domain([5, 4, 3, 2, 1])</code></pre>
+    <p>But how do we calculate this dynamically based on dataMax?</p>
+  </section>
+  <section>
+    <h3>Range and Reverse</h3>
+    <pre><code class="js">var domainValues = d3.range(1, dataMax + 1);
+
+var x = d3.scaleBand()
+  .domain(domainValues.reverse())
+  .range([margin.left, margin.left + chartWidth]);</code></pre>
+  </section>
+  <section>
+    <h3>Padding and Width</h3>
+    <pre><code class="js">var x = d3.scaleBand()
+  .domain(domainValues.reverse())
+  .range([margin.left, margin.left + chartWidth])
+  .paddingInner(0.1)
+  .paddingOuter(0.2);
+
+var barWidth = x.bandwidth();</code></pre>
+    <p>We can use the band scale to apply padding between the bars, and from that extract the calcualted width of each bar!</p>
+  </section>
+  <section>
+    <h3>But what about those labels?</h3>
+    <pre><code class="js">var xAxis = d3.axisBottom(x)
+  .tickFormat(function(d) {
+    return d;
+  });</code></pre>
+    <p>The tickFormat function allows us to override the default formatting. This code is how the default behavior works internally.</p>
+  </section>
+  <section>
+    <h3>Getting our Data</h3>
+    <pre><code class="js">var xAxis = d3.axisBottom(x)
+  .tickFormat(function(d) {
+    var dataPoint = data[d - 1];
+    console.log(dataPoint);
+    return d;
+  });</code></pre>
+    <p>We can use the numeric value to reference the index in the data array (minus 1, of course).</p>
+  </section>
+  <section>
+    <h3>Using the Timestamp</h3>
+    <pre><code class="js">var xAxis = d3.axisBottom(x)
+  .tickFormat(function(d) {
+    var dataPoint = data[d - 1];
+    if (dataPoint) {
+      var time = dataPoint.timestamp;
+      return time;
+    }
+    else {
+      return "";
+    }
+  });</code></pre>
+    <p>Let's output the timestamp, if we have one.</p>
+  </section>
+  <section>
+    <h3>Calculating "Seconds Ago"</h3>
+    <pre><code class="js">var xAxis = d3.axisBottom(x)
+  .tickFormat(function(d) {
+    var dataPoint = data[d - 1];
+    if (dataPoint) {
+      var time = dataPoint.timestamp;
+      var diff = new Date() - time;
+      var secondsAgo = Math.round(diff / 1000);
+      if (secondsAgo === 0) {
+        return "Now";
+      }
+      else {
+        var word = secondsAgo === 1 ? "second" : "seconds";
+        return secondsAgo + " " + word + " ago";
+      }
+    }
+    else {
+      return "";
+    }
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Did you catch that ternary?</h3>
+    <pre><code class="js">var word = secondsAgo === 1 ? "second" : "seconds";</code></pre>
+    <p>It's a very simple way to write an "if/else statement" on a single line. The first property is the conditional, followed by a "?" and the return of the truthy condition, followed by a ":" and the return of the falsey condition.</p>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <img class="stretch noborder" src="/images/classes/axes-goal.png">
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>
+    Experiment with the bar visualization we made in class today. Some examples of improvements: coloring the bars, changing the borders, background color, font styles.
+  </p>
+  <p>
+    The purpose of this homework is to make sure that everyone can make a bar chart!
+  </p>
+</section>

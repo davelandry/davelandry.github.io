@@ -171,7 +171,7 @@ bars
   })
   .attr("height", barHeight)
   .attr("y", function(d, i) {
-    var h = barHeight(d.users);
+    var h = barHeight(d);
     return height - h;
   });
 
@@ -181,7 +181,7 @@ bars
   })
   .attr("height", barHeight)
   .attr("y", function(d, i) {
-    var h = barHeight(d.users);
+    var h = barHeight(d);
     return height - h;
   });</code></pre>
     <p>Since we want the bars to be anchored on the bottom of the screen, we need to offset the y position by the difference between it's height and the overall available vertical space.</p>
@@ -203,7 +203,7 @@ bars.transition().duration(frequency / 2)
   })
   .attr("height", barHeight)
   .attr("y", function(d, i) {
-    var h = barHeight(d.users);
+    var h = barHeight(d);
     return height - h;
   });</code></pre>
     <p>We can use the frequency variable to define a transition for updating shapes. This also allows us to change some of the enter states to make entering shapes grow into place.</p>

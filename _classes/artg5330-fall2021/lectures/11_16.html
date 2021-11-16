@@ -1,0 +1,378 @@
+---
+title: SVG Text
+---
+
+<section>
+  <section>
+    <h2>November 16, 2021</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">SVG Text</li>
+      <li class="fragment">Homework</li>
+      <li class="fragment">Project Scaffolds</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h3 class="fragment">Ugh, I fucking hate</h3>
+    <h1>SVG Text</h1>
+    <i class="fa fa-font"></i>
+  </section>
+  <section>
+    <h3 style="text-transform: uppercase;">Disclaimer</h3>
+    <p style="text-transform: uppercase;">Working with SVG text is weird and frustrating. You need to do a lot of things manually.</p>
+  </section>
+  <section>
+    <h3>Today's Goal</h3>
+    <img class="stretch noborder" src="/images/classes/svg-text.png">
+    <p>Using the enter/udpate/exit paradigm, create a function that creates boxes with text wrapped inside of them.</p>
+  </section>
+  <section>
+    <h3>Let's start coding</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your local "username.github.io" repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+  <section>
+    <h3>Gimme That Basic HTML Structure</h3>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script src="https://d3js.org/d3.v4.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <small><strong>Reminder:</strong> please only use version 4 of D3.<br />Version 5 changes the way data is loaded, and will not work for this class.</small>
+  </section>
+  <section>
+    <h3>SVG and Data Setup</h3>
+    <pre><code class="html">&lt;svg id="chart" width="100%" height="100vh"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+
+  var svg = d3.select("#chart");
+
+  var data1 = [
+    "Hello Class, my name is Dave",
+    "Test Title",
+    "Some really long text that we will probably have fun working with."
+  ];
+
+  var data2 = [
+    "One little string..."
+  ];
+
+&lt;/script&gt;</code></pre>
+    <p>We'll alternate between these data arrays to help test our enter/update/exit code.</p>
+  </section>
+  <section>
+    <h3>Drawing boxes? We got this!</h3>
+    <pre><code class="js">var columnWidth = 100;
+
+function drawBoxes(currentData) {
+
+  var boxes = svg.selectAll(".box")
+      .data(currentData);
+
+  boxes.enter().append("rect")
+    .attr("class", "box")
+    .attr("x", function(d, i) {
+      return i * columnWidth;
+    })
+    .attr("y", 0)
+    .attr("width", columnWidth)
+    .attr("height", 200);
+
+  boxes.exit().remove();
+
+}</code></pre>
+  </section>
+  <section>
+    <h3>Invoke the function!</h3>
+    <pre><code class="js">drawBoxes(data1);</code></pre>
+    <small class="fragment">We can use the browser console to change the data!<br />Try typing this into your console: <code class="js">drawBoxes(data2)</code></small>
+  </section>
+  <section>
+    <h3>Sprinkle in some CSS</h3>
+    <pre><code class="html">&lt;style&gt;
+
+  .box {
+    fill: transparent;
+    stroke: red;
+    stroke-width: 2px;
+  }
+
+&lt;/style&gt;</code></pre>
+    <p>Any styles that don't need to be adjusted based on data or screen sizing can (and should be) set in CSS.</p>
+  </section>
+  <section>
+    <h3>Drawing text? Same paradigm!</h3>
+    <pre><code class="js">var labels = svg.selectAll(".label")
+  .data(data);
+
+var enterLabels = labels.enter().append("text")
+  .attr("class", "label")
+  .attr("y", 0)
+  .attr("x", function(d, i) {
+    return i * columnWidth;
+  })
+  .attr("width", columnWidth)
+  .attr("height", 200);
+
+labels.merge(enterLabels)
+  .text(function(d) {
+    return d;
+  });
+
+labels.exit().remove();</code></pre>
+    <p>All HTML/SVG elements can be entered, updated, or exited using data, including SVG &lt;text&gt; tags.</p>
+  </section>
+  <section>
+    <h3>WTF SVG Text?</h3>
+    <img class="stretch noborder" src="/images/classes/svg-text-baseline.png">
+    <p>The default Y position for text elements is based on the baseline of the text.</p>
+  </section>
+  <section>
+    <h3>Anatomy of a Line of Text</h3>
+    <img class="stretch" src="/images/classes/text-baseline.svg" style="background: white; padding: 25px;">
+  </section>
+  <section>
+    <h3>Change our Baseline Position</h3>
+    <pre><code class="js">var enterLabels = labels.enter().append("text")
+  .attr("class", "label")
+  .attr("baseline-shift", "-100%")
+  .attr("y", 0)
+  .attr("x", function(d, i) {
+    return i * columnWidth;
+  })
+  .attr("width", columnWidth)
+  .attr("height", 200);</code></pre>
+    <p>The "baseline-shift" attribute changes the positioning of the baseline. In our case, we want to move it <em>down</em> 100% of the line height, so -100%.</p>
+  </section>
+  <section>
+    <h3>WTF SVG Text?</h3>
+    <img class="stretch noborder" src="/images/classes/svg-text-nowrap.png">
+    <p>Unlike HTML or text editors, SVG has no ability to wrap text within a certain container. 🤦🏻‍♂️</p>
+  </section>
+  <section>
+    <h3>&lt;tspan&gt; to the Rescue</h3>
+    <p>Similar to &lt;p&gt; tags being able to have &lt;span&gt; tags nested inside themselves, &lt;text&gt; elements allow for &lt;tspan&gt; elements to be nested inside themselves.</p>
+  </section>
+  <section>
+    <h3>The D3 "each" Function</h3>
+    <pre><code class="js">labels.merge(enterLabels)
+  .text(function(d) {
+    return d;
+  });</code></pre>
+    <p>The D3 "each" function allows us to run custom JavaScript code for each element selected, including nesting elements inside of the selected elements. The above update code can be rewritten using the "each" function:</p>
+    <pre><code class="js">labels.merge(enterLabels)
+  .each(function(d) {
+    var textElement = d3.select(this);
+    textElement.text(d);
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Basic text wrapping:</h3>
+    <ol>
+      <li>Split the string into individual words</li>
+      <li>Place a word in a &lt;tspan&gt;</li>
+      <li>Measure the width of the &lt;tspan&gt;
+        <ul>
+          <li>If the &lt;tspan&gt; width is below the maximum width, add another word and repeat</li>
+          <li>If the &lt;tspan&gt; width is above the maximum width, remove it from that &lt;tspan&gt; and start a new &lt;tspan&gt; with that word inside of it</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+  <section>
+    <h3>Split by Spaces</h3>
+    <pre><code class="js">labels.merge(enterLabels)
+  .each(function(d) {
+
+    var textElement = d3.select(this);
+    textElement.text(d);
+
+    var words = d.split(" ");
+
+  });</code></pre>
+    <p>We are going to loop through each word in the "words" array.</p>
+    <small>Unless noted, all JavaScript code in these slides from<br />this point on should be placed inside of our "each" function.</small>
+  </section>
+  <section>
+    <h3>Looping and Measuring</h3>
+    <pre><code class="js">var textElement = d3.select(this);
+textElement.text("");
+
+var words = d.split(" ");
+var tspan = textElement.append("tspan");
+
+words.forEach(function(word) {
+
+  var text = tspan.text();
+  tspan.text(text + " " + word);
+  var lineWidth = tspan.node().getBoundingClientRect().width;
+
+  if (lineWidth > columnWidth) {
+    tspan.text(text);
+    tspan = textElement.append("tspan")
+      .text(word);
+  }
+
+});</code></pre>
+  </section>
+  <section>
+    <h3>Ugh, not again</h3>
+    <img class="stretch noborder" src="/images/classes/svg-text-baseline.png">
+  </section>
+  <section>
+    <h3>Individual Baseline Shifts</h3>
+    <pre><code class="js">var textElement = d3.select(this)
+textElement.text("");
+
+var words = d.split(" ");
+var tspan = textElement.append("tspan")
+  .attr("baseline-shift", "-100%");
+
+words.forEach(function(word) {
+
+  var text = tspan.text();
+  tspan.text(text + " " + word);
+  var lineWidth = tspan.node().getBoundingClientRect().width;
+
+  if (lineWidth > columnWidth) {
+    tspan.text(text);
+    tspan = textElement.append("tspan")
+      .attr("baseline-shift", "-100%")
+      .text(word);
+  }
+
+});</code></pre>
+    <p>Move the "baseline-shift" code from the &lt;text&gt; elements to the individual &lt;tspan&gt; elements.</p>
+  </section>
+  <section>
+    <h3>WTF SVG Text?</h3>
+    <img class="stretch noborder" src="/images/classes/svg-text-inline.png">
+    <p>&lt;tspan&gt; elements, just like &lt;span&gt; elements, are inline by default. We can override this by setting x/y position manually.</p>
+  </section>
+  <section>
+    <h3>but first, font-size</h3>
+    <pre><code class="js">var fontSize = 20;
+
+var enterLabels = labels.enter().append("text")
+  .attr("class", "label")
+  .attr("font-size", fontSize)
+  .attr("y", 0)
+  .attr("x", function(d, i) {
+    return i * columnWidth;
+  });</code></pre>
+    <p>Create a "fontSize" variable at the top of your script, and apply it to the entering &lt;text&gt; elements.</p>
+    <p>This number represents the height of each line of text, and will help us determine how far down to move each new line.</p>
+  </section>
+  <section>
+    <h3>&lt;tspan&gt; positioning</h3>
+    <pre><code class="js">var line = 0;
+
+words.forEach(function(word) {
+
+  var text = tspan.text();
+  tspan.text(text + " " + word);
+  var lineWidth = tspan.node().getBoundingClientRect().width;
+
+  if (lineWidth > columnWidth) {
+    line++;
+    tspan.text(text);
+    tspan = textElement.append("tspan")
+      .attr("baseline-shift", "-100%")
+      .attr("y", fontSize * line)
+      .attr("x", function() {
+        return i * columnWidth;
+      })
+      .text(word);
+  }
+
+});</code></pre>
+    <p>Use the fontSize variable and a new "line" variable that increments with each new &lt;tspan&gt;.</p>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <img class="stretch noborder" src="/images/classes/svg-text.png">
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      From this point forward, homework will be assigned on an individual basis. Everyone's project is different, so everyone's milestones will be as well.
+    </p>
+  </section>
+  <section>
+    <h1>Reality Check</h1>
+    <p>
+      We only have 3 more classes after this one! From now in, everyone should be focusing on their personal project.
+    </p>
+    <p>
+      Our last class will be final critiques. Be prepared to stand in front of the class, demo your project, and talk about what you've learned. Each presentation will end with a short question and answer dialogue.
+    </p>
+  </section>
+  <section>
+    <h1>Final Project Grading</h1>
+    <table class="small">
+      <thead>
+        <tr>
+          <th><b>Criteria</b></th>
+          <th><b>60%</b></th>
+          <th><b>75%</b></th>
+          <th><b>90%</b></th>
+          <th><b>100%</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Effort</b></td>
+          <td>Broken project</td>
+          <td>Unfinished project</td>
+          <td>Project requirements were met</td>
+          <td>Student added many features beyond the minimum requirements</td>
+        </tr>
+        <tr>
+          <td><b>Design</b></td>
+          <td>No CSS</td>
+          <td>Some CSS, but did not incorporate feedback</td>
+          <td>Unique project design, only a few rough edges</td>
+          <td>Exceptional design aesthetic</td>
+        </tr>
+        <tr>
+          <td><b>Narrative</b></td>
+          <td>No explanatory text</td>
+          <td>Some text included, but some parts have unclear meaning</td>
+          <td>Everything is explained through clear text and labels</td>
+          <td>Project contains/enables thought-provoking insights from the data</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+
+<section>
+  <h1>Project Scaffolds</h1>
+  <ul>
+    <li>separately loaded JS and CSS files</li>
+    <li>project title and intro</li>
+    <li>text and visualization placeholders</li>
+  </ul>
+  <br />
+  <a target="_blank" href="/classes/artg5330-fall2021/random">http://www.dave-landry.com/classes/artg5330-fall2021/random</a>
+</section>

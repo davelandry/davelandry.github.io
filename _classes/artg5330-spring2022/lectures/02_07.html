@@ -1,0 +1,329 @@
+---
+title: JavaScript
+---
+
+<section>
+  <section>
+    <h2>February 7, 2022</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">JavaScript Basics</li>
+      <li class="fragment">JavaScript Libraries</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="/classes/artg5330-spring2022/random">http://www.dave-landry.com/classes/artg5330-spring2022/random</a>
+</section>
+
+<section>
+  <section>
+    <h3>Let's start coding</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+  <section>
+    <h3>Create a new test file</h3>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;In-Class JavaScript&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>Copy/Paste this boilerplate code!</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>JavaScript Basics</h1>
+  </section>
+  <section>
+    <h2>What is JavaScript?</h2>
+    <p>
+      While HTML and CSS are languages used for page layout, JavaScript is a language used for page manipulation.
+    </p>
+    <p>
+      JavaScript code is written for<br />the page to <em>interpret</em>, not render.
+    </p>
+  </section>
+  <section>
+    <h2>Script Tags</h2>
+    <p>
+      All JavaScript code must be nested in between two <code>&lt;script&gt;</code> tags. These tags can be inside the <code>&lt;head&gt;</code> or the <code>&lt;body&gt;</code>, but they must come after the elements they interact with.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+&lt;/script&gt;</code></pre>
+    <p><em>Just put it at the end of the body for now.</em></p>
+  </section>
+  <section>
+    <h2>Code Syntax</h2>
+    <p>
+      JavaScript code is executed line-by-line, from top to bottom.
+    </p>
+    <p>
+      Much like HTML and CSS, spacing and indentation do not matter, but each command must end with a semi-colon.
+    </p>
+  </section>
+  <section>
+    <h2>Variables</h2>
+    <p>
+      A variable is a common name for a value that might change as the user interacts with the page. By storing things as variables, we can access them later.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+    <p>Here we are storing a number as a variable, and printing it out to the browser console.</p>
+  </section>
+  <section>
+    <h2>Number Variables</h2>
+    <p>
+      Numbers can be manipulated with math!
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 42;
+
+  myNumber = myNumber + 10;
+
+  console.log(myNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>String Variables</h2>
+    <p>
+      Text is stored by surrounding the characters with quotation marks, and text strings can be concatenated to eachother.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myString = "JavaScript is Cool!";
+
+  console.log("D3 and " + myString);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Boolean Variables</h2>
+    <p>
+      Booleans are values that are either true or false.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 20;
+
+  var bigNumber = myNumber > 100;
+
+  console.log(bigNumber);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Array Variables</h2>
+    <p>
+      A list of variables can be stored as an Array, and you select which entry you need by using a 0-index based numbering system.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myArray = ["one", "two", "three", "four"];
+
+  // Any line starting with double slashes is a comment
+  // that will not be interpreted by the browser.
+
+  // This should print out "two"
+  console.log(myArray[1]);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Object Variables</h2>
+    <p>
+      Instead of using a flat list as in Arrays, you can store data with keys and values to easily access later.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myObject = {
+    name: "Dave",
+    color: "red"
+  };
+
+  console.log(myObject.name);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Functions</h2>
+    <p>
+      When logic may need to be repeated multiple times, it is best practice to store that logic in one place. Functions are triggered by saying the variable name followed by a set of parenthesis.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayHello = function() {
+    console.log("Hello!");
+  }
+
+  sayHello();
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Variables</h2>
+    <p>
+      Functions may accept variables, called arguments, to use internally.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var sayText = function(txt) {
+    console.log(txt);
+  }
+
+  sayText("Goodbye");
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Function Returns</h2>
+    <p>
+      Additionally, functions can return a value.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var plusTen = function(num) {
+    return num + 10;
+  }
+
+  var thirty = plusTen(20);
+
+  console.log(thirty);
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Conditional Statements</h2>
+    <p>
+      JavaScript contains syntax for evaluating logic and performing actions when a defined parameter is met.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  var myNumber = 12;
+
+  if (myNumber > 10) {
+    console.log("greater than 10!");
+  }
+  else {
+    console.log("less than 10!");
+  }
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Combining Everything</h2>
+    <p>
+      JavaScript starts to shine once you start combining these concepts.
+    </p>
+    <pre><code class="html">&lt;script&gt;
+
+  function greaterThanTen(num) {
+
+    if (num > 10) {
+      console.log("greater than 10!");
+    }
+    else {
+      console.log("less than 10!");
+    }
+
+    return num > 10;
+
+  }
+
+  // this should return true
+  console.log(greaterThanTen(20));
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Interacting with HTML</h2>
+    <p>
+      The "document" is a pre-defined object with information and functions relating to the page itself. Here, we can select an element and change it's content:
+    </p>
+    <pre><code class="html">&lt;h1 id="name"&gt;&lt;/h1&gt;
+&lt;script&gt;
+
+  document.getElementById("name").innerHTML = "Dave";
+
+&lt;/script&gt;</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>JavaScript Libraries</h1>
+  </section>
+  <section>
+    <h2>JavaScript Libraries</h2>
+    <p>
+      A JavaScript library is a collection of pre-written functions and variables that provide shortcuts for more complex behavior.
+    </p>
+  </section>
+  <section>
+    <h2>Let's Make Our Own</h2>
+    <p>
+      Create a file called "math.js" in the same directory as your test file, and cut/paste our <code>greaterThanTen</code> function into the file.
+    </p>
+  </section>
+  <section>
+    <h2>Link to the File</h2>
+    <p>
+      From whichever HTML page you are currently testing with, link to the file from within the &lt;body&gt; tag:
+      <pre><code class="html">&lt;script src="math.js"&gt;&lt;/script&gt;</code></pre>
+    </p>
+  </section>
+  <section>
+    <h2>Test it out!</h2>
+    <p>
+      Try referencing the variables and functions in your library from within a &lt;script&gt; tag:
+      <pre><code class="html">&lt;script&gt;
+  console.log(greaterThanTen(20));
+&lt;/script&gt;</code></pre>
+    </p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <h2>Homework</h2>
+  <ul>
+    <li>
+      Create an HTML page that contains a JavaScript function that modifies an element in the body of the page.
+    </li>
+    <li>
+      Link to your final code from the index.html on your website.
+    </li>
+  </ul>
+</section>

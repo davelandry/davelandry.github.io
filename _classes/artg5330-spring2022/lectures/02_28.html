@@ -1,0 +1,249 @@
+---
+title: Data, Manipulation, and APIs
+---
+
+<section>
+  <section>
+    <h2>February 28, 2021</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Homework Review</li>
+      <li class="fragment">Data File Formats</li>
+      <li class="fragment">APIs</li>
+      <li class="fragment">Manipulating Data</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h1>Homework Review</h1>
+  <a target="_blank" href="/classes/artg5330-spring2022/random">http://www.dave-landry.com/classes/artg5330-spring2022/random</a>
+</section>
+
+<section>
+  <section>
+    <h3>Let's start coding</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+  <section>
+    <h3>Create a new test file</h3>
+    <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;Data Manipulation&lt;/title&gt;
+    &lt;script src="https://d3js.org/d3.v7.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;script&gt;
+
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>Copy/Paste this boilerplate code!</p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Data File Formats</h1>
+    <i class="fa fa-table"></i>
+  </section>
+  <section>
+    <h2>External Files</h2>
+    <p>
+      Just like CSS and JS, data is often stored in external files and loaded into the page dynamically.
+    </p>
+  </section>
+  <section>
+    <h2>Filetypes</h2>
+    <p>
+      D3 comes with functions that can read in external data files automagically. Filetypes include:
+    </p>
+    <ul>
+      <li class="fragment">txt</li>
+      <li class="fragment">csv</li>
+      <li class="fragment">json</li>
+    </ul>
+  </section>
+  <section>
+    <h2>file.txt</h2>
+    <p>
+      Reads text in as a string. Nothing fancy.
+    </p>
+    <pre><code class="js">Some sample text</code></pre>
+    <p>Files are loaded using a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promise</a>:</p>
+    <pre><code class="js">d3.text("file.txt")
+  .then(function(data) {
+    console.log(data);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });</code></pre>
+  </section>
+  <section>
+    <h2>file.csv</h2>
+    <p>
+      Comma-separated values. Each line of the file is a data object, with it's values separated by commas. The first row in the file is expected to be the key names for each data point.
+    </p>
+    <pre><code class="js">country,value
+usa,4
+mexico,10
+canada,6</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.csv("file.csv")
+  .then(function(data) {
+    console.log(data);
+  });</code></pre>
+  </section>
+  <section>
+    <h2>file.json</h2>
+    <p>
+      JavaScript Object Notation. Data is stored with the same syntax as it would be in Javascript, with keys and values.
+    </p>
+    <pre><code class="js">[
+  {
+    country: "usa",
+    value: 4
+  }
+]</code></pre>
+    <p>This can be loading like this:</p>
+    <pre><code class="js">d3.json("file.json")
+  .then(function(data) {
+    console.log(data);
+  });</code></pre>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>APIs</h1>
+    <sub class="fragment">"application programming interfaces"</sub>
+  </section>
+  <section>
+    <h2>What is an API?</h2>
+    <p>
+      In the context of data, developers who store data in databases need to enable an easy way for themselves and others to extract data based on specific query parameters.
+    </p>
+  </section>
+  <section>
+    <h2>Shameless Example</h2>
+    <h1>Data USA</h1>
+    <p>
+      <a href="https://datausa.io/" target="_blank">Data USA</a> collates data from over 20 public US datasets.
+    </p>
+    <p>
+      Additionally, all of the data is available for free through a JSON API. Documentation is <a href="https://datausa.io/about/api/" target="_blank">here</a>.
+    </p>
+  </section>
+  <section>
+    <h2>Loading from an API</h2>
+    <p>
+      Data from an API is commonly delivered in JSON format, so instead of providing <b>d3.json</b> a filename for it's first argument, we can provide it a full URL (if the other website allows it):
+    </p>
+    <pre><code class="js">var url = "https://datausa.io/api/data?measures=Population&year=latest";
+
+d3.json(url)
+  .then(function(data) {
+    console.log(data);
+  });</code></pre>
+  </section>
+  <section>
+    <h2>Example Public APIs</h3>
+    <p><a href="https://github.com/public-apis/public-apis/blob/master/README.md" target="_blank">https://github.com/public-apis/public-apis/blob/master/README.md</a></p>
+    <p><a href="https://www.kaggle.com/datasets" target="_blank">https://www.kaggle.com/datasets</a></p>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Manipulating Data</h1>
+  </section>
+  <section>
+    <h2>Changing Data</h2>
+    <p>Arrays have a built in "forEach" function that allows you to loop through every item in an Array to analyze and/or change things:</p>
+    <pre><code class="js">data.forEach(function(d) {
+  d.value = parseFloat(d.value);
+});</code></pre>
+    <p>Here we are using the built-in <code class="js">parseFloat</code> function to change strings into numbers.</p>
+  </section>
+  <section>
+    <h2>Filtering Data</h2>
+    <p>Arrays have a built in "filter" function that allows you to selectively trim a large data Array to create a smaller Array:</p>
+    <pre><code class="js">var currentYear = "2019";
+
+var currentYearData = data.filter(function(d) {
+  return d.year == currentYear;
+});</code></pre>
+  </section>
+  <section>
+    <h2>D3 Array Functions</h2>
+    <p>D3 contains a number of helper functions that will analyze an Array in different ways. For example, finding the minimum value of a dataset:</p>
+    <pre><code class="js">var dataMinimum = d3.min(data, function(d) {
+  return d.value;
+});
+</code></pre>
+  <p>Most of these functions require providing 2 arguments: the Array to be analyzed and an "accessor" function that returns the object key to be used for the analysis. Other helpful functions include "max" and "extent".</p>
+  </section>
+  <section>
+    <h2>Grouping Data</h2>
+    <p>The d3.group() function can be used<br />to group large datasets by a shared key:</p>
+    <pre><code class="js">var groupedData = d3.group(csvData, function(d) {
+  return d.continent;
+});</code></pre>
+  </section>
+  <section>
+    <h2>Creating a Mapping</h2>
+    <p>
+      When using 2 data files, like a geographical map and CSV data, it is sometimes necessary to create a mapping in order to cross-reference from one data file to the other.
+    </p>
+    <p>In order to save on filesize, the dataset may use short IDs to identify items, so we can add in the full legible names using a <b>forEach</b> function and a lookup Object:</p>
+    <pre><code class="js">var countryMapping = {
+  "CAN": "Canada",
+  "USA": "United States",
+  "MEX": "Mexico"
+};
+
+data.forEach(function(d) {
+  d.fullName = countyMapping[d.country];
+});</code></pre>
+    <small>
+      This is often called "cross-walking".
+    </small>
+  </section>
+  <section>
+    <h1>Discussion Break</h1>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Homework</h1>
+    <p>
+      Identify a public dataset you would like to use for your final project, and come to next class prepared to present the dataset to the class.
+    </p>
+    <ul>
+      <li>Find a dataset.</li>
+      <li>Describe the different variables/columns available in the dataset.</li>
+      <li>Start thinking about how you could visualize that data.</li>
+    </ul>
+    <b>No coding required!</b>
+  </section>
+</section>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Data Manipulation</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+
+    <script>
+
+      d3.csv("data/file.csv")
+        .then(function(csvData) {
+
+          var countryName = {
+            "usa": "United States of America",
+            "mex": "México"
+          };
+
+          csvData.forEach(function(d) {
+            d.value = parseFloat(d.value);
+            d.fullName = countryName[d.country];
+          });
+
+          console.log("CSV", csvData);
+        });
+
+      d3.text("data/file.txt")
+        .then(function(textFile) {
+          console.log("TEXT", textFile);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
+      d3.json("data/file.json")
+        .then(function(jsonFile) {
+          console.log("JSON", jsonFile);
+        });
+
+      var url = "https://datausa.io/api/data?measures=Population,Average Wage";
+
+      d3.json(url)
+        .then(function(apiData) {
+          console.log("Data USA", apiData);
+        });
+
+      d3.csv("data/top50.csv")
+        .then(function(spotifyData) {
+
+          spotifyData.forEach(function(d) {
+            d.Rank = parseFloat(d.Rank);
+            d["Loudness..dB.."] = parseFloat(d["Loudness..dB.."]);
+            d.Energy = parseFloat(d.Energy);
+            // d["Track Name"] = parseFloat(d["Track Name"]);
+          });
+
+          var quietSongs = spotifyData.filter(function(d) {
+            return d.Energy < 50;
+          });
+
+          var energyExtent = d3.extent(spotifyData, function(d) {
+            return d.Energy;
+          });
+
+          console.log("energy extent:", energyExtent);
+
+          var songsByArtist = d3.group(spotifyData, function(d) {
+            return d["Artist.Name"];
+          });
+
+          console.log(songsByArtist.get("Shawn Mendes"));
+
+          console.log("spotify", spotifyData);
+          console.log("quiet songs", quietSongs);
+
+        });
+
+    </script>
+  </body>
+</html>

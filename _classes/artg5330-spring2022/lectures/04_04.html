@@ -1,0 +1,326 @@
+---
+title: Color Scales and Legends
+---
+
+<section>
+  <section>
+    <h2>April 4, 2022</h2>
+    <h1>{{ page.title }}</h1>
+  </section>
+  <section>
+    <h2>Today's Schedule</h2>
+    <ul>
+      <li class="fragment">Scaffold Review</li>
+      <li class="fragment">Color Scales</li>
+      <li class="fragment">Color Legends</li>
+      <li class="fragment">Homework</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h2>Homework:</h2>
+  <h1>Project Scaffolds</h1>
+  <ul>
+    <li>separately loaded JS and CSS files</li>
+    <li>project title and intro</li>
+    <li>text and visualization placeholders</li>
+  </ul>
+  <br />
+  <a target="_blank" href="/classes/artg5330-spring2022/random">http://www.dave-landry.com/classes/artg5330-spring2022/random</a>
+</section>
+
+<section>
+  <section>
+    <h1>Color Scales</h1>
+  </section>
+  <section>
+    <h3>Today's Goal</h3>
+    <img class="stretch noborder" src="/images/classes/color-scale.png">
+    <p>Let's add a gradient color scale to<br />the bar chart we previously made!</p>
+  </section>
+  <section>
+    <h3>Open VSCode</h3>
+    <img class="stretch noborder" src="/images/classes/vscode-files.png">
+    <p>Open the "Explorer" tab in VSCode, the top most icon in the left side menu. If your local "username.github.io" repository folder is not open, open it now.</p>
+  </section>
+  <section>
+    <h3>Start your servers!</h3>
+    <img class="stretch" src="/images/classes/vscode-http-server.png">
+    <p>After you have opened your repository folder, open a new Terminal using the "Terminal" menu at the top of your screen, type "http-server", and press return.</p>
+  </section>
+  <section>
+    <h3>Starting Code</h3>
+    <p>Let's use the bar chart code we wrote as a starting point:</p>
+    <a href="/classes/artg5330-spring2022/lectures/03_21_code.html" target="_blank">Click here for the code!</a>
+  </section>
+  <section>
+    <h3>SVG Gradients</h3>
+    <p>Gradients and other patterns in SVG need to be <em>defined</em> separate from your shapes:</p>
+    <pre><code class="html">&lt;svg&gt;
+  &lt;defs&gt;
+    &lt;linearGradient id="colorGradient"&gt;
+      &lt;stop offset="0%" stop-color="green" /&gt;
+      &lt;stop offset="100%" stop-color="red" /&gt;
+    &lt;/linearGradient&gt;
+  &lt;/defs&gt;
+  &lt;rect fill="url(#colorGradient)" /&gt;
+&lt;/svg&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Our SVG Structure</h3>
+    <pre><code class="html">&lt;svg&gt;
+  &lt;defs&gt;
+    &lt;linearGradient id="colorGradient"&gt;
+      &lt;stop offset="0%" stop-color="green" /&gt;
+      &lt;stop offset="100%" stop-color="red" /&gt;
+    &lt;/linearGradient&gt;
+  &lt;/defs&gt;
+  &lt;g id="shapes"&gt;&lt;/g&gt;
+  &lt;g id="x"&gt;&lt;/g&gt;
+  &lt;g id="y"&gt;&lt;/g&gt;
+  &lt;g id="scale"&gt;
+    &lt;rect id="scaleRect" fill="url(#colorGradient)" /&gt;
+    &lt;g id="scaleAxis"&gt;&lt;/g&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Stopping the Interval (Part 1)</h3>
+    <p>For the sake of our little demo, let's stop running fetchData once we have a full data array. First, save the setInterval to a variable:</p>
+    <pre><code class="js">var myInterval = setInterval(fetchData, frequency);</code></pre>
+  </section>
+  <section>
+    <h3>Stopping the Interval (Part 2)</h3>
+    <p>Then, inside of our fetchData function, run clearInterval once we have enough data:</p>
+    <pre><code class="js">if (data.length === dataMax) clearInterval(myInterval);</code></pre>
+  </section>
+  <section>
+    <h3>Position and Sizing</h3>
+    <p>First step is to transform the scale group and set the correct width and height on the rectangle:</p>
+    <pre><code class="js">var scaleWidth = 300;
+var scaleHeight = 20;
+var scaleX = margin.left + chartWidth / 2 - (scaleWidth / 2);
+var scaleY = margin.top + chartHeight + 40;
+
+var scale = svg.select("#scale")
+  .attr("transform", "translate(" + scaleX + ", " + scaleY + ")");
+
+scale.select("#scaleRect")
+  .attr("width", scaleWidth)
+  .attr("height", scaleHeight);</code></pre>
+  </section>
+  <section>
+    <h3>Position and Sizing</h3>
+    <p>Oops let's bump up that bottom margin:</p>
+    <pre><code class="js">var margin = {
+  top: 20,
+  right: 20,
+  bottom: 100,
+  left: 40
+};</code></pre>
+  </section>
+  <section>
+    <h3>Coloring our Bars</h3>
+    <p>Let's start with a linear color scale:</p>
+    <pre><code class="js">var barColor = d3.scaleLinear()
+  .domain([0, maximum])
+  .range(["red", "green"]);</code></pre>
+  <p>Make sure we put this code <em>after</em> the line where we define "maximum".</p>
+  </section>
+  <section>
+    <h3>Set the "fill"</h3>
+    <pre><code class="js">bars.merge(enter)
+  .transition().duration(frequency / 2)
+  .attr("fill", function(d) {
+    return barColor(d.users);
+  })
+  .attr("height", function(d) {
+    return barHeight(d.users);
+  })
+  .attr("y", function(d) {
+    return y(d.users);
+  })
+  .attr("x", function(d, i) {
+    return x(i + 1);
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Color Interpolators</h3>
+    <p>While linear scales require a range Array that matches the domain Array in length, sequential scales instead require an interpolator function that allows for any number of outputs:</p>
+    <pre><code class="js">function rainbowColors(t) {
+  return d3.hsl(t * 360, 1, 0.5) + "";
+}
+
+var barColor = d3.scaleSequential(rainbowColors)
+  .domain([0, maximum]);</code></pre>
+  <p>Interpolator functions receive a value between 0 and 1 and is expected to return the final output value.</p>
+  </section>
+  <section>
+    <h3>D3 Interpolators</h3>
+    <p>Instead of defining our own, just use <a href="https://github.com/d3/d3-scale-chromatic" target="_blank">one of the many</a> that d3 includes!</p>
+    <pre><code class="js">var barColor = d3.scaleSequential(d3.interpolateViridis)
+  .domain([0, maximum]);</code></pre>
+  </section>
+  <section>
+    <h3>Dynamic linearGradient</h3>
+    <p>Let's construct a data array with values between 0 and 1, and use an enter event to create the &lt;stop&gt; elements:</p>
+    <pre><code class="js">var stops = d3.range(0, 1.25, 0.25);
+
+svg.select("#colorGradient").selectAll("stop")
+  .data(stops).enter()
+  .append("stop")
+    .attr("offset", function(d) {
+      return d * 100 + "%";
+    })
+    .attr("stop-color", function(d) {
+      return barColor(d * maximum);
+    });</code></pre>
+    <p>Make sure to remove those 2 starter &lt;stop&gt; elements from our HTML at the top of the page!</p>
+  </section>
+  <section>
+    <h3>And finally, an axis!</h3>
+    <p>Works the same way that our chart axes works:</p>
+    <pre><code class="js">var scaleX = d3.scaleLinear()
+  .domain([0, maximum])
+  .range([0, scaleWidth]);
+
+var scaleAxis = d3.axisBottom(scaleX);
+
+scale.select("#scaleAxis")
+  .attr("transform", "translate(0, " + scaleHeight + ")")
+  .transition().duration(frequency / 2)
+  .call(scaleAxis);</code></pre>
+  </section>
+  <section>
+    <h3>Rect Stroke</h3>
+    <p>Let's give the rectangle a stroke to match the axis:</p>
+    <pre><code class="html">&lt;style&gt;
+
+  #scaleRect {
+    stroke: black;
+  }
+
+&lt;/style&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <img class="stretch noborder" src="/images/classes/color-scale.png">
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Color Legends</h1>
+  </section>
+  <section>
+    <h3>Today's (2nd) Goal</h3>
+    <img class="stretch noborder" src="/images/classes/color-legend.png">
+    <p>Let's add a color legend!</p>
+  </section>
+  <section>
+    <h3>Right Margin</h3>
+    <p>First, let's increase the right margin for the legend:</p>
+    <pre><code class="js">var margin = {
+  top: 20,
+  right: 150,
+  bottom: 100,
+  left: 40
+};</code></pre>
+  </section>
+  <section>
+    <h3>Add a Group</h3>
+    <p>Second, add a group inside our &lt;svg&gt; that will contain all of our legend elements:</p>
+    <pre><code class="html">&lt;g id="legend"&gt;&lt;/g&gt;</code></pre>
+  </section>
+  <section>
+    <h3>Prep the Data</h3>
+    <p>In order to draw a rectangle to represent each different color shown, we need to create a data array that contains ONLY the unique values in our data because we don't have to have duplicate squares in the legend.</p>
+    <pre><code class="js">var legendData = data.map(function(d) {
+  return d.users;
+});</code></pre>
+  <p>Start by creating a data array of only the values (we don't need the timestamps).</p>
+  </section>
+  <section>
+    <h3>Removing Duplicates</h3>
+    <p>Can anyone think of a way to remove duplicates from an array of data?</p>
+    <pre><code class="js">[110, 89, 106, 89, 107]</code></pre>
+  </section>
+  <section>
+    <h3>Filter Out Uniques</h3>
+    <p>Using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">Array.filter</a> function, we can chose to keep only the first instance of each number:</p>
+    <pre><code class="js">legendData = legendData
+  .filter(function(d, i) {
+    return legendData.indexOf(d) === i;
+  });</code></pre>
+  </section>
+  <section>
+    <h3>And then, sort!</h3>
+    <p>Instead of using the data sorted by timestamp, let's <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">sort</a> from smallest to largest:</p>
+    <pre><code class="js">legendData = legendData
+  .filter(function(d, i) {
+    return legendData.indexOf(d) === i;
+  })
+  .sort(function(a, b) {
+    return a - b;
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Position the Group</h3>
+    <p>Just as we did with scale group, we need to transform the position of the legend group:</p>
+    <pre><code class="js">var legendX = margin.left + chartWidth;
+var legendY = margin.top;
+
+var legend = svg.select("#legend")
+  .attr("transform", "translate(" + legendX + ", " + legendY + ")");</code></pre>
+  </section>
+  <section>
+    <h3>Rect Size</h3>
+    <p>One more variable to prep,<br />how big should our rectangles be!?</p>
+    <pre><code class="js">var legendSize = 20;</code></pre>
+  </section>
+  <section>
+    <h3>Enter/Update/Exit Rects</h3>
+    <p>Once everything is prepped, it's just enter/update/exit!</p>
+    <pre><code class="js">var legendRects = legend.selectAll("rect")
+  .data(legendData);
+
+var legendRectsEnter = legendRects.enter().append("rect");
+
+legendRects.merge(legendRectsEnter)
+  .attr("x", 0)
+  .attr("y", function(d, i) {
+    return i * legendSize + i * 10;
+  })
+  .attr("fill", barColor)
+  .attr("width", legendSize)
+  .attr("height", legendSize);</code></pre>
+  </section>
+  <section>
+    <h3>Enter/Update/Exit Texts</h3>
+    <p>Similar thing for the text labels:</p>
+    <pre><code class="js">var legendTexts = legend.selectAll("text")
+  .data(legendData);
+
+var legendTextsEnter = legendTexts.enter().append("text")
+  .attr("baseline-shift", "-100%");
+
+legendTexts.merge(legendTextsEnter)
+  .attr("x", legendSize + 5)
+  .attr("y", function(d, i) {
+    return i * legendSize + i * 10;
+  })
+  .text(function(d) {
+    return d;
+  });</code></pre>
+  </section>
+  <section>
+    <h3>Bug Break</h3>
+    <img class="stretch noborder" src="/images/classes/color-legend.png">
+  </section>
+</section>
+
+<section>
+  <h1>Homework</h1>
+  <p>Load the data for you final project,<br />and draw shapes using it<br />(the basis of your visualization).</p>
+</section>

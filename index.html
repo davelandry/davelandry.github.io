@@ -7,15 +7,13 @@ layout: default
 <section>
 
   <h1>Hello</h1>
-  <p>There's not much to see here.</p>
-  <p>The majority of my time is currently shared between <a href="https://datawheel.us/">Datawheel</a> and <a href="https://d3plus.org/">D3plus</a>.</p>
+  <p>My name is Dave Landry, and I am currently the Director of Product and Digital Transformation at <a href="https://capitaltg.com/">CTG</a>. I also run an open-source data visualization library called <a href="https://d3plus.org/">D3plus</a>.</p>
 
 </section>
 
 <div id="links">
   <a href="https://github.com/davelandry">GitHub</a>
-  <a href="https://www.linkedin.com/profile/view?id=48751482">LinkedIn</a>
-  <a href="https://twitter.com/davelandry">Twitter</a>
+  <a href="https://www.linkedin.com/in/davelandry/">LinkedIn</a>
 </div>
 
 <script>
@@ -25,7 +23,7 @@ layout: default
       dusk = hour >= 18 && hour <= 20,
       night = hour > 20 || hour < 4;
 
-  if (night) var greetings = ["go to bed"];
+  if (night) var greetings = ["It's late, go to bed."];
   else if (dusk) var greetings = ["good evening"]
   else if (dawn) var greetings = ["good morning", "rise and shine"];
   else var greetings = ["hello", "sup", "oh, hi there"];
